@@ -1,38 +1,51 @@
 {
-  "plugins": ["import", "unused-imports"],
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "plugins": ["import", "unused-imports"], // eslint-plugin- 接頭辞は省略
   "rules": {
-    "unused-imports/no-unused-imports": "error",
+    "sort-imports": [
+      "error",
+      { "ignoreCase": true, "ignoreDeclarationSort": true }
+    ],
     "import/order": [
       "error",
       {
         "groups": [
-          "builtin", // 組み込みモジュール
-          "external", // npmでインストールした外部ライブラリ
-          "internal", // 自作モジュール
-          ["parent", "sibling"],
-          "object",
-          "type",
-          "index"
+          "builtin",
+          "external",
+          "internal",
+          ["sibling", "parent"],
+          "object"
         ],
-        "newlines-between": "always", // グループ毎にで改行を入れる
-        "pathGroupsExcludedImportTypes": ["builtin"],
-        "alphabetize": {
-          "order": "asc", // 昇順にソート
-          "caseInsensitive": true // 小文字大文字を区別する
-        },
         "pathGroups": [
-          // 指定した順番にソートされる
           {
-            "pattern": "@/components/common",
+            "pattern": "react",
+            "group": "builtin",
+            "position": "before"
+          },
+          {
+            "pattern": ".*/UI/**",
             "group": "internal",
             "position": "before"
           },
           {
-            "pattern": "@/components/hooks",
-            "group": "internal",
-            "position": "before"
+            "pattern": "./*.module.css",
+            "group": "index",
+            "position": "after"
           }
-        ]
+        ],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
       }
     ]
   }
