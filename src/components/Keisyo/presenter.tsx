@@ -1,11 +1,10 @@
 import { useEffect } from "react"
-import "./App.css"
-import { useKeisyo } from "./hooks/useKeisyo"
+import { useKeisyo } from "../../hooks/useKeisyo"
 
-export const Test: React.FC = () => {
-  const { func, b } = useKeisyo()
+export const KeisyoPresenter: React.FC = () => {
+  const { getFunc, b } = useKeisyo()
   useEffect(() => {
-    func()
+    getFunc()
   }, [])
 
   return (

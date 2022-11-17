@@ -1,22 +1,81 @@
-export const SearchPresenter: React.FC = () => {
+import { useState } from "react"
+
+type Props = {
+  categoryAcceleration: boolean
+  categoryVelocity: boolean
+  categoryRecovery: boolean
+  categoryDebuff: boolean
+  switchCategoryAcceleration: () => void
+  switchCategoryVelocity: () => void
+  switchCategoryRecovery: () => void
+  switchCategoryDebuff: () => void
+}
+export const SearchPresenter: React.FC<Props> = (props) => {
+  const {
+    categoryAcceleration,
+    categoryVelocity,
+    categoryRecovery,
+    categoryDebuff,
+    switchCategoryAcceleration,
+    switchCategoryVelocity,
+    switchCategoryRecovery,
+    switchCategoryDebuff,
+  } = props
+
   return (
     <>
       <div className="category">
-        <div className="categoryOneEach">
-          <img src="./src/images/categoryAcceleration.svg" />
-          <p>加速</p>
+        <div className="categoryOneEach" onClick={switchCategoryAcceleration}>
+          {!categoryAcceleration ? (
+            <>
+              <img src="./src/images/categoryAccelerationGray.svg" />
+              <p>加速</p>
+            </>
+          ) : (
+            <>
+              <img src="./src/images/categoryAcceleration.svg" />
+              <p style={{ color: "#F4A02F" }}>加速</p>
+            </>
+          )}
         </div>
-        <div className="categoryOneEach">
-          <img src="./src/images/categoryVelocity.svg" />
-          <p>速度</p>
+        <div className="categoryOneEach" onClick={switchCategoryVelocity}>
+          {!categoryVelocity ? (
+            <>
+              <img src="./src/images/categoryVelocityGray.svg" />
+              <p>速度</p>
+            </>
+          ) : (
+            <>
+              <img src="./src/images/categoryVelocity.svg" />
+              <p style={{ color: "#F4A02F" }}>速度</p>
+            </>
+          )}
         </div>
-        <div className="categoryOneEach">
-          <img src="./src/images/categoryRecovery.svg" />
-          <p>回復</p>
+        <div className="categoryOneEach" onClick={switchCategoryRecovery}>
+          {!categoryRecovery ? (
+            <>
+              <img src="./src/images/categoryRecoveryGray.svg" />
+              <p>回復</p>
+            </>
+          ) : (
+            <>
+              <img src="./src/images/categoryRecovery.svg" />
+              <p style={{ color: "#F4A02F" }}>回復</p>
+            </>
+          )}
         </div>
-        <div className="categoryOneEach">
-          <img src="./src/images/categoryDebuff.svg" />
-          <p>デバフ</p>
+        <div className="categoryOneEach" onClick={switchCategoryDebuff}>
+          {!categoryDebuff ? (
+            <>
+              <img src="./src/images/categoryDebuffGray.svg" />
+              <p>デバフ</p>
+            </>
+          ) : (
+            <>
+              <img src="./src/images/categoryDebuff.svg" />
+              <p style={{ color: "#F4A02F" }}>デバフ</p>
+            </>
+          )}
         </div>
       </div>
       <div className="mileage">
