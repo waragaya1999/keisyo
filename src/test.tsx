@@ -1,9 +1,11 @@
-import axios from "axios"
+import axios, { AxiosResponse } from "axios"
 import { useState } from "react"
 import "./App.css"
+import { ResponseDto } from "./types/ResponseDto"
 
 export const Test: React.FC = () => {
-  const [b, setB] = useState()
+  const [b, setB] = useState([""])
+  const c = [1, 2, 3]
   axios
     .get("https://umakoyuu.microcms.io/api/v1/keisyo", {
       headers: {
@@ -13,10 +15,20 @@ export const Test: React.FC = () => {
         key: 0,
       },
     })
-    .then((response) => {
-      const a = { ...response.data.contents }
-      setB(a[0].name)
-      console.log(a[0].name)
+    .then((res: AxiosResponse<ResponseDto>) => {
+      const a = res.data.contents
+      setB(a)
+      console.log(a)
     })
-  return <h1>{b}</h1>
+  return (
+    <ul>
+      {b.map((value, i) => (
+        <li key={i}>
+          <img src={value.image.url} />
+          {value.name}
+          {/* {console.log(value.image.url)} */}
+        </li>
+      ))}
+    </ul>
+  )
 }

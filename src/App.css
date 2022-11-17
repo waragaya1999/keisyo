@@ -8,6 +8,7 @@
   background-size: cover;
   background-attachment: fixed;
   font-size: 62.5%;
+  color:#000;
 }
 
 .logo {
@@ -125,4 +126,8 @@
 
 h1 {
   color: #888;
+}
+
+li img {
+  height: 100px;
 }
