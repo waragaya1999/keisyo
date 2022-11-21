@@ -1,19 +1,28 @@
 {
   "env": {
-    "node": true,
-    "es6": true
+    "browser": true,
+    "es2021": true
   },
   "extends": [
     "eslint:recommended",
+    "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
     "prettier"
   ],
-  "plugins": ["import", "unused-imports"], // eslint-plugin- 接頭辞は省略
+  "overrides": [],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["react", "@typescript-eslint", "import", "unused-imports"],
   "rules": {
-    "sort-imports": [
-      "error",
-      { "ignoreCase": true, "ignoreDeclarationSort": true }
-    ],
+    "indent": ["error", 2],
+    "linebreak-style": ["error", "windows"],
+    "quotes": ["error", "double"],
+    "semi": ["error", "always"],
+    "@typescript-eslint/no-unused-vars": "off",
+    "unused-imports/no-unused-imports": "error",
     "import/order": [
       "error",
       {
@@ -45,7 +54,8 @@
         "alphabetize": {
           "order": "asc",
           "caseInsensitive": true
-        }
+        },
+        "pathGroupsExcludedImportTypes": ["react"]
       }
     ]
   }
