@@ -20,15 +20,18 @@ export const useKeisyo = () => {
 
   const getFunc = async () => {
     await axios
-      .get("https://umakoyuu.microcms.io/api/v1/keisyo", {
-        headers: {
-          "X-MICROCMS-API-KEY": "cc666066ab2d480dad1bb809bb2c2314fc79",
-        },
-        params: {
-          limit: 100,
-        },
-      })
-      .then((res: AxiosResponse<ResponseDto>) => {
+      .get(
+        "https://umakoyuu.microcms.io/api/v1/keisyo?filters=mileage[contains]最終",
+        {
+          headers: {
+            "X-MICROCMS-API-KEY": "cc666066ab2d480dad1bb809bb2c2314fc79",
+          },
+          params: {
+            limit: 100,
+          },
+        }
+      )
+      .then((res) => {
         const a = res.data.contents
         setB(res.data.contents)
         console.log(a)

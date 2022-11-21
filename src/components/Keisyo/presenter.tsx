@@ -1,5 +1,6 @@
 import { useEffect } from "react"
 import { useKeisyo } from "../../hooks/useKeisyo"
+import { ResponseDto } from "../../types/ResponseDto"
 
 export const KeisyoPresenter: React.FC = () => {
   const { getFunc, b } = useKeisyo()
@@ -9,7 +10,7 @@ export const KeisyoPresenter: React.FC = () => {
 
   return (
     <ul>
-      {b.map((value, i) => {
+      {b.map((value: ResponseDto, i) => {
         return (
           <li key={i}>
             <img src={value.image.url} />
