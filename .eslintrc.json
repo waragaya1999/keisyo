@@ -7,7 +7,7 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier"
+    "plugin:prettier/recommended"
   ],
   "overrides": [],
   "parser": "@typescript-eslint/parser",
@@ -15,12 +15,18 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint", "import", "unused-imports"],
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "import",
+    "unused-imports",
+    "prettier"
+  ],
   "rules": {
     "indent": ["error", 2],
-    "linebreak-style": ["error", "windows"],
+    "linebreak-style": ["error", "UNIX"],
     "quotes": ["error", "double"],
-    "semi": ["error", "always"],
+    "semi": ["error", "never"],
     "@typescript-eslint/no-unused-vars": "off",
     "unused-imports/no-unused-imports": "error",
     "import/order": [
@@ -50,7 +56,6 @@
             "position": "after"
           }
         ],
-        "newlines-between": "always",
         "alphabetize": {
           "order": "asc",
           "caseInsensitive": true

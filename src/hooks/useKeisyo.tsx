@@ -1,22 +1,22 @@
-import axios, { AxiosResponse } from "axios";
-import { ResponseDto } from "../types/ResponseDto";
-import { useState } from "react";
+import axios, { AxiosResponse } from "axios"
+import { ResponseDto } from "../types/ResponseDto"
+import { useState } from "react"
 
 export const useKeisyo = () => {
-  const [b, setB] = useState([]);
+  const [b, setB] = useState([])
   const [categoryAcceleration, setCategoryAcceleration] =
-    useState<boolean>(false);
-  const [categoryVelocity, setCategoryVelocity] = useState<boolean>(false);
-  const [categoryRecovery, setCategoryRecovery] = useState<boolean>(false);
-  const [categoryDebuff, setCategoryDebuff] = useState<boolean>(false);
-  const [mileageFinalStage, setMileageFinalStage] = useState<boolean>(false);
-  const [mileageFinal, setMileageFinal] = useState<boolean>(false);
-  const [mileageMiddle, setMileageMiddle] = useState<boolean>(false);
-  const [mileageOther, setMileageOther] = useState<boolean>(false);
-  const [locationStraight, setLocationStraight] = useState<boolean>(false);
-  const [locationCorner, setLocationCorner] = useState<boolean>(false);
+    useState<boolean>(false)
+  const [categoryVelocity, setCategoryVelocity] = useState<boolean>(false)
+  const [categoryRecovery, setCategoryRecovery] = useState<boolean>(false)
+  const [categoryDebuff, setCategoryDebuff] = useState<boolean>(false)
+  const [mileageFinalStage, setMileageFinalStage] = useState<boolean>(false)
+  const [mileageFinal, setMileageFinal] = useState<boolean>(false)
+  const [mileageMiddle, setMileageMiddle] = useState<boolean>(false)
+  const [mileageOther, setMileageOther] = useState<boolean>(false)
+  const [locationStraight, setLocationStraight] = useState<boolean>(false)
+  const [locationCorner, setLocationCorner] = useState<boolean>(false)
   const [locationUnconditional, setLocationUnconditional] =
-    useState<boolean>(false);
+    useState<boolean>(false)
 
   const getFunc = async () => {
     await axios
@@ -32,23 +32,23 @@ export const useKeisyo = () => {
         },
       )
       .then((res) => {
-        setB(res.data.contents);
-        console.log(res.data.contents);
-      });
-  };
+        setB(res.data.contents)
+        console.log(res.data.contents)
+      })
+  }
 
   const switchCategoryAcceleration = () => {
-    setCategoryAcceleration(!categoryAcceleration);
-  };
+    setCategoryAcceleration(!categoryAcceleration)
+  }
   const switchCategoryVelocity = () => {
-    setCategoryVelocity(!categoryVelocity);
-  };
+    setCategoryVelocity(!categoryVelocity)
+  }
   const switchCategoryRecovery = () => {
-    setCategoryRecovery(!categoryRecovery);
-  };
+    setCategoryRecovery(!categoryRecovery)
+  }
   const switchCategoryDebuff = () => {
-    setCategoryDebuff(!categoryDebuff);
-  };
+    setCategoryDebuff(!categoryDebuff)
+  }
 
   return {
     getFunc,
@@ -69,5 +69,5 @@ export const useKeisyo = () => {
     switchCategoryVelocity,
     switchCategoryRecovery,
     switchCategoryDebuff,
-  } as const;
-};
+  } as const
+}
