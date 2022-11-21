@@ -1,6 +1,5 @@
-import axios, { AxiosResponse } from "axios"
-import { ResponseDto } from "../types/ResponseDto"
 import { useState } from "react"
+import axios from "axios"
 
 export const useKeisyo = () => {
   const [b, setB] = useState([])
