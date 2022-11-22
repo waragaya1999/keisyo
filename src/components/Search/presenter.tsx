@@ -1,30 +1,23 @@
+import { CategoryDto } from "../../types/CategoryDto"
+
 type Props = {
-  categoryAcceleration: boolean
-  categoryVelocity: boolean
-  categoryRecovery: boolean
-  categoryDebuff: boolean
-  switchCategoryAcceleration: () => void
-  switchCategoryVelocity: () => void
-  switchCategoryRecovery: () => void
-  switchCategoryDebuff: () => void
+  categoryDto: CategoryDto
+  switchCategory: (cat: string) => void
 }
+
 export const SearchPresenter: React.FC<Props> = (props) => {
-  const {
-    categoryAcceleration,
-    categoryVelocity,
-    categoryRecovery,
-    categoryDebuff,
-    switchCategoryAcceleration,
-    switchCategoryVelocity,
-    switchCategoryRecovery,
-    switchCategoryDebuff,
-  } = props
+  const { categoryDto, switchCategory } = props
 
   return (
     <>
       <div className="category">
-        <div className="categoryOneEach" onClick={switchCategoryAcceleration}>
-          {!categoryAcceleration ? (
+        <div
+          className="categoryOneEach"
+          onClick={() => {
+            switchCategory("a")
+          }}
+        >
+          {!categoryDto.acceleration ? (
             <>
               <img src="./src/images/categoryAccelerationGray.svg" />
               <p>加速</p>
@@ -36,8 +29,13 @@ export const SearchPresenter: React.FC<Props> = (props) => {
             </>
           )}
         </div>
-        <div className="categoryOneEach" onClick={switchCategoryVelocity}>
-          {!categoryVelocity ? (
+        <div
+          className="categoryOneEach"
+          onClick={() => {
+            switchCategory("v")
+          }}
+        >
+          {!categoryDto.velocity ? (
             <>
               <img src="./src/images/categoryVelocityGray.svg" />
               <p>速度</p>
@@ -49,8 +47,13 @@ export const SearchPresenter: React.FC<Props> = (props) => {
             </>
           )}
         </div>
-        <div className="categoryOneEach" onClick={switchCategoryRecovery}>
-          {!categoryRecovery ? (
+        <div
+          className="categoryOneEach"
+          onClick={() => {
+            switchCategory("r")
+          }}
+        >
+          {!categoryDto.recovery ? (
             <>
               <img src="./src/images/categoryRecoveryGray.svg" />
               <p>回復</p>
@@ -62,8 +65,13 @@ export const SearchPresenter: React.FC<Props> = (props) => {
             </>
           )}
         </div>
-        <div className="categoryOneEach" onClick={switchCategoryDebuff}>
-          {!categoryDebuff ? (
+        <div
+          className="categoryOneEach"
+          onClick={() => {
+            switchCategory("d")
+          }}
+        >
+          {!categoryDto.debuff ? (
             <>
               <img src="./src/images/categoryDebuffGray.svg" />
               <p>デバフ</p>

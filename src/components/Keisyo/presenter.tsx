@@ -1,16 +1,22 @@
 import { useEffect } from "react"
-import { useKeisyo } from "../../hooks/useKeisyo"
+import { CategoryDto } from "../../types/CategoryDto"
 import { ResponseDto } from "../../types/ResponseDto"
 
-export const KeisyoPresenter: React.FC = () => {
-  const { getFunc, b } = useKeisyo()
+type Props = {
+  getFunc: () => void
+  b: ResponseDto[]
+  categoryDto: CategoryDto
+}
+
+export const KeisyoPresenter: React.FC<Props> = (props) => {
+  const { getFunc, b, categoryDto } = props
   useEffect(() => {
     getFunc()
-  }, [])
+  }, [categoryDto])
 
   return (
     <ul>
-      {b.map((value: ResponseDto, i) => {
+      {b.map((value, i) => {
         return (
           <li key={i}>
             <img src={value.image.url} />
