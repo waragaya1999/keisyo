@@ -1,12 +1,9 @@
-import { CategoryDto } from "../../types/CategoryDto"
+import { Search1 } from "./container"
 
-type Props = {
-  categoryDto: CategoryDto
-  switchCategory: (cat: string) => void
-}
+type Props = React.ComponentProps<typeof Search1>
 
 export const SearchPresenter: React.FC<Props> = (props) => {
-  const { categoryDto, switchCategory } = props
+  const { categoryDto, mileageDto, switchCategory, switchMileage } = props
 
   return (
     <>
@@ -85,9 +82,23 @@ export const SearchPresenter: React.FC<Props> = (props) => {
         </div>
       </div>
       <div className="mileage">
-        <div className="mileageOneEach">
-          <img src="./src/images/mileageFinalStage.svg" />
-          <p>終盤</p>
+        <div
+          className="mileageOneEach"
+          onClick={() => {
+            switchMileage("s")
+          }}
+        >
+          {!mileageDto.finalStage ? (
+            <>
+              <img src="./src/images/mileageFinalStageGray.svg" />
+              <p>終盤</p>
+            </>
+          ) : (
+            <>
+              <img src="./src/images/mileageFinalStage.svg" />
+              <p style={{ color: "#F4A02F" }}>終盤</p>
+            </>
+          )}
         </div>
         <div className="mileageOneEach">
           <img src="./src/images/mileageFinal.svg" />
