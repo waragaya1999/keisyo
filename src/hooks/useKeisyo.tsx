@@ -1,6 +1,7 @@
 import { useState } from "react"
 import axios from "axios"
 import { CategoryDto } from "../types/CategoryDto"
+import { MileageDto } from "../types/mileageDto"
 
 export const useKeisyo = () => {
   const [b, setB] = useState([])
@@ -10,10 +11,12 @@ export const useKeisyo = () => {
     recovery: false,
     debuff: false,
   })
-  const [mileageFinalStage, setMileageFinalStage] = useState<boolean>(false)
-  const [mileageFinal, setMileageFinal] = useState<boolean>(false)
-  const [mileageMiddle, setMileageMiddle] = useState<boolean>(false)
-  const [mileageOther, setMileageOther] = useState<boolean>(false)
+  const [mileageDto, setMileageDto] = useState<MileageDto>({
+    finalStage: false,
+    final: false,
+    middle: false,
+    other: false,
+  })
   const [locationStraight, setLocationStraight] = useState<boolean>(false)
   const [locationCorner, setLocationCorner] = useState<boolean>(false)
   const [locationUnconditional, setLocationUnconditional] =
@@ -183,18 +186,48 @@ export const useKeisyo = () => {
     }
   }
 
+  const switchMileage = (mil: string) => {
+    switch (mil) {
+      case "s":
+        if (!mileageDto.finalStage) {
+          if (!mileageDto.final && !mileageDto.middle && !mileageDto.other) {
+            setUrl(`${url + "filters=mileage[contains]終盤"}`)
+          } else {
+            setUrl(`${url + "[and]mileage[contains]終盤"}`)
+          }
+          setMileageDto({
+            ...mileageDto,
+            finalStage: true,
+          })
+        } else {
+          if (!mileageDto.final && !mileageDto.middle && !mileageDto.other) {
+            setUrl(`${url.replace("filters=mileage[contains]終盤", "")}`)
+          } else {
+            setUrl(
+              `${url
+                .replace("[and]mileage[contains]終盤", "")
+                .replace("mileage[contains]終盤[and]", "")}`,
+            )
+          }
+          setMileageDto({
+            ...mileageDto,
+            finalStage: false,
+          })
+        }
+        break
+      default:
+        break
+    }
+  }
   return {
     getFunc,
     b,
-    setB,
     categoryDto,
-    mileageFinalStage,
-    mileageFinal,
-    mileageMiddle,
-    mileageOther,
+    mileageDto,
+    switchCategory,
+    switchMileage,
     locationStraight,
     locationCorner,
     locationUnconditional,
-    switchCategory,
   } as const
 }
