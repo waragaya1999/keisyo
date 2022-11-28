@@ -22,6 +22,8 @@ export const useKeisyo = () => {
   const [locationUnconditional, setLocationUnconditional] =
     useState<boolean>(false)
   const [url, setUrl] = useState("https://umakoyuu.microcms.io/api/v1/keisyo?")
+  const [categoryName, setCategoryName] = useState<boolean>()
+  const [categoryValue, setCategoryValue] = useState<string>()
 
   const getFunc = async () => {
     await axios
@@ -35,155 +37,51 @@ export const useKeisyo = () => {
       })
       .then((res) => {
         setB(res.data.contents)
+        console.log(/and/.test(url))
         console.log(url)
       })
   }
 
-  const switchCategory = (cat: string) => {
-    switch (cat) {
-      case "a":
-        if (!categoryDto.acceleration) {
-          if (
-            !categoryDto.velocity &&
-            !categoryDto.recovery &&
-            !categoryDto.debuff
-          ) {
-            setUrl(`${url + "filters=category[contains]加速"}`)
-          } else {
-            setUrl(`${url + "[and]category[contains]加速"}`)
-          }
-          setCategoryDto({
-            ...categoryDto,
-            acceleration: true,
-          })
-        } else {
-          if (
-            !categoryDto.velocity &&
-            !categoryDto.recovery &&
-            !categoryDto.debuff
-          ) {
-            setUrl(`${url.replace("filters=category[contains]加速", "")}`)
-          } else {
-            setUrl(
-              `${url
-                .replace("[and]category[contains]加速", "")
-                .replace("category[contains]加速[and]", "")}`,
-            )
-          }
-          setCategoryDto({
-            ...categoryDto,
-            acceleration: false,
-          })
-        }
-        break
-      case "v":
-        if (!categoryDto.velocity) {
-          if (
-            !categoryDto.acceleration &&
-            !categoryDto.recovery &&
-            !categoryDto.debuff
-          ) {
-            setUrl(`${url + "filters=category[contains]速度"}`)
-          } else {
-            setUrl(`${url + "[and]category[contains]速度"}`)
-          }
-          setCategoryDto({
-            ...categoryDto,
-            velocity: true,
-          })
-        } else {
-          if (
-            !categoryDto.acceleration &&
-            !categoryDto.recovery &&
-            !categoryDto.debuff
-          ) {
-            setUrl(`${url.replace("filters=category[contains]速度", "")}`)
-          } else {
-            setUrl(
-              `${url
-                .replace("[and]category[contains]速度", "")
-                .replace("category[contains]速度[and]", "")}`,
-            )
-          }
-          setCategoryDto({
-            ...categoryDto,
-            velocity: false,
-          })
-        }
-        break
-      case "r":
-        if (!categoryDto.recovery) {
-          if (
-            !categoryDto.acceleration &&
-            !categoryDto.velocity &&
-            !categoryDto.debuff
-          ) {
-            setUrl(`${url + "filters=category[contains]回復"}`)
-          } else {
-            setUrl(`${url + "[and]category[contains]回復"}`)
-          }
-          setCategoryDto({
-            ...categoryDto,
-            recovery: true,
-          })
-        } else {
-          if (
-            !categoryDto.acceleration &&
-            !categoryDto.velocity &&
-            !categoryDto.debuff
-          ) {
-            setUrl(`${url.replace("filters=category[contains]回復", "")}`)
-          } else {
-            setUrl(
-              `${url
-                .replace("[and]category[contains]回復", "")
-                .replace("category[contains]回復[and]", "")}`,
-            )
-          }
-          setCategoryDto({
-            ...categoryDto,
-            recovery: false,
-          })
-        }
-        break
-      case "d":
-        if (!categoryDto.debuff) {
-          if (
-            !categoryDto.acceleration &&
-            !categoryDto.velocity &&
-            !categoryDto.recovery
-          ) {
-            setUrl(`${url + "filters=category[contains]デバフ"}`)
-          } else {
-            setUrl(`${url + "[and]category[contains]デバフ"}`)
-          }
-          setCategoryDto({
-            ...categoryDto,
-            debuff: true,
-          })
-        } else {
-          if (
-            !categoryDto.acceleration &&
-            !categoryDto.velocity &&
-            !categoryDto.recovery
-          ) {
-            setUrl(`${url.replace("filters=category[contains]デバフ", "")}`)
-          } else {
-            setUrl(
-              `${url
-                .replace("[and]category[contains]デバフ", "")
-                .replace("category[contains]デバフ[and]", "")}`,
-            )
-          }
-          setCategoryDto({
-            ...categoryDto,
-            debuff: false,
-          })
-        }
-        break
-      default:
-        break
+  const changeCategory = (cat: string) => {
+    if (cat === "a") {
+      setCategoryName(() => categoryDto.acceleration)
+      setCategoryValue(() => "加速")
     }
+  }
+
+  const aaa = () => {
+    if (!categoryName) {
+      if (/filters/.test(url)) {
+        setUrl(`${url + "[and]category[contains]" + categoryValue}`)
+      } else {
+        setUrl(`${url + "filters=category[contains]" + categoryValue}`)
+      }
+      setCategoryDto({
+        ...categoryDto,
+        acceleration: true,
+      })
+    } else {
+      if (/and/.test(url)) {
+        setUrl(
+          `${url
+            .replace(`[and]category[contains]${categoryValue}`, "")
+            .replace(`category[contains]${categoryValue}[and]`, "")}`,
+        )
+      } else {
+        setUrl(
+          `${url.replace(`filters=category[contains]${categoryValue}`, "")}`,
+        )
+      }
+      setCategoryDto({
+        ...categoryDto,
+        acceleration: false,
+      })
+    }
+  }
+
+  const switchCategory = async (cat: string) => {
+    await changeCategory(cat)
+    aaa()
   }
 
   const switchMileage = (mil: string) => {
