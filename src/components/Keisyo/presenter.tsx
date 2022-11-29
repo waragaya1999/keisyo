@@ -23,7 +23,9 @@ export const KeisyoPresenter: React.FC<Props> = (props) => {
       {b.map((value, i) => {
         return (
           <li key={i}>
-            <img src={value.image.url} />
+            <div>
+              <img src={value.image.url} />
+            </div>
             <p>{value.name}</p>
           </li>
         )

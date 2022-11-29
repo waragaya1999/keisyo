@@ -1,5 +1,5 @@
 #root {
-  max-width: 600px;
+  max-width: 800px;
   min-height: 100vh;
   width: 100%;
   text-align: center;
@@ -10,6 +10,18 @@
   background-attachment: fixed;
   font-size: 62.5%;
   color: #000;
+  /* opacity: 0; */
+}
+
+.wrap {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  background-image: url("https://umamusume.jp/app/wp-content/uploads/2022/04/639dc925df682df28c65d1e76526ca1b.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .logo {
@@ -140,10 +152,24 @@ li {
   text-align: left;
   margin: 0 auto;
   display: flex;
-  margin-bottom: 2vh;
+  padding-bottom: 2vh;
+}
+
+li div {
+  width: 30%;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 2vw;
 }
 
 li img {
-  height: 80px;
-  margin-right: 2vw;
+  height: 12vw;
+  max-width: 80px;
+  max-height: 80px;
+}
+
+li p {
+  width: 70%;
+  white-space: nowrap;
+  font-size: min(4vw, 20px);
 }
