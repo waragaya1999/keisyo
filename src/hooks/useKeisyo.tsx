@@ -1,7 +1,8 @@
 import { useState } from "react"
 import axios from "axios"
 import { CategoryDto } from "../types/CategoryDto"
-import { MileageDto } from "../types/mileageDto"
+import { LocationDto } from "../types/LocationDto"
+import { MileageDto } from "../types/MileageDto"
 
 export const useKeisyo = () => {
   const [b, setB] = useState([])
@@ -15,12 +16,14 @@ export const useKeisyo = () => {
     finalStage: false,
     final: false,
     secondHalf: false,
-    other: false,
+    middle: false,
   })
-  const [locationStraight, setLocationStraight] = useState<boolean>(false)
-  const [locationCorner, setLocationCorner] = useState<boolean>(false)
-  const [locationUnconditional, setLocationUnconditional] =
-    useState<boolean>(false)
+  const [locationDto, setLocationDto] = useState<LocationDto>({
+    straight: false,
+    corner: false,
+    specific: false,
+    unconditional: false,
+  })
   const [url, setUrl] = useState("https://umakoyuu.microcms.io/api/v1/keisyo?")
 
   const getFunc = async () => {
@@ -73,8 +76,29 @@ export const useKeisyo = () => {
       case "secondHalf":
         xx = mileageDto.secondHalf
         break
-      case "other":
-        xx = mileageDto.other
+      case "middle":
+        xx = mileageDto.middle
+        break
+      default:
+        break
+    }
+    return xx
+  }
+
+  const handleLocation = async (loc: string) => {
+    let xx = false
+    switch (loc) {
+      case "straight":
+        xx = locationDto.straight
+        break
+      case "corner":
+        xx = locationDto.corner
+        break
+      case "specific":
+        xx = locationDto.specific
+        break
+      case "unconditional":
+        xx = locationDto.unconditional
         break
       default:
         break
@@ -138,6 +162,34 @@ export const useKeisyo = () => {
     }
   }
 
+  const handleUrlLocation = (loc: string, xx: boolean) => {
+    if (!xx) {
+      if (/filters/.test(url)) {
+        setUrl(`${url + "[and]location[contains]" + loc}`)
+      } else {
+        setUrl(`${url + "filters=location[contains]" + loc}`)
+      }
+      setLocationDto({
+        ...locationDto,
+        [loc]: true,
+      })
+    } else {
+      if (/\[and\]/.test(url)) {
+        setUrl(
+          `${url
+            .replace(`[and]location[contains]${loc}`, "")
+            .replace(`location[contains]${loc}[and]`, "")}`,
+        )
+      } else {
+        setUrl(`${url.replace(`filters=location[contains]${loc}`, "")}`)
+      }
+      setLocationDto({
+        ...locationDto,
+        [loc]: false,
+      })
+    }
+  }
+
   const switchCategory = async (cat: string) => {
     await handleCategory(cat).then((xx) => {
       handleUrlCategory(cat, xx)
@@ -150,15 +202,20 @@ export const useKeisyo = () => {
     })
   }
 
+  const switchLocation = async (loc: string) => {
+    await handleLocation(loc).then((xx) => {
+      handleUrlLocation(loc, xx)
+    })
+  }
+
   return {
     getFunc,
     b,
     categoryDto,
     mileageDto,
+    locationDto,
     switchCategory,
     switchMileage,
-    locationStraight,
-    locationCorner,
-    locationUnconditional,
+    switchLocation,
   } as const
 }
