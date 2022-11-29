@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import { CategoryDto } from "../../types/CategoryDto"
-import { MileageDto } from "../../types/mileageDto"
+import { LocationDto } from "../../types/LocationDto"
+import { MileageDto } from "../../types/MileageDto"
 import { ResponseDto } from "../../types/ResponseDto"
 
 type Props = {
@@ -8,13 +9,14 @@ type Props = {
   b: ResponseDto[]
   categoryDto: CategoryDto
   mileageDto: MileageDto
+  locationDto: LocationDto
 }
 
 export const KeisyoPresenter: React.FC<Props> = (props) => {
-  const { getFunc, b, categoryDto, mileageDto } = props
+  const { getFunc, b, categoryDto, mileageDto, locationDto } = props
   useEffect(() => {
     getFunc()
-  }, [categoryDto, mileageDto])
+  }, [categoryDto, mileageDto, locationDto])
 
   return (
     <ul>

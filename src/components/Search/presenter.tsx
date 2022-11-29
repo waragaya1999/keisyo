@@ -3,7 +3,14 @@ import { Search1 } from "./container"
 type Props = React.ComponentProps<typeof Search1>
 
 export const SearchPresenter: React.FC<Props> = (props) => {
-  const { categoryDto, mileageDto, switchCategory, switchMileage } = props
+  const {
+    categoryDto,
+    mileageDto,
+    locationDto,
+    switchCategory,
+    switchMileage,
+    switchLocation,
+  } = props
 
   return (
     <>
@@ -139,38 +146,94 @@ export const SearchPresenter: React.FC<Props> = (props) => {
         <div
           className="mileageOneEach"
           onClick={() => {
-            switchMileage("other")
+            switchMileage("middle")
           }}
         >
-          {!mileageDto.other ? (
+          {!mileageDto.middle ? (
             <>
-              <img src="./src/images/mileageOtherGray.svg" />
-              <p>その他</p>
+              <img src="./src/images/mileageMiddleGray.svg" />
+              <p>中盤</p>
             </>
           ) : (
             <>
-              <img src="./src/images/mileageOther.svg" />
-              <p style={{ color: "#F4A02F" }}>その他</p>
+              <img src="./src/images/mileageMiddle.svg" />
+              <p style={{ color: "#F4A02F" }}>中盤</p>
             </>
           )}
         </div>
       </div>
       <div className="location">
-        <div className="locationOneEach">
-          <img src="./src/images/locationStraight.svg" />
-          <p>直線</p>
+        <div
+          className="locationOneEach"
+          onClick={() => {
+            switchLocation("straight")
+          }}
+        >
+          {!locationDto.straight ? (
+            <>
+              <img src="./src/images/locationStraightGray.svg" />
+              <p>直線</p>
+            </>
+          ) : (
+            <>
+              <img src="./src/images/locationStraight.svg" />
+              <p style={{ color: "#F4A02F" }}>直線</p>
+            </>
+          )}
         </div>
-        <div className="locationOneEach">
-          <img src="./src/images/locationCorner.svg" />
-          <p>コーナー</p>
+        <div
+          className="locationOneEach"
+          onClick={() => {
+            switchLocation("corner")
+          }}
+        >
+          {!locationDto.corner ? (
+            <>
+              <img src="./src/images/locationCornerGray.svg" />
+              <p>コーナー</p>
+            </>
+          ) : (
+            <>
+              <img src="./src/images/locationCorner.svg" />
+              <p style={{ color: "#F4A02F" }}>コーナー</p>
+            </>
+          )}
         </div>
-        <div className="locationOneEach">
-          <img src="./src/images/locationUnconditional.svg" />
-          <p>無条件</p>
+        <div
+          className="locationOneEach"
+          onClick={() => {
+            switchLocation("specific")
+          }}
+        >
+          {!locationDto.specific ? (
+            <>
+              <img src="./src/images/locationSpecificGray.svg" />
+              <p>距離</p>
+            </>
+          ) : (
+            <>
+              <img src="./src/images/locationSpecific.svg" />
+              <p style={{ color: "#F4A02F" }}>距離</p>
+            </>
+          )}
         </div>
-        <div className="locationOneEach">
-          <img src="./src/images/none.svg" />
-          <p></p>
+        <div
+          className="locationOneEach"
+          onClick={() => {
+            switchLocation("unconditional")
+          }}
+        >
+          {!locationDto.unconditional ? (
+            <>
+              <img src="./src/images/locationUnconditionalGray.svg" />
+              <p>無条件</p>
+            </>
+          ) : (
+            <>
+              <img src="./src/images/locationUnconditional.svg" />
+              <p style={{ color: "#F4A02F" }}>無条件</p>
+            </>
+          )}
         </div>
       </div>
     </>
