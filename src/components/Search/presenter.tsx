@@ -11,7 +11,7 @@ export const SearchPresenter: React.FC<Props> = (props) => {
         <div
           className="categoryOneEach"
           onClick={() => {
-            switchCategory("加速")
+            switchCategory("acceleration")
           }}
         >
           {!categoryDto.acceleration ? (
@@ -29,7 +29,7 @@ export const SearchPresenter: React.FC<Props> = (props) => {
         <div
           className="categoryOneEach"
           onClick={() => {
-            switchCategory("速度")
+            switchCategory("velocity")
           }}
         >
           {!categoryDto.velocity ? (
@@ -47,7 +47,7 @@ export const SearchPresenter: React.FC<Props> = (props) => {
         <div
           className="categoryOneEach"
           onClick={() => {
-            switchCategory("回復")
+            switchCategory("recovery")
           }}
         >
           {!categoryDto.recovery ? (
@@ -65,7 +65,7 @@ export const SearchPresenter: React.FC<Props> = (props) => {
         <div
           className="categoryOneEach"
           onClick={() => {
-            switchCategory("デバフ")
+            switchCategory("debuff")
           }}
         >
           {!categoryDto.debuff ? (
@@ -85,7 +85,7 @@ export const SearchPresenter: React.FC<Props> = (props) => {
         <div
           className="mileageOneEach"
           onClick={() => {
-            switchMileage("s")
+            switchMileage("finalStage")
           }}
         >
           {!mileageDto.finalStage ? (
@@ -100,17 +100,59 @@ export const SearchPresenter: React.FC<Props> = (props) => {
             </>
           )}
         </div>
-        <div className="mileageOneEach">
-          <img src="./src/images/mileageFinal.svg" />
-          <p>最終</p>
+        <div
+          className="mileageOneEach"
+          onClick={() => {
+            switchMileage("final")
+          }}
+        >
+          {!mileageDto.final ? (
+            <>
+              <img src="./src/images/mileageFinalGray.svg" />
+              <p>最終</p>
+            </>
+          ) : (
+            <>
+              <img src="./src/images/mileageFinal.svg" />
+              <p style={{ color: "#F4A02F" }}>最終</p>
+            </>
+          )}
         </div>
-        <div className="mileageOneEach">
-          <img src="./src/images/mileageMiddle.svg" />
-          <p>中盤</p>
+        <div
+          className="mileageOneEach"
+          onClick={() => {
+            switchMileage("secondHalf")
+          }}
+        >
+          {!mileageDto.secondHalf ? (
+            <>
+              <img src="./src/images/mileageSecondHalfGray.svg" />
+              <p>後半</p>
+            </>
+          ) : (
+            <>
+              <img src="./src/images/mileageSecondHalf.svg" />
+              <p style={{ color: "#F4A02F" }}>後半</p>
+            </>
+          )}
         </div>
-        <div className="mileageOneEach">
-          <img src="./src/images/mileageOther.svg" />
-          <p>その他</p>
+        <div
+          className="mileageOneEach"
+          onClick={() => {
+            switchMileage("other")
+          }}
+        >
+          {!mileageDto.other ? (
+            <>
+              <img src="./src/images/mileageOtherGray.svg" />
+              <p>その他</p>
+            </>
+          ) : (
+            <>
+              <img src="./src/images/mileageOther.svg" />
+              <p style={{ color: "#F4A02F" }}>その他</p>
+            </>
+          )}
         </div>
       </div>
       <div className="location">
