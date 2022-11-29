@@ -22,8 +22,6 @@ export const useKeisyo = () => {
   const [locationUnconditional, setLocationUnconditional] =
     useState<boolean>(false)
   const [url, setUrl] = useState("https://umakoyuu.microcms.io/api/v1/keisyo?")
-  const [categoryName, setCategoryName] = useState<boolean>()
-  const [categoryValue, setCategoryValue] = useState<string>()
 
   const getFunc = async () => {
     await axios
@@ -37,40 +35,72 @@ export const useKeisyo = () => {
       })
       .then((res) => {
         setB(res.data.contents)
-        console.log(/and/.test(url))
         console.log(url)
       })
   }
 
-  const changeCategory = (cat: string) => {
-    if (cat === "a") {
-      setCategoryName(() => categoryDto.acceleration)
-      setCategoryValue(() => "加速")
+  const changeCategory = async (cat: string) => {
+    let xx = false
+    if (cat === "加速") {
+      xx = categoryDto.acceleration
+    } else if (cat === "速度") {
+      xx = categoryDto.velocity
+    } else if (cat === "回復") {
+      xx = categoryDto.recovery
+    } else {
+      xx = categoryDto.debuff
     }
+    return xx
   }
 
-  const aaa = () => {
-    if (!categoryName) {
+  const bbb = (cat: string) => {
+    let yy = categoryDto
+    if (cat === "加速") {
+      yy = {
+        ...categoryDto,
+        acceleration: !categoryDto.acceleration,
+      }
+    } else if (cat === "速度") {
+      yy = {
+        ...categoryDto,
+        acceleration: !categoryDto.acceleration,
+      }
+    } else if (cat === "回復") {
+      yy = {
+        ...categoryDto,
+        acceleration: !categoryDto.acceleration,
+      }
+    } else {
+      yy = {
+        ...categoryDto,
+        acceleration: !categoryDto.acceleration,
+      }
+    }
+    return yy
+  }
+
+  const aaa = (cat: string, xx: boolean) => {
+    if (!xx) {
       if (/filters/.test(url)) {
-        setUrl(`${url + "[and]category[contains]" + categoryValue}`)
+        console.log("true")
+        setUrl(`${url + "[and]category[contains]" + cat}`)
       } else {
-        setUrl(`${url + "filters=category[contains]" + categoryValue}`)
+        setUrl(`${url + "filters=category[contains]" + cat}`)
       }
       setCategoryDto({
         ...categoryDto,
         acceleration: true,
       })
     } else {
+      console.log("false")
       if (/and/.test(url)) {
         setUrl(
           `${url
-            .replace(`[and]category[contains]${categoryValue}`, "")
-            .replace(`category[contains]${categoryValue}[and]`, "")}`,
+            .replace(`[and]category[contains]${cat}`, "")
+            .replace(`category[contains]${cat}[and]`, "")}`,
         )
       } else {
-        setUrl(
-          `${url.replace(`filters=category[contains]${categoryValue}`, "")}`,
-        )
+        setUrl(`${url.replace(`filters=category[contains]${cat}`, "")}`)
       }
       setCategoryDto({
         ...categoryDto,
@@ -80,8 +110,9 @@ export const useKeisyo = () => {
   }
 
   const switchCategory = async (cat: string) => {
-    await changeCategory(cat)
-    aaa()
+    await changeCategory(cat).then((xx) => {
+      aaa(cat, xx)
+    })
   }
 
   const switchMileage = (mil: string) => {
