@@ -11,7 +11,7 @@ export const SearchPresenter: React.FC<Props> = (props) => {
         <div
           className="categoryOneEach"
           onClick={() => {
-            switchCategory("a")
+            switchCategory("加速")
           }}
         >
           {!categoryDto.acceleration ? (
@@ -29,7 +29,7 @@ export const SearchPresenter: React.FC<Props> = (props) => {
         <div
           className="categoryOneEach"
           onClick={() => {
-            switchCategory("v")
+            switchCategory("速度")
           }}
         >
           {!categoryDto.velocity ? (
@@ -47,7 +47,7 @@ export const SearchPresenter: React.FC<Props> = (props) => {
         <div
           className="categoryOneEach"
           onClick={() => {
-            switchCategory("r")
+            switchCategory("回復")
           }}
         >
           {!categoryDto.recovery ? (
@@ -65,7 +65,7 @@ export const SearchPresenter: React.FC<Props> = (props) => {
         <div
           className="categoryOneEach"
           onClick={() => {
-            switchCategory("d")
+            switchCategory("デバフ")
           }}
         >
           {!categoryDto.debuff ? (
