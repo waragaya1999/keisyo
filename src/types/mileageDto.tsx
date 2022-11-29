@@ -1,6 +1,6 @@
 export type MileageDto = {
   finalStage: boolean
   final: boolean
-  middle: boolean
+  secondHalf: boolean
   other: boolean
 }
