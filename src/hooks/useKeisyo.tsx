@@ -14,7 +14,7 @@ export const useKeisyo = () => {
   const [mileageDto, setMileageDto] = useState<MileageDto>({
     finalStage: false,
     final: false,
-    middle: false,
+    secondHalf: false,
     other: false,
   })
   const [locationStraight, setLocationStraight] = useState<boolean>(false)
@@ -36,64 +36,65 @@ export const useKeisyo = () => {
       .then((res) => {
         setB(res.data.contents)
         console.log(url)
+        console.log(JSON.stringify(mileageDto, null, 2))
       })
   }
 
-  const changeCategory = async (cat: string) => {
+  const handleCategory = async (cat: string) => {
     let xx = false
-    if (cat === "加速") {
-      xx = categoryDto.acceleration
-    } else if (cat === "速度") {
-      xx = categoryDto.velocity
-    } else if (cat === "回復") {
-      xx = categoryDto.recovery
-    } else {
-      xx = categoryDto.debuff
+    switch (cat) {
+      case "acceleration":
+        xx = categoryDto.acceleration
+        break
+      case "velocity":
+        xx = categoryDto.velocity
+        break
+      case "recovery":
+        xx = categoryDto.recovery
+        break
+      case "debuff":
+        xx = categoryDto.debuff
+        break
+      default:
+        break
     }
     return xx
   }
 
-  const bbb = (cat: string) => {
-    let yy = categoryDto
-    if (cat === "加速") {
-      yy = {
-        ...categoryDto,
-        acceleration: !categoryDto.acceleration,
-      }
-    } else if (cat === "速度") {
-      yy = {
-        ...categoryDto,
-        acceleration: !categoryDto.acceleration,
-      }
-    } else if (cat === "回復") {
-      yy = {
-        ...categoryDto,
-        acceleration: !categoryDto.acceleration,
-      }
-    } else {
-      yy = {
-        ...categoryDto,
-        acceleration: !categoryDto.acceleration,
-      }
+  const handleMileage = async (mil: string) => {
+    let xx = false
+    switch (mil) {
+      case "finalStage":
+        xx = mileageDto.finalStage
+        break
+      case "final":
+        xx = mileageDto.final
+        break
+      case "secondHalf":
+        xx = mileageDto.secondHalf
+        break
+      case "other":
+        xx = mileageDto.other
+        break
+      default:
+        break
     }
-    return yy
+    return xx
   }
 
-  const aaa = (cat: string, xx: boolean) => {
+  const handleUrlCategory = (cat: string, xx: boolean) => {
     if (!xx) {
       if (/filters/.test(url)) {
-        console.log("true")
         setUrl(`${url + "[and]category[contains]" + cat}`)
       } else {
         setUrl(`${url + "filters=category[contains]" + cat}`)
       }
       setCategoryDto({
         ...categoryDto,
-        acceleration: true,
+        [cat]: true,
       })
     } else {
-      console.log("false")
-      if (/and/.test(url)) {
+      if (/\[and\]/.test(url)) {
         setUrl(
           `${url
             .replace(`[and]category[contains]${cat}`, "")
@@ -104,50 +105,51 @@ export const useKeisyo = () => {
       }
       setCategoryDto({
         ...categoryDto,
-        acceleration: false,
+        [cat]: false,
+      })
+    }
+  }
+
+  const handleUrlMileage = (mil: string, xx: boolean) => {
+    if (!xx) {
+      if (/filters/.test(url)) {
+        setUrl(`${url + "[and]mileage[contains]" + mil}`)
+      } else {
+        setUrl(`${url + "filters=mileage[contains]" + mil}`)
+      }
+      setMileageDto({
+        ...mileageDto,
+        [mil]: true,
+      })
+    } else {
+      if (/\[and\]/.test(url)) {
+        setUrl(
+          `${url
+            .replace(`[and]mileage[contains]${mil}`, "")
+            .replace(`mileage[contains]${mil}[and]`, "")}`,
+        )
+      } else {
+        setUrl(`${url.replace(`filters=mileage[contains]${mil}`, "")}`)
+      }
+      setMileageDto({
+        ...mileageDto,
+        [mil]: false,
       })
     }
   }
 
   const switchCategory = async (cat: string) => {
-    await changeCategory(cat).then((xx) => {
-      aaa(cat, xx)
+    await handleCategory(cat).then((xx) => {
+      handleUrlCategory(cat, xx)
     })
   }
 
-  const switchMileage = (mil: string) => {
-    switch (mil) {
-      case "s":
-        if (!mileageDto.finalStage) {
-          if (!mileageDto.final && !mileageDto.middle && !mileageDto.other) {
-            setUrl(`${url + "filters=mileage[contains]終盤"}`)
-          } else {
-            setUrl(`${url + "[and]mileage[contains]終盤"}`)
-          }
-          setMileageDto({
-            ...mileageDto,
-            finalStage: true,
-          })
-        } else {
-          if (!mileageDto.final && !mileageDto.middle && !mileageDto.other) {
-            setUrl(`${url.replace("filters=mileage[contains]終盤", "")}`)
-          } else {
-            setUrl(
-              `${url
-                .replace("[and]mileage[contains]終盤", "")
-                .replace("mileage[contains]終盤[and]", "")}`,
-            )
-          }
-          setMileageDto({
-            ...mileageDto,
-            finalStage: false,
-          })
-        }
-        break
-      default:
-        break
-    }
+  const switchMileage = async (mil: string) => {
+    await handleMileage(mil).then((xx) => {
+      handleUrlMileage(mil, xx)
+    })
   }
+
   return {
     getFunc,
     b,
