@@ -5,7 +5,7 @@ import { MileageDto } from "../../types/MileageDto"
 import { ResponseDto } from "../../types/ResponseDto"
 
 type Props = {
-  getFunc: () => void
+  getList: () => void
   b: ResponseDto[]
   categoryDto: CategoryDto
   mileageDto: MileageDto
@@ -13,9 +13,9 @@ type Props = {
 }
 
 export const KeisyoPresenter: React.FC<Props> = (props) => {
-  const { getFunc, b, categoryDto, mileageDto, locationDto } = props
+  const { getList, b, categoryDto, mileageDto, locationDto } = props
   useEffect(() => {
-    getFunc()
+    getList()
   }, [categoryDto, mileageDto, locationDto])
 
   return (
