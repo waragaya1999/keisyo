@@ -26,7 +26,7 @@ export const useKeisyo = () => {
   })
   const [url, setUrl] = useState("https://umakoyuu.microcms.io/api/v1/keisyo?")
 
-  const getFunc = async () => {
+  const getList = async () => {
     await axios
       .get(url, {
         headers: {
@@ -209,7 +209,7 @@ export const useKeisyo = () => {
   }
 
   return {
-    getFunc,
+    getList,
     b,
     categoryDto,
     mileageDto,
