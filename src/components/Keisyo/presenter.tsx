@@ -6,27 +6,34 @@ import { ResponseDto } from "../../types/ResponseDto"
 
 type Props = {
   getList: () => void
-  b: ResponseDto[]
+  list: ResponseDto[]
   categoryDto: CategoryDto
   mileageDto: MileageDto
   locationDto: LocationDto
 }
 
 export const KeisyoPresenter: React.FC<Props> = (props) => {
-  const { getList, b, categoryDto, mileageDto, locationDto } = props
+  const { getList, list, categoryDto, mileageDto, locationDto } = props
   useEffect(() => {
     getList()
   }, [categoryDto, mileageDto, locationDto])
 
   return (
     <ul>
-      {b.map((value, i) => {
+      {list.map((value, i) => {
         return (
           <li key={i}>
-            <div>
+            <div className="bb">
               <img src={value.image.url} />
             </div>
-            <p>{value.name}</p>
+            <div className="aa">
+              <p>{value.name}</p>
+              {value.category.toString() == "acceleration" && <>加速 XXm/s^2</>}
+              {value.category.toString() == "velocity" && <>速度</>}
+              {value.category.toString() == "velocity,acceleration" && (
+                <>加速速度</>
+              )}
+            </div>
           </li>
         )
       })}

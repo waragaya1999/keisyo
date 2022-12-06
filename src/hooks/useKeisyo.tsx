@@ -3,9 +3,12 @@ import axios from "axios"
 import { CategoryDto } from "../types/CategoryDto"
 import { LocationDto } from "../types/LocationDto"
 import { MileageDto } from "../types/MileageDto"
+import { ResponseDto } from "../types/ResponseDto"
 
 export const useKeisyo = () => {
-  const [b, setB] = useState([])
+  const [list, setList] = useState<ResponseDto[]>([])
+  const [filterList, setFilterList] = useState<ResponseDto[]>([])
+  const [categories, setCategories] = useState<string[]>([])
   const [categoryDto, setCategoryDto] = useState<CategoryDto>({
     acceleration: false,
     velocity: false,
@@ -33,13 +36,14 @@ export const useKeisyo = () => {
           "X-MICROCMS-API-KEY": "cc666066ab2d480dad1bb809bb2c2314fc79",
         },
         params: {
-          limit: 100,
+          limit: 1000,
         },
       })
       .then((res) => {
-        setB(res.data.contents)
-        console.log(url)
-        console.log(JSON.stringify(mileageDto, null, 2))
+        setList(res.data.contents)
+        setFilterList(res.data.contents)
+        console.log(list)
+        // console.log(JSON.stringify(mileageDto, null, 2))
       })
   }
 
@@ -190,11 +194,48 @@ export const useKeisyo = () => {
     }
   }
 
+  const aa = async (cats: string[]) => {
+    console.log(cats)
+    if (cats.length != 0) {
+      setFilterList(
+        list
+          .filter((item: ResponseDto) => {
+            return (
+              item.category.length != 0 &&
+              item.category.every((el) => cats.includes(el))
+            )
+          })
+          .flat(),
+      )
+    } else {
+      setFilterList(list)
+    }
+    console.log(filterList)
+  }
+
+  const bb = async (bb: string) => {
+    let categories2 = categories.slice()
+    if (!categories.includes(bb)) {
+      categories2.push(bb)
+    } else {
+      delete categories2[categories2.indexOf(bb)]
+      categories2 = categories2.filter(() => true)
+    }
+    setCategories(categories2)
+    return categories2
+  }
+
   const switchCategory = async (cat: string) => {
-    await handleCategory(cat).then((xx) => {
-      handleUrlCategory(cat, xx)
+    await bb(cat).then((a) => {
+      aa(a)
     })
   }
+
+  // const switchCategory = async (cat: string) => {
+  //   await handleCategory(cat).then((xx) => {
+  //     handleUrlCategory(cat, xx)
+  //   })
+  // }
 
   const switchMileage = async (mil: string) => {
     await handleMileage(mil).then((xx) => {
@@ -210,7 +251,7 @@ export const useKeisyo = () => {
 
   return {
     getList,
-    b,
+    list,
     categoryDto,
     mileageDto,
     locationDto,

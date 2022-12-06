@@ -5,7 +5,7 @@ import { KeisyoPresenter } from "./presenter"
 export const Keisyo: React.FC = () => {
   const {
     getList,
-    b,
+    list,
     categoryDto,
     mileageDto,
     locationDto,
@@ -25,7 +25,7 @@ export const Keisyo: React.FC = () => {
       />
       <KeisyoPresenter
         getList={getList}
-        b={b}
+        list={list}
         categoryDto={categoryDto}
         mileageDto={mileageDto}
         locationDto={locationDto}

@@ -17,7 +17,7 @@
   width: 100%;
   max-width: 1300px;
   margin: 0 auto;
-  background-image: url("https://umamusume.jp/app/wp-content/uploads/2022/04/639dc925df682df28c65d1e76526ca1b.jpg");
+  /* background-image: url("https://umamusume.jp/app/wp-content/uploads/2022/04/639dc925df682df28c65d1e76526ca1b.jpg"); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -155,7 +155,7 @@ li {
   padding-bottom: 2vh;
 }
 
-li div {
+.bb {
   width: 30%;
   display: flex;
   justify-content: flex-end;
@@ -168,8 +168,14 @@ li img {
   max-height: 80px;
 }
 
-li p {
+.aa {
   width: 70%;
-  white-space: nowrap;
   font-size: min(4vw, 20px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+li p {
+  white-space: nowrap;
 }
