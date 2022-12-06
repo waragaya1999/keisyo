@@ -4,7 +4,7 @@ type Props = React.ComponentProps<typeof Search1>
 
 export const SearchPresenter: React.FC<Props> = (props) => {
   const {
-    categoryDto,
+    categories,
     mileageDto,
     locationDto,
     switchCategory,
@@ -21,7 +21,7 @@ export const SearchPresenter: React.FC<Props> = (props) => {
             switchCategory("acceleration")
           }}
         >
-          {!categoryDto.acceleration ? (
+          {!categories.includes("acceleration") ? (
             <>
               <img src="./src/images/categoryAccelerationGray.svg" />
               <p>加速</p>
@@ -39,7 +39,7 @@ export const SearchPresenter: React.FC<Props> = (props) => {
             switchCategory("velocity")
           }}
         >
-          {!categoryDto.velocity ? (
+          {!categories.includes("velocity") ? (
             <>
               <img src="./src/images/categoryVelocityGray.svg" />
               <p>速度</p>
@@ -57,7 +57,7 @@ export const SearchPresenter: React.FC<Props> = (props) => {
             switchCategory("recovery")
           }}
         >
-          {!categoryDto.recovery ? (
+          {!categories.includes("recovery") ? (
             <>
               <img src="./src/images/categoryRecoveryGray.svg" />
               <p>回復</p>
@@ -75,7 +75,7 @@ export const SearchPresenter: React.FC<Props> = (props) => {
             switchCategory("debuff")
           }}
         >
-          {!categoryDto.debuff ? (
+          {!categories.includes("debuff") ? (
             <>
               <img src="./src/images/categoryDebuffGray.svg" />
               <p>デバフ</p>

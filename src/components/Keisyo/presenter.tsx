@@ -1,26 +1,20 @@
 import { useEffect } from "react"
-import { CategoryDto } from "../../types/CategoryDto"
-import { LocationDto } from "../../types/LocationDto"
-import { MileageDto } from "../../types/MileageDto"
 import { ResponseDto } from "../../types/ResponseDto"
 
 type Props = {
   getList: () => void
-  list: ResponseDto[]
-  categoryDto: CategoryDto
-  mileageDto: MileageDto
-  locationDto: LocationDto
+  filterList: ResponseDto[]
 }
 
 export const KeisyoPresenter: React.FC<Props> = (props) => {
-  const { getList, list, categoryDto, mileageDto, locationDto } = props
+  const { getList, filterList } = props
   useEffect(() => {
     getList()
-  }, [categoryDto, mileageDto, locationDto])
+  }, [])
 
   return (
     <ul>
-      {list.map((value, i) => {
+      {filterList.map((value, i) => {
         return (
           <li key={i}>
             <div className="bb">

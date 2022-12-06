@@ -5,8 +5,8 @@ import { KeisyoPresenter } from "./presenter"
 export const Keisyo: React.FC = () => {
   const {
     getList,
-    list,
-    categoryDto,
+    filterList,
+    categories,
     mileageDto,
     locationDto,
     switchCategory,
@@ -16,20 +16,14 @@ export const Keisyo: React.FC = () => {
   return (
     <>
       <Search1
-        categoryDto={categoryDto}
+        categories={categories}
         mileageDto={mileageDto}
         locationDto={locationDto}
         switchCategory={switchCategory}
         switchMileage={switchMileage}
         switchLocation={switchLocation}
       />
-      <KeisyoPresenter
-        getList={getList}
-        list={list}
-        categoryDto={categoryDto}
-        mileageDto={mileageDto}
-        locationDto={locationDto}
-      />
+      <KeisyoPresenter getList={getList} filterList={filterList} />
     </>
   )
 }

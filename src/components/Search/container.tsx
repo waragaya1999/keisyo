@@ -1,10 +1,9 @@
-import { CategoryDto } from "../../types/CategoryDto"
 import { LocationDto } from "../../types/LocationDto"
 import { MileageDto } from "../../types/MileageDto"
 import { SearchPresenter } from "./presenter"
 
 type Props = {
-  categoryDto: CategoryDto
+  categories: string[]
   mileageDto: MileageDto
   locationDto: LocationDto
   switchCategory: (cat: string) => void
@@ -14,7 +13,7 @@ type Props = {
 
 export const Search1: React.FC<Props> = (props) => {
   const {
-    categoryDto,
+    categories,
     mileageDto,
     locationDto,
     switchCategory,
@@ -23,7 +22,7 @@ export const Search1: React.FC<Props> = (props) => {
   } = props
   return (
     <SearchPresenter
-      categoryDto={categoryDto}
+      categories={categories}
       mileageDto={mileageDto}
       locationDto={locationDto}
       switchCategory={switchCategory}

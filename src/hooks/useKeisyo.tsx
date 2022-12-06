@@ -9,6 +9,7 @@ export const useKeisyo = () => {
   const [list, setList] = useState<ResponseDto[]>([])
   const [filterList, setFilterList] = useState<ResponseDto[]>([])
   const [categories, setCategories] = useState<string[]>([])
+  const [mileages, setMileages] = useState<string[]>([])
   const [categoryDto, setCategoryDto] = useState<CategoryDto>({
     acceleration: false,
     velocity: false,
@@ -194,16 +195,65 @@ export const useKeisyo = () => {
     }
   }
 
-  const aa = async (cats: string[]) => {
+  const updateMileages = async (mil: string) => {
+    let mileages2 = mileages.slice()
+    if (!mileages.includes(mil)) {
+      mileages2.push(mil)
+    } else {
+      delete mileages2[mileages2.indexOf(mil)]
+      mileages2 = mileages2.filter(() => true)
+    }
+    setMileages(mileages2)
+    return mileages2
+  }
+
+  const updateCategories = async (cat: string) => {
+    let categories2 = categories.slice()
+    if (!categories.includes(cat)) {
+      categories2.push(cat)
+    } else {
+      delete categories2[categories2.indexOf(cat)]
+      categories2 = categories2.filter(() => true)
+    }
+    setCategories(categories2)
+    return categories2
+  }
+
+  const updateFilterList = async (cats: string[]) => {
     console.log(cats)
     if (cats.length != 0) {
       setFilterList(
         list
           .filter((item: ResponseDto) => {
-            return (
-              item.category.length != 0 &&
-              item.category.every((el) => cats.includes(el))
-            )
+            switch (cats.length) {
+              case 1:
+                return (
+                  item.category.length != 0 && item.category.includes(cats[0])
+                )
+              case 2:
+                return (
+                  item.category.length != 0 &&
+                  item.category.includes(cats[0]) &&
+                  item.category.includes(cats[1])
+                )
+              case 3:
+                return (
+                  item.category.length != 0 &&
+                  item.category.includes(cats[0]) &&
+                  item.category.includes(cats[1]) &&
+                  item.category.includes(cats[2])
+                )
+              case 4:
+                return (
+                  item.category.length != 0 &&
+                  item.category.includes(cats[0]) &&
+                  item.category.includes(cats[1]) &&
+                  item.category.includes(cats[2]) &&
+                  item.category.includes(cats[3])
+                )
+              default:
+                break
+            }
           })
           .flat(),
       )
@@ -213,29 +263,11 @@ export const useKeisyo = () => {
     console.log(filterList)
   }
 
-  const bb = async (bb: string) => {
-    let categories2 = categories.slice()
-    if (!categories.includes(bb)) {
-      categories2.push(bb)
-    } else {
-      delete categories2[categories2.indexOf(bb)]
-      categories2 = categories2.filter(() => true)
-    }
-    setCategories(categories2)
-    return categories2
-  }
-
   const switchCategory = async (cat: string) => {
-    await bb(cat).then((a) => {
-      aa(a)
+    await updateCategories(cat).then((array) => {
+      updateFilterList(array)
     })
   }
-
-  // const switchCategory = async (cat: string) => {
-  //   await handleCategory(cat).then((xx) => {
-  //     handleUrlCategory(cat, xx)
-  //   })
-  // }
 
   const switchMileage = async (mil: string) => {
     await handleMileage(mil).then((xx) => {
@@ -252,6 +284,8 @@ export const useKeisyo = () => {
   return {
     getList,
     list,
+    filterList,
+    categories,
     categoryDto,
     mileageDto,
     locationDto,
