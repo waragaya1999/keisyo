@@ -3,22 +3,14 @@ import { Search1 } from "./container"
 type Props = React.ComponentProps<typeof Search1>
 
 export const SearchPresenter: React.FC<Props> = (props) => {
-  const {
-    categories,
-    mileageDto,
-    locationDto,
-    switchCategory,
-    switchMileage,
-    switchLocation,
-  } = props
-
+  const { categories, mileages, locations, switchList } = props
   return (
-    <>
+    <div className="filterArea">
       <div className="category">
         <div
           className="categoryOneEach"
           onClick={() => {
-            switchCategory("acceleration")
+            switchList("acceleration", "", "")
           }}
         >
           {!categories.includes("acceleration") ? (
@@ -36,7 +28,7 @@ export const SearchPresenter: React.FC<Props> = (props) => {
         <div
           className="categoryOneEach"
           onClick={() => {
-            switchCategory("velocity")
+            switchList("velocity", "", "")
           }}
         >
           {!categories.includes("velocity") ? (
@@ -54,7 +46,7 @@ export const SearchPresenter: React.FC<Props> = (props) => {
         <div
           className="categoryOneEach"
           onClick={() => {
-            switchCategory("recovery")
+            switchList("recovery", "", "")
           }}
         >
           {!categories.includes("recovery") ? (
@@ -72,7 +64,7 @@ export const SearchPresenter: React.FC<Props> = (props) => {
         <div
           className="categoryOneEach"
           onClick={() => {
-            switchCategory("debuff")
+            switchList("debuff", "", "")
           }}
         >
           {!categories.includes("debuff") ? (
@@ -92,10 +84,10 @@ export const SearchPresenter: React.FC<Props> = (props) => {
         <div
           className="mileageOneEach"
           onClick={() => {
-            switchMileage("finalStage")
+            switchList("", "finalStage", "")
           }}
         >
-          {!mileageDto.finalStage ? (
+          {!mileages.includes("finalStage") ? (
             <>
               <img src="./src/images/mileageFinalStageGray.svg" />
               <p>終盤</p>
@@ -110,10 +102,10 @@ export const SearchPresenter: React.FC<Props> = (props) => {
         <div
           className="mileageOneEach"
           onClick={() => {
-            switchMileage("final")
+            switchList("", "final", "")
           }}
         >
-          {!mileageDto.final ? (
+          {!mileages.includes("final") ? (
             <>
               <img src="./src/images/mileageFinalGray.svg" />
               <p>最終</p>
@@ -128,10 +120,10 @@ export const SearchPresenter: React.FC<Props> = (props) => {
         <div
           className="mileageOneEach"
           onClick={() => {
-            switchMileage("secondHalf")
+            switchList("", "secondHalf", "")
           }}
         >
-          {!mileageDto.secondHalf ? (
+          {!mileages.includes("secondHalf") ? (
             <>
               <img src="./src/images/mileageSecondHalfGray.svg" />
               <p>後半</p>
@@ -146,10 +138,10 @@ export const SearchPresenter: React.FC<Props> = (props) => {
         <div
           className="mileageOneEach"
           onClick={() => {
-            switchMileage("middle")
+            switchList("", "middle", "")
           }}
         >
-          {!mileageDto.middle ? (
+          {!mileages.includes("middle") ? (
             <>
               <img src="./src/images/mileageMiddleGray.svg" />
               <p>中盤</p>
@@ -166,10 +158,10 @@ export const SearchPresenter: React.FC<Props> = (props) => {
         <div
           className="locationOneEach"
           onClick={() => {
-            switchLocation("straight")
+            switchList("", "", "straight")
           }}
         >
-          {!locationDto.straight ? (
+          {!locations.includes("straight") ? (
             <>
               <img src="./src/images/locationStraightGray.svg" />
               <p>直線</p>
@@ -184,10 +176,10 @@ export const SearchPresenter: React.FC<Props> = (props) => {
         <div
           className="locationOneEach"
           onClick={() => {
-            switchLocation("corner")
+            switchList("", "", "corner")
           }}
         >
-          {!locationDto.corner ? (
+          {!locations.includes("corner") ? (
             <>
               <img src="./src/images/locationCornerGray.svg" />
               <p>コーナー</p>
@@ -202,10 +194,10 @@ export const SearchPresenter: React.FC<Props> = (props) => {
         <div
           className="locationOneEach"
           onClick={() => {
-            switchLocation("specific")
+            switchList("", "", "specific")
           }}
         >
-          {!locationDto.specific ? (
+          {!locations.includes("specific") ? (
             <>
               <img src="./src/images/locationSpecificGray.svg" />
               <p>距離</p>
@@ -220,10 +212,10 @@ export const SearchPresenter: React.FC<Props> = (props) => {
         <div
           className="locationOneEach"
           onClick={() => {
-            switchLocation("unconditional")
+            switchList("", "", "unconditional")
           }}
         >
-          {!locationDto.unconditional ? (
+          {!locations.includes("unconditional") ? (
             <>
               <img src="./src/images/locationUnconditionalGray.svg" />
               <p>無条件</p>
@@ -236,6 +228,6 @@ export const SearchPresenter: React.FC<Props> = (props) => {
           )}
         </div>
       </div>
-    </>
+    </div>
   )
 }

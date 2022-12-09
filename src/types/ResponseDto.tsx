@@ -8,7 +8,7 @@ export type ResponseDto = {
   }
   mileage: string
   category: string[]
-  position: string
+  location: string
   trigger: string
   additional: string
   contents: []

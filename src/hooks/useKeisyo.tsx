@@ -1,8 +1,5 @@
 import { useState } from "react"
 import axios from "axios"
-import { CategoryDto } from "../types/CategoryDto"
-import { LocationDto } from "../types/LocationDto"
-import { MileageDto } from "../types/MileageDto"
 import { ResponseDto } from "../types/ResponseDto"
 
 export const useKeisyo = () => {
@@ -10,29 +7,12 @@ export const useKeisyo = () => {
   const [filterList, setFilterList] = useState<ResponseDto[]>([])
   const [categories, setCategories] = useState<string[]>([])
   const [mileages, setMileages] = useState<string[]>([])
-  const [categoryDto, setCategoryDto] = useState<CategoryDto>({
-    acceleration: false,
-    velocity: false,
-    recovery: false,
-    debuff: false,
-  })
-  const [mileageDto, setMileageDto] = useState<MileageDto>({
-    finalStage: false,
-    final: false,
-    secondHalf: false,
-    middle: false,
-  })
-  const [locationDto, setLocationDto] = useState<LocationDto>({
-    straight: false,
-    corner: false,
-    specific: false,
-    unconditional: false,
-  })
-  const [url, setUrl] = useState("https://umakoyuu.microcms.io/api/v1/keisyo?")
+  const [locations, setLocations] = useState<string[]>([])
+  const [isLoaded, setIsLoaded] = useState<boolean>(false)
 
   const getList = async () => {
     await axios
-      .get(url, {
+      .get("https://umakoyuu.microcms.io/api/v1/keisyo?", {
         headers: {
           "X-MICROCMS-API-KEY": "cc666066ab2d480dad1bb809bb2c2314fc79",
         },
@@ -43,254 +23,111 @@ export const useKeisyo = () => {
       .then((res) => {
         setList(res.data.contents)
         setFilterList(res.data.contents)
-        console.log(list)
+        setIsLoaded(true)
         // console.log(JSON.stringify(mileageDto, null, 2))
       })
   }
 
-  const handleCategory = async (cat: string) => {
-    let xx = false
-    switch (cat) {
-      case "acceleration":
-        xx = categoryDto.acceleration
-        break
-      case "velocity":
-        xx = categoryDto.velocity
-        break
-      case "recovery":
-        xx = categoryDto.recovery
-        break
-      case "debuff":
-        xx = categoryDto.debuff
-        break
-      default:
-        break
-    }
-    return xx
-  }
-
-  const handleMileage = async (mil: string) => {
-    let xx = false
-    switch (mil) {
-      case "finalStage":
-        xx = mileageDto.finalStage
-        break
-      case "final":
-        xx = mileageDto.final
-        break
-      case "secondHalf":
-        xx = mileageDto.secondHalf
-        break
-      case "middle":
-        xx = mileageDto.middle
-        break
-      default:
-        break
-    }
-    return xx
-  }
-
-  const handleLocation = async (loc: string) => {
-    let xx = false
-    switch (loc) {
-      case "straight":
-        xx = locationDto.straight
-        break
-      case "corner":
-        xx = locationDto.corner
-        break
-      case "specific":
-        xx = locationDto.specific
-        break
-      case "unconditional":
-        xx = locationDto.unconditional
-        break
-      default:
-        break
-    }
-    return xx
-  }
-
-  const handleUrlCategory = (cat: string, xx: boolean) => {
-    if (!xx) {
-      if (/filters/.test(url)) {
-        setUrl(`${url + "[and]category[contains]" + cat}`)
-      } else {
-        setUrl(`${url + "filters=category[contains]" + cat}`)
-      }
-      setCategoryDto({
-        ...categoryDto,
-        [cat]: true,
-      })
+  const updateCategories = async (cat: string) => {
+    let tempArray = categories.slice()
+    if (!categories.includes(cat)) {
+      tempArray.push(cat)
     } else {
-      if (/\[and\]/.test(url)) {
-        setUrl(
-          `${url
-            .replace(`[and]category[contains]${cat}`, "")
-            .replace(`category[contains]${cat}[and]`, "")}`,
-        )
-      } else {
-        setUrl(`${url.replace(`filters=category[contains]${cat}`, "")}`)
-      }
-      setCategoryDto({
-        ...categoryDto,
-        [cat]: false,
-      })
+      delete tempArray[tempArray.indexOf(cat)]
     }
-  }
-
-  const handleUrlMileage = (mil: string, xx: boolean) => {
-    if (!xx) {
-      if (/filters/.test(url)) {
-        setUrl(`${url + "[and]mileage[contains]" + mil}`)
-      } else {
-        setUrl(`${url + "filters=mileage[contains]" + mil}`)
-      }
-      setMileageDto({
-        ...mileageDto,
-        [mil]: true,
-      })
-    } else {
-      if (/\[and\]/.test(url)) {
-        setUrl(
-          `${url
-            .replace(`[and]mileage[contains]${mil}`, "")
-            .replace(`mileage[contains]${mil}[and]`, "")}`,
-        )
-      } else {
-        setUrl(`${url.replace(`filters=mileage[contains]${mil}`, "")}`)
-      }
-      setMileageDto({
-        ...mileageDto,
-        [mil]: false,
-      })
-    }
-  }
-
-  const handleUrlLocation = (loc: string, xx: boolean) => {
-    if (!xx) {
-      if (/filters/.test(url)) {
-        setUrl(`${url + "[and]location[contains]" + loc}`)
-      } else {
-        setUrl(`${url + "filters=location[contains]" + loc}`)
-      }
-      setLocationDto({
-        ...locationDto,
-        [loc]: true,
-      })
-    } else {
-      if (/\[and\]/.test(url)) {
-        setUrl(
-          `${url
-            .replace(`[and]location[contains]${loc}`, "")
-            .replace(`location[contains]${loc}[and]`, "")}`,
-        )
-      } else {
-        setUrl(`${url.replace(`filters=location[contains]${loc}`, "")}`)
-      }
-      setLocationDto({
-        ...locationDto,
-        [loc]: false,
-      })
-    }
+    tempArray = tempArray.filter((v) => v)
+    setCategories(tempArray)
+    return tempArray
   }
 
   const updateMileages = async (mil: string) => {
-    let mileages2 = mileages.slice()
+    let tempArray = mileages.slice()
     if (!mileages.includes(mil)) {
-      mileages2.push(mil)
+      tempArray.push(mil)
     } else {
-      delete mileages2[mileages2.indexOf(mil)]
-      mileages2 = mileages2.filter(() => true)
+      delete tempArray[tempArray.indexOf(mil)]
     }
-    setMileages(mileages2)
-    return mileages2
+    tempArray = tempArray.filter((v) => v)
+    setMileages(tempArray)
+    return tempArray
   }
 
-  const updateCategories = async (cat: string) => {
-    let categories2 = categories.slice()
-    if (!categories.includes(cat)) {
-      categories2.push(cat)
+  const updatePositions = async (loc: string) => {
+    let tempArray = locations.slice()
+    if (!locations.includes(loc)) {
+      tempArray.push(loc)
     } else {
-      delete categories2[categories2.indexOf(cat)]
-      categories2 = categories2.filter(() => true)
+      delete tempArray[tempArray.indexOf(loc)]
     }
-    setCategories(categories2)
-    return categories2
+    tempArray = tempArray.filter((v) => v)
+    setLocations(tempArray)
+    return tempArray
   }
 
-  const updateFilterList = async (cats: string[]) => {
+  const updateFilterList = async (
+    cats: string[],
+    mils: string[],
+    locs: string[],
+  ) => {
     console.log(cats)
-    if (cats.length != 0) {
-      setFilterList(
-        list
+    console.log(mils)
+    console.log(locs)
+    let tempList: ResponseDto[] = list
+    if (cats.length != 0 || mils.length != 0 || locs.length != 0) {
+      if (cats.length != 0) {
+        tempList = tempList
           .filter((item: ResponseDto) => {
-            switch (cats.length) {
-              case 1:
-                return (
-                  item.category.length != 0 && item.category.includes(cats[0])
-                )
-              case 2:
-                return (
-                  item.category.length != 0 &&
-                  item.category.includes(cats[0]) &&
-                  item.category.includes(cats[1])
-                )
-              case 3:
-                return (
-                  item.category.length != 0 &&
-                  item.category.includes(cats[0]) &&
-                  item.category.includes(cats[1]) &&
-                  item.category.includes(cats[2])
-                )
-              case 4:
-                return (
-                  item.category.length != 0 &&
-                  item.category.includes(cats[0]) &&
-                  item.category.includes(cats[1]) &&
-                  item.category.includes(cats[2]) &&
-                  item.category.includes(cats[3])
-                )
-              default:
-                break
-            }
+            const isIncludes = cats
+              .slice()
+              .map((v) => item.category.includes(v))
+              .every((ele) => ele)
+            return item.category.length != 0 && isIncludes
           })
-          .flat(),
-      )
+          .flat()
+      }
+      if (mils.length != 0) {
+        tempList = tempList
+          .filter((item: ResponseDto) => {
+            const isIncludes = mils
+              .slice()
+              .map((v) => item.mileage.includes(v))
+              .every((ele) => ele)
+            return item.mileage.length != 0 && isIncludes
+          })
+          .flat()
+      }
+      if (locs.length != 0) {
+        tempList = tempList
+          .filter((item: ResponseDto) => {
+            const isIncludes = locs
+              .slice()
+              .map((v) => item.location.includes(v))
+              .every((ele) => ele)
+            return item.location.length != 0 && isIncludes
+          })
+          .flat()
+      }
     } else {
-      setFilterList(list)
+      tempList = list
     }
-    console.log(filterList)
+    setFilterList(tempList)
+    console.log(tempList)
   }
 
-  const switchCategory = async (cat: string) => {
-    await updateCategories(cat).then((array) => {
-      updateFilterList(array)
-    })
-  }
-
-  const switchMileage = async (mil: string) => {
-    await handleMileage(mil).then((xx) => {
-      handleUrlMileage(mil, xx)
-    })
-  }
-
-  const switchLocation = async (loc: string) => {
-    await handleLocation(loc).then((xx) => {
-      handleUrlLocation(loc, xx)
-    })
+  const switchList = async (cat: string, mil: string, loc: string) => {
+    const array1 = await updateCategories(cat)
+    const array2 = await updateMileages(mil)
+    const array3 = await updatePositions(loc)
+    updateFilterList(array1, array2, array3)
   }
 
   return {
     getList,
-    list,
     filterList,
     categories,
-    categoryDto,
-    mileageDto,
-    locationDto,
-    switchCategory,
-    switchMileage,
-    switchLocation,
+    mileages,
+    locations,
+    switchList,
+    isLoaded,
   } as const
 }

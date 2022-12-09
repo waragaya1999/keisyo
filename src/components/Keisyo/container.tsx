@@ -7,23 +7,24 @@ export const Keisyo: React.FC = () => {
     getList,
     filterList,
     categories,
-    mileageDto,
-    locationDto,
-    switchCategory,
-    switchMileage,
-    switchLocation,
+    mileages,
+    locations,
+    switchList,
+    isLoaded,
   } = useKeisyo()
   return (
     <>
       <Search1
         categories={categories}
-        mileageDto={mileageDto}
-        locationDto={locationDto}
-        switchCategory={switchCategory}
-        switchMileage={switchMileage}
-        switchLocation={switchLocation}
+        mileages={mileages}
+        locations={locations}
+        switchList={switchList}
       />
-      <KeisyoPresenter getList={getList} filterList={filterList} />
+      <KeisyoPresenter
+        getList={getList}
+        filterList={filterList}
+        isLoaded={isLoaded}
+      />
     </>
   )
 }
