@@ -24,7 +24,6 @@ export const useKeisyo = () => {
         setList(res.data.contents)
         setFilterList(res.data.contents)
         setIsLoaded(true)
-        // console.log(JSON.stringify(mileageDto, null, 2))
       })
   }
 
@@ -52,7 +51,7 @@ export const useKeisyo = () => {
     return tempArray
   }
 
-  const updatePositions = async (loc: string) => {
+  const updateLocations = async (loc: string) => {
     let tempArray = locations.slice()
     if (!locations.includes(loc)) {
       tempArray.push(loc)
@@ -69,9 +68,6 @@ export const useKeisyo = () => {
     mils: string[],
     locs: string[],
   ) => {
-    console.log(cats)
-    console.log(mils)
-    console.log(locs)
     let tempList: ResponseDto[] = list
     if (cats.length != 0 || mils.length != 0 || locs.length != 0) {
       if (cats.length != 0) {
@@ -111,13 +107,12 @@ export const useKeisyo = () => {
       tempList = list
     }
     setFilterList(tempList)
-    console.log(tempList)
   }
 
   const switchList = async (cat: string, mil: string, loc: string) => {
     const array1 = await updateCategories(cat)
     const array2 = await updateMileages(mil)
-    const array3 = await updatePositions(loc)
+    const array3 = await updateLocations(loc)
     updateFilterList(array1, array2, array3)
   }
 
