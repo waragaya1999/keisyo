@@ -1,5 +1,4 @@
 import { useKeisyo } from "../../hooks/useKeisyo"
-import { Search1 } from "../Search/container"
 import { KeisyoPresenter } from "./presenter"
 
 export const Keisyo: React.FC = () => {
@@ -14,16 +13,14 @@ export const Keisyo: React.FC = () => {
   } = useKeisyo()
   return (
     <>
-      <Search1
-        categories={categories}
-        mileages={mileages}
-        locations={locations}
-        switchList={switchList}
-      />
       <KeisyoPresenter
         getList={getList}
         filterList={filterList}
         isLoaded={isLoaded}
+        categories={categories}
+        mileages={mileages}
+        locations={locations}
+        switchList={switchList}
       />
     </>
   )
