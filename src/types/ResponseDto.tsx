@@ -11,5 +11,9 @@ export type ResponseDto = {
   location: string
   trigger: string
   additional: string
+  amountOfVelocity: number
+  amountOfAcceleration: number
+  amountOfStamina: number
+  duration: number
   contents: []
 }
