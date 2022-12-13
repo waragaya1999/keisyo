@@ -1,45 +1,40 @@
-import { useEffect } from "react"
 import { ResponseDto } from "../../types/ResponseDto"
+import { FilterList } from "../FilterList/container"
+import { NarrowingDown } from "../NarrowingDown/container"
 
 type Props = {
   getList: () => void
   filterList: ResponseDto[]
+  categories: string[]
+  mileages: string[]
+  locations: string[]
+  switchList: (cat: string, mil: string, loc: string) => Promise<void>
   isLoaded: boolean
 }
 
 export const KeisyoPresenter: React.FC<Props> = (props) => {
-  const { getList, filterList, isLoaded } = props
-  useEffect(() => {
-    getList()
-  }, [])
-
+  const {
+    getList,
+    filterList,
+    isLoaded,
+    categories,
+    mileages,
+    locations,
+    switchList,
+  } = props
   return (
-    <ul>
-      {isLoaded === false ? (
-        <h1>読み込み中・・・</h1>
-      ) : filterList.length === 0 ? (
-        <h1>見つかりませんでした</h1>
-      ) : (
-        filterList.map((value, i) => {
-          return (
-            <li key={i}>
-              <div className="bb">
-                <img src={value.image.url} />
-              </div>
-              <div className="aa">
-                <p>{value.name}</p>
-                {value.category.toString() == "acceleration" && (
-                  <>加速 XXm/s^2</>
-                )}
-                {value.category.toString() == "velocity" && <>速度</>}
-                {value.category.toString() == "velocity,acceleration" && (
-                  <>加速速度</>
-                )}
-              </div>
-            </li>
-          )
-        })
-      )}
-    </ul>
+    <>
+      <NarrowingDown
+        categories={categories}
+        mileages={mileages}
+        locations={locations}
+        switchList={switchList}
+      />
+      <FilterList
+        filterList={filterList}
+        isLoaded={isLoaded}
+        getList={getList}
+      />
+    </>
   )
 }
