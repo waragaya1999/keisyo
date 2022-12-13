@@ -21,8 +21,18 @@ export const useKeisyo = () => {
         },
       })
       .then((res) => {
-        setList(res.data.contents)
-        setFilterList(res.data.contents)
+        setList(
+          res.data.contents.reduceRight(
+            (p: string[], c: string[]) => [...p, c],
+            [],
+          ),
+        )
+        setFilterList(
+          res.data.contents.reduceRight(
+            (p: string[], c: string[]) => [...p, c],
+            [],
+          ),
+        )
         setIsLoaded(true)
         console.log(res.data.contents)
       })
