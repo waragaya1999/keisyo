@@ -12,6 +12,7 @@ export type ResponseDto = {
   trigger: string
   additional: string
   amountOfVelocity: number
+  amountOfDeVelocity: number
   amountOfAcceleration: number
   amountOfStamina: number
   duration: number

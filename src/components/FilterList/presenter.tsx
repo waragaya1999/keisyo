@@ -22,18 +22,21 @@ export const FilterListPresenter: React.FC<Props> = (props) => {
               <div className="aa">
                 <p>{value.name}</p>
                 {value.amountOfVelocity && (
-                  <> 速度 {value.amountOfVelocity}m/s</>
+                  <> 速度{value.amountOfVelocity}m/s</>
                 )}
                 {value.amountOfAcceleration && (
-                  <> 加速 {value.amountOfAcceleration}m/s</>
+                  <> 加速{value.amountOfAcceleration}m/s</>
+                )}
+                {value.amountOfDeVelocity && (
+                  <> 速度減衰{value.amountOfDeVelocity}m/s</>
                 )}
                 {(value.amountOfVelocity || value.amountOfAcceleration) &&
                   value.duration && <> × {value.duration}s</>}
                 {value.amountOfStamina &&
                   (value.amountOfStamina > 0 ? (
-                    <> 持久力 {value.amountOfStamina}m/s 回復</>
+                    <> 持久力{value.amountOfStamina}m/s 回復</>
                   ) : (
-                    <> 持久力 {value.amountOfStamina}m/s 減少</>
+                    <> 持久力{value.amountOfStamina}m/s 減少</>
                   ))}
               </div>
             </li>
