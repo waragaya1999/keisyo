@@ -24,6 +24,7 @@ export const useKeisyo = () => {
         setList(res.data.contents)
         setFilterList(res.data.contents)
         setIsLoaded(true)
+        console.log(res.data.contents)
       })
   }
 
@@ -98,7 +99,7 @@ export const useKeisyo = () => {
             const isIncludes = locs
               .slice()
               .map((v) => item.location.includes(v))
-              .every((ele) => ele)
+              .every((e) => e)
             return item.location.length != 0 && isIncludes
           })
           .flat()
