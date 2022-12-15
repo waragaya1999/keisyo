@@ -20,24 +20,26 @@ export const FilterListPresenter: React.FC<Props> = (props) => {
                 <img src={value.image.url} />
               </div>
               <div className="aa">
-                <p>{value.name}</p>
-                {value.amountOfVelocity && (
-                  <> 速度{value.amountOfVelocity}m/s</>
-                )}
-                {value.amountOfAcceleration && (
-                  <> 加速{value.amountOfAcceleration}m/s</>
-                )}
-                {value.amountOfDeVelocity && (
-                  <> 速度減衰{value.amountOfDeVelocity}m/s</>
-                )}
-                {(value.amountOfVelocity || value.amountOfAcceleration) &&
-                  value.duration && <> × {value.duration}s</>}
-                {value.amountOfStamina &&
-                  (value.amountOfStamina > 0 ? (
-                    <> 持久力{value.amountOfStamina}m/s 回復</>
-                  ) : (
-                    <> 持久力{value.amountOfStamina}m/s 減少</>
-                  ))}
+                <p className="skillName">{value.name}</p>
+                <div className="effectQuantity">
+                  {value.amountOfVelocity && (
+                    <p> 速度{value.amountOfVelocity}m/s</p>
+                  )}
+                  {value.amountOfAcceleration && (
+                    <p> 加速{value.amountOfAcceleration}m/s</p>
+                  )}
+                  {value.amountOfDeVelocity && (
+                    <p> 速度減衰{value.amountOfDeVelocity}m/s</p>
+                  )}
+                  {(value.amountOfVelocity || value.amountOfAcceleration) &&
+                    value.duration && <p> × {value.duration}s</p>}
+                  {value.amountOfStamina &&
+                    (value.amountOfStamina > 0 ? (
+                      <p> 持久力{value.amountOfStamina}m/s 回復</p>
+                    ) : (
+                      <p> 持久力{value.amountOfStamina}m/s 減少</p>
+                    ))}
+                </div>
               </div>
             </li>
           )

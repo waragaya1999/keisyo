@@ -34,7 +34,6 @@ export const useKeisyo = () => {
           ),
         )
         setIsLoaded(true)
-        console.log(res.data.contents)
       })
   }
 
