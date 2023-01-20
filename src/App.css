@@ -1,4 +1,5 @@
 #root {
+  display: flex;
   text-align: center;
   font-family: "FOT-ロダンわんぱく Pro", "Noto Sans JP";
   font-weight: bold;
@@ -6,7 +7,7 @@
 }
 
 .bg {
-  max-width: 800px;
+  max-width: 1000px;
   min-height: 100vh;
   width: 100%;
   background-image: url("./images/bg.jpg");
@@ -18,8 +19,6 @@
 
 .wrap {
   width: 100%;
-  max-width: 1300px;
-  margin: 0 auto;
   background-image: url("./images/bg.png");
   background-position: center;
   background-repeat: no-repeat;
@@ -42,27 +41,11 @@ header {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
 .filterArea {
-  height: 30svh;
-  max-height: 300px;
+  width: 28%;
+  max-height: 80dvh;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   font-family: "FOT-ロダンわんぱく Pro DB", "Noto Sans JP";
   margin-bottom: 5vh;
 }
@@ -76,22 +59,34 @@ header {
 }
 
 .category {
-  width: 80%;
-  height: 30%;
+  width: 26%;
+  height: fit-content;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+}
+
+.catIcon {
+  margin-bottom: 20%;
+}
+
+.catArea {
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 10px;
+  padding: 0 1%;
 }
 
 .categoryOneEach {
-  width: 20%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   text-align: center;
   color: #888;
+  margin: 25% 0;
 }
 
 .category img {
+  width: 80%;
   height: 70%;
   margin: 0 auto;
 }
@@ -103,22 +98,34 @@ header {
 }
 
 .mileage {
-  width: 80%;
-  height: 30%;
+  width: 26%;
+  height: fit-content;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+}
+
+.milArea {
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 10px;
+  padding: 0 1%;
+}
+
+.milIcon {
+  margin-bottom: 20%;
 }
 
 .mileageOneEach {
-  width: 20%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   text-align: center;
   color: #888;
+  margin: 25% 0;
 }
 
 .mileage img {
+  width: 80%;
   height: 70%;
   margin: 0 auto;
 }
@@ -130,22 +137,34 @@ header {
 }
 
 .location {
-  width: 80%;
-  height: 30%;
+  width: 26%;
+  height: fit-content;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+}
+
+.locArea {
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 10px;
+  padding: 0 1%;
+}
+
+.locIcon {
+  margin-bottom: 20%;
 }
 
 .locationOneEach {
-  width: 20%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   text-align: center;
   color: #888;
+  margin: 25% 0;
 }
 
 .location img {
+  width: 80%;
   height: 70%;
   margin: 0 auto;
 }
@@ -165,13 +184,10 @@ ul h1 {
 }
 
 ul {
-  width: 80%;
-  height: 70dvh;
+  width: 70%;
   list-style: none;
   padding: 0;
   overflow-y: scroll;
-  background-color: rgba(0, 0, 0, 0.08);
-  border-radius: 10px;
   margin: 0 auto;
   margin-bottom: 4vh;
   padding-bottom: 2vh;
@@ -193,7 +209,7 @@ ul::-webkit-scrollbar-thumb {
 
 li {
   font-size: 1.6rem;
-  width: 77%;
+  width: 80%;
   margin: 0 auto;
   text-align: left;
   display: flex;
@@ -235,4 +251,84 @@ footer {
   text-align: center;
   font-size: 1.2rem;
   padding: 1vh;
+}
+
+.hide {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .filterArea {
+    max-height: 80dvh;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .category {
+    width: 80%;
+    height: 30%;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .catArea {
+    display: flex;
+  }
+
+  .mileage {
+    width: 80%;
+    height: 30%;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .milArea {
+    display: flex;
+  }
+
+  .location {
+    width: 80%;
+    height: 30%;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .locArea {
+    display: flex;
+  }
+
+  ul {
+    width: 100%;
+  }
+
+  li p {
+    font-size: 1.4rem;
+  }
+
+  .filter {
+    position: fixed;
+    background-color: #fff;
+    border: rgb(121, 63, 24, 0.5) 1px solid;
+    border-radius: 100px;
+    box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.4);
+    right: 8%;
+    bottom: 3%;
+    padding: 1%;
+  }
+
+  .filterModal {
+    width: 90%;
+    height: 90%;
+    position: fixed;
+    background-color: #fff;
+    left: 5%;
+  }
+}
+
+@media screen and (min-width: 601px) {
+  ul {
+    height: 80dvh;
+    background-color: rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+  }
 }

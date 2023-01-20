@@ -1,3 +1,4 @@
+import { FilterButton } from "../../parts/FilterButton/container"
 import { ResponseDto } from "../../types/ResponseDto"
 import { FilterList } from "../FilterList/container"
 import { NarrowingDown } from "../NarrowingDown/container"
@@ -22,19 +23,41 @@ export const KeisyoPresenter: React.FC<Props> = (props) => {
     locations,
     switchList,
   } = props
+
   return (
     <>
-      <NarrowingDown
-        categories={categories}
-        mileages={mileages}
-        locations={locations}
-        switchList={switchList}
-      />
-      <FilterList
-        filterList={filterList}
-        isLoaded={isLoaded}
-        getList={getList}
-      />
+      {innerWidth > 600 ? (
+        <>
+          <FilterList
+            filterList={filterList}
+            isLoaded={isLoaded}
+            getList={getList}
+          />
+          <NarrowingDown
+            categories={categories}
+            mileages={mileages}
+            locations={locations}
+            switchList={switchList}
+          />
+        </>
+      ) : (
+        <>
+          <FilterList
+            filterList={filterList}
+            isLoaded={isLoaded}
+            getList={getList}
+          />
+          <FilterButton
+            getList={getList}
+            filterList={filterList}
+            isLoaded={isLoaded}
+            categories={categories}
+            mileages={mileages}
+            locations={locations}
+            switchList={switchList}
+          />
+        </>
+      )}
     </>
   )
 }
