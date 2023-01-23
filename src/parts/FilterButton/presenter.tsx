@@ -2,10 +2,7 @@ import React from "react"
 import { KeisyoPresenter } from "../../components/Keisyo/presenter"
 import { NarrowingDown } from "../../components/NarrowingDown/container"
 
-type Props = React.ComponentProps<typeof KeisyoPresenter> & {
-  flag: boolean
-  setFlag: React.Dispatch<React.SetStateAction<boolean>>
-}
+type Props = Omit<React.ComponentProps<typeof KeisyoPresenter>, "closeModal">
 
 export const FilterButtonPresenter: React.FC<Props> = (props) => {
   const {
@@ -16,22 +13,20 @@ export const FilterButtonPresenter: React.FC<Props> = (props) => {
     mileages,
     locations,
     switchList,
-    flag,
-    setFlag,
+    modalFlag,
   } = props
 
   return (
     <>
-      <div className="filter" onClick={() => setFlag(!flag)}>
-        絞り込み:OFF
-      </div>
-      <div className={flag ? "filterModal" : "hide"}>
+      <div className="filter">絞り込み:OFF</div>
+      <div className={modalFlag ? "filterModal" : "hide"}>
         <NarrowingDown
           categories={categories}
           mileages={mileages}
           locations={locations}
           switchList={switchList}
         />
+        <div className="closeModalButton">OK</div>
       </div>
     </>
   )

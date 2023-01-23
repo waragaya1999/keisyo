@@ -1,11 +1,9 @@
-import { useState } from "react"
 import { KeisyoPresenter } from "../../components/Keisyo/presenter"
 import { FilterButtonPresenter } from "./presenter"
 
-type Props = React.ComponentProps<typeof KeisyoPresenter>
+type Props = Omit<React.ComponentProps<typeof KeisyoPresenter>, "closeModal">
 
 export const FilterButton: React.FC<Props> = (props) => {
-  const [modalFlag, setModalFlag] = useState(false)
   const {
     getList,
     filterList,
@@ -14,6 +12,7 @@ export const FilterButton: React.FC<Props> = (props) => {
     mileages,
     locations,
     switchList,
+    modalFlag,
   } = props
 
   return (
@@ -25,8 +24,7 @@ export const FilterButton: React.FC<Props> = (props) => {
       mileages={mileages}
       locations={locations}
       switchList={switchList}
-      flag={modalFlag}
-      setFlag={setModalFlag}
+      modalFlag={modalFlag}
     />
   )
 }

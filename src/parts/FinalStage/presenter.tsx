@@ -13,13 +13,21 @@ export const FinalStagePresenter: React.FC<Props> = (props) => {
     >
       {!mileages.includes("finalStage") ? (
         <>
-          <img src="./src/images/mileageFinalStageGray.svg" />
-          <p>終盤</p>
+          <img
+            src="./src/images/mileageFinalStageGray.svg"
+            className="escCloseModal"
+          />
+          <p className="escCloseModal">終盤</p>
         </>
       ) : (
         <>
-          <img src="./src/images/mileageFinalStage.svg" />
-          <p style={{ color: "#F4A02F" }}>終盤</p>
+          <img
+            src="./src/images/mileageFinalStage.svg"
+            className="escCloseModal"
+          />
+          <p className="escCloseModal" style={{ color: "#F4A02F" }}>
+            終盤
+          </p>
         </>
       )}
     </div>
