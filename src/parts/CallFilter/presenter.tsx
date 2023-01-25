@@ -1,8 +1,8 @@
 import React from "react"
-import { KeisyoPresenter } from "../../components/Keisyo/presenter"
 import { NarrowingDown } from "../../components/NarrowingDown/container"
+import { CallFilter } from "./container"
 
-type Props = Omit<React.ComponentProps<typeof KeisyoPresenter>, "closeModal">
+type Props = React.ComponentProps<typeof CallFilter>
 
 export const CallFilterPresenter: React.FC<Props> = (props) => {
   const {
