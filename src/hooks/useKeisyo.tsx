@@ -9,6 +9,7 @@ export const useKeisyo = () => {
   const [mileages, setMileages] = useState<string[]>([])
   const [locations, setLocations] = useState<string[]>([])
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
+  const [modalFlag, setModalFlag] = useState(false)
 
   const getList = async () => {
     await axios
@@ -126,6 +127,31 @@ export const useKeisyo = () => {
     updateFilterList(array1, array2, array3)
   }
 
+  const closeModal = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if ((e.target as Element).className == "filter") {
+      setModalFlag(true)
+    } else if (
+      (e.target as Element).className != "filterModal" &&
+      (e.target as Element).className != "filterArea" &&
+      (e.target as Element).className != "category" &&
+      (e.target as Element).className != "catIcon" &&
+      (e.target as Element).className != "catArea" &&
+      (e.target as Element).className != "categoryOneEach" &&
+      (e.target as Element).className != "mileage" &&
+      (e.target as Element).className != "milIcon" &&
+      (e.target as Element).className != "milArea" &&
+      (e.target as Element).className != "mileageOneEach" &&
+      (e.target as Element).className != "location" &&
+      (e.target as Element).className != "locIcon" &&
+      (e.target as Element).className != "locArea" &&
+      (e.target as Element).className != "locationOneEach" &&
+      (e.target as Element).className != "escCloseModal"
+    ) {
+      setModalFlag(false)
+    }
+    console.log((e.target as Element).className)
+  }
+
   return {
     getList,
     filterList,
@@ -134,5 +160,8 @@ export const useKeisyo = () => {
     locations,
     switchList,
     isLoaded,
+    modalFlag,
+    setModalFlag,
+    closeModal,
   } as const
 }

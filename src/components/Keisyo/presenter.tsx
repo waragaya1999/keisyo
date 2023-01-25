@@ -1,4 +1,4 @@
-import { FilterButton } from "../../parts/FilterButton/container"
+import { CallFilter } from "../../parts/CallFilter/container"
 import { ResponseDto } from "../../types/ResponseDto"
 import { FilterList } from "../FilterList/container"
 import { NarrowingDown } from "../NarrowingDown/container"
@@ -11,6 +11,8 @@ type Props = {
   locations: string[]
   switchList: (cat: string, mil: string, loc: string) => Promise<void>
   isLoaded: boolean
+  modalFlag: boolean
+  closeModal: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 }
 
 export const KeisyoPresenter: React.FC<Props> = (props) => {
@@ -22,42 +24,60 @@ export const KeisyoPresenter: React.FC<Props> = (props) => {
     mileages,
     locations,
     switchList,
+    modalFlag,
+    closeModal,
   } = props
 
   return (
-    <>
-      {innerWidth > 600 ? (
-        <>
-          <FilterList
-            filterList={filterList}
-            isLoaded={isLoaded}
-            getList={getList}
-          />
-          <NarrowingDown
-            categories={categories}
-            mileages={mileages}
-            locations={locations}
-            switchList={switchList}
-          />
-        </>
-      ) : (
-        <>
-          <FilterList
-            filterList={filterList}
-            isLoaded={isLoaded}
-            getList={getList}
-          />
-          <FilterButton
-            getList={getList}
-            filterList={filterList}
-            isLoaded={isLoaded}
-            categories={categories}
-            mileages={mileages}
-            locations={locations}
-            switchList={switchList}
-          />
-        </>
-      )}
-    </>
+    <div className="wrap" onClick={closeModal}>
+      <div className="bg">
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <header className="header">
+            <img src="./src/images/logo.svg" className="logo" />
+          </header>
+          {innerWidth > 600 ? (
+            <>
+              <div style={{ display: "flex" }}>
+                <FilterList
+                  filterList={filterList}
+                  isLoaded={isLoaded}
+                  getList={getList}
+                />
+                <NarrowingDown
+                  categories={categories}
+                  mileages={mileages}
+                  locations={locations}
+                  switchList={switchList}
+                />
+              </div>
+            </>
+          ) : (
+            <>
+              <FilterList
+                filterList={filterList}
+                isLoaded={isLoaded}
+                getList={getList}
+              />
+              <CallFilter
+                getList={getList}
+                filterList={filterList}
+                isLoaded={isLoaded}
+                categories={categories}
+                mileages={mileages}
+                locations={locations}
+                switchList={switchList}
+                modalFlag={modalFlag}
+              />
+            </>
+          )}
+        </div>
+        <footer>©ケイショウコユウ All Rights Reserved.</footer>
+      </div>
+    </div>
   )
 }

@@ -15,7 +15,7 @@ export const FilterListPresenter: React.FC<Props> = (props) => {
       ) : (
         filterList.map((value, i) => {
           return (
-            <li key={i}>
+            <li key={i} id={value.id}>
               <div className="bb">
                 <img src={value.image.url} />
               </div>

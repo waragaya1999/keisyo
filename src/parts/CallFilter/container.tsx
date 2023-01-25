@@ -1,9 +1,9 @@
 import { KeisyoPresenter } from "../../components/Keisyo/presenter"
-import { FilterButtonPresenter } from "./presenter"
+import { CallFilterPresenter } from "./presenter"
 
 type Props = Omit<React.ComponentProps<typeof KeisyoPresenter>, "closeModal">
 
-export const FilterButton: React.FC<Props> = (props) => {
+export const CallFilter: React.FC<Props> = (props) => {
   const {
     getList,
     filterList,
@@ -16,7 +16,7 @@ export const FilterButton: React.FC<Props> = (props) => {
   } = props
 
   return (
-    <FilterButtonPresenter
+    <CallFilterPresenter
       getList={getList}
       filterList={filterList}
       isLoaded={isLoaded}
