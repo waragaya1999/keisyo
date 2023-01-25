@@ -4,8 +4,6 @@ export type ResponseDto = {
   body: string
   image: {
     url: string
-    height: number
-    width: number
   }
   mileage: string
   category: string[]
