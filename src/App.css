@@ -191,58 +191,71 @@ ul h1 {
   padding-top: 5vh;
 }
 
-ul {
+.filteredList {
   width: 70%;
+}
+
+ul {
+  width: 98.5%;
   list-style: none;
   padding: 0;
   overflow-y: scroll;
-  margin: 0 auto;
-  margin-bottom: 4vh;
   padding-bottom: 2vh;
 }
 
 ul::-webkit-scrollbar {
   width: 10px;
+  padding-right: 10px;
 }
 
 ul::-webkit-scrollbar-track {
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.1);
   border-radius: 100px;
 }
 
 ul::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.4);
   border-radius: 100px;
 }
 
 li {
   font-size: 1.6rem;
-  width: 80%;
-  margin: 0 auto;
+  width: 90%;
+  height: 13vw;
+  max-height: 130px;
   text-align: left;
   display: flex;
-  margin-top: 2vh;
-  padding: 1vh;
   background-color: #fff;
-  border-radius: 1.4rem;
+  border-radius: 1rem;
   box-shadow: 3px 5px 15px 0px rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+  margin-top: 1.6vh;
 }
 
-.bb {
-  margin-right: 2vw;
+.listImg {
+  align-self: center;
+  margin: 0 3%;
 }
 
-li img {
+.listImg img {
   height: 12vw;
-  max-width: 80px;
-  max-height: 80px;
+  max-width: 70px;
+  max-height: 70px;
 }
 
-.aa {
+hr {
+  width: 100%;
+  margin: 0;
+  margin-top: 2.5%;
+}
+
+.listText {
+  width: 70%;
   font-size: min(4vw, 20px);
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  align-self: flex-start;
+  margin-top: 2%;
 }
 
 li p {
@@ -250,8 +263,15 @@ li p {
 }
 
 .effectQuantity {
+  width: 100%;
   display: flex;
+  flex-wrap: wrap;
   font-size: min(4vw, 18px);
+  margin-top: 2.5%;
+}
+
+.detailImg {
+  width: 200px;
 }
 
 footer {
@@ -345,8 +365,14 @@ footer {
     display: flex;
   }
 
+  .filteredList {
+    width: 100%;
+  }
+
   ul {
     width: 100%;
+    overflow: hidden;
+    margin: 0 auto;
   }
 
   li p {
@@ -413,7 +439,14 @@ footer {
 @media screen and (min-width: 601px) {
   ul {
     height: 80dvh;
-    background-color: rgba(0, 0, 0, 0.08);
+  }
+
+  .filteredList {
+    -webkit-backdrop-filter: blur(100px);
+    backdrop-filter: blur(100px);
     border-radius: 10px;
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.2) inset;
+    margin: 0 1%;
+    margin-bottom: 4vh;
   }
 }
