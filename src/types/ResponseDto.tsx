@@ -1,4 +1,5 @@
 export type ResponseDto = {
+  id: string
   name: string
   body: string
   image: {
