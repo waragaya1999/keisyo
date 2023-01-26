@@ -1,6 +1,24 @@
-import { Detail } from "./container"
-
-type Props = React.ComponentProps<typeof Detail>
+type Props = {
+  detail: {
+    id: string
+    name: string
+    body: string
+    image: {
+      url: string
+    }
+    mileage: string
+    category: string[]
+    location: string
+    trigger: string
+    additional: string
+    amountOfVelocity: number
+    amountOfDeVelocity: number
+    amountOfAcceleration: number
+    amountOfStamina: number
+    duration: number
+    contents: []
+  }
+}
 
 export const DetailPresenter: React.FC<Props> = (props) => {
   const { detail } = props
