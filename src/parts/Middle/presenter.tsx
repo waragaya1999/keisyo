@@ -13,13 +13,18 @@ export const MiddlePresenter: React.FC<Props> = (props) => {
     >
       {!mileages.includes("middle") ? (
         <>
-          <img src="./src/images/mileageMiddleGray.svg" />
-          <p>中盤</p>
+          <img
+            src="./src/images/mileageMiddleGray.svg"
+            className="escCloseModal"
+          />
+          <p className="escCloseModal">中盤</p>
         </>
       ) : (
         <>
-          <img src="./src/images/mileageMiddle.svg" />
-          <p style={{ color: "#F4A02F" }}>中盤</p>
+          <img src="./src/images/mileageMiddle.svg" className="escCloseModal" />
+          <p className="escCloseModal" style={{ color: "#F4A02F" }}>
+            中盤
+          </p>
         </>
       )}
     </div>

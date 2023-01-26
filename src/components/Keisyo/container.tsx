@@ -10,6 +10,8 @@ export const Keisyo: React.FC = () => {
     locations,
     switchList,
     isLoaded,
+    modalFlag,
+    closeModal,
   } = useKeisyo()
   return (
     <>
@@ -21,6 +23,8 @@ export const Keisyo: React.FC = () => {
         mileages={mileages}
         locations={locations}
         switchList={switchList}
+        modalFlag={modalFlag}
+        closeModal={closeModal}
       />
     </>
   )

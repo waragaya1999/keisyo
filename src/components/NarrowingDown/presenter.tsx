@@ -19,22 +19,40 @@ export const NarrowingDownPresenter: React.FC<Props> = (props) => {
   return (
     <div className="filterArea">
       <div className="category">
-        <Acceleration categories={categories} switchList={switchList} />
-        <Velocity categories={categories} switchList={switchList} />
-        <Recovery categories={categories} switchList={switchList} />
-        <Debuff categories={categories} switchList={switchList} />
+        <div className="catIcon">
+          <img src="./src/images/categoryAcceleration.svg" />
+          <p>カテゴリ</p>
+        </div>
+        <div className="catArea">
+          <Acceleration categories={categories} switchList={switchList} />
+          <Velocity categories={categories} switchList={switchList} />
+          <Recovery categories={categories} switchList={switchList} />
+          <Debuff categories={categories} switchList={switchList} />
+        </div>
       </div>
       <div className="mileage">
-        <FinalStage mileages={mileages} switchList={switchList} />
-        <Final mileages={mileages} switchList={switchList} />
-        <SecondHalf mileages={mileages} switchList={switchList} />
-        <Middle mileages={mileages} switchList={switchList} />
+        <div className="milIcon">
+          <img src="./src/images/mileageFinal.svg" />
+          <p>発動距離</p>
+        </div>
+        <div className="milArea">
+          <FinalStage mileages={mileages} switchList={switchList} />
+          <Final mileages={mileages} switchList={switchList} />
+          <SecondHalf mileages={mileages} switchList={switchList} />
+          <Middle mileages={mileages} switchList={switchList} />
+        </div>
       </div>
       <div className="location">
-        <Straight locations={locations} switchList={switchList} />
-        <Corner locations={locations} switchList={switchList} />
-        <Specific locations={locations} switchList={switchList} />
-        <Unconditional locations={locations} switchList={switchList} />
+        <div className="locIcon">
+          <img src="./src/images/locationCorner.svg" />
+          <p>発動区画</p>
+        </div>
+        <div className="locArea">
+          <Straight locations={locations} switchList={switchList} />
+          <Corner locations={locations} switchList={switchList} />
+          <Specific locations={locations} switchList={switchList} />
+          <Unconditional locations={locations} switchList={switchList} />
+        </div>
       </div>
     </div>
   )
