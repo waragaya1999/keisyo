@@ -32,18 +32,13 @@ body {
 }
 
 header {
-  padding: 1vh;
+  text-align: left;
   margin-bottom: 1vh;
+  padding: 1vh;
 }
 
 .logo {
   height: 6em;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
 .filterArea {
@@ -225,11 +220,16 @@ li {
   max-height: 130px;
   text-align: left;
   display: flex;
-  background-color: #fff;
+  background-color: #f8f8f8;
   border-radius: 1rem;
   box-shadow: 3px 5px 15px 0px rgba(0, 0, 0, 0.2);
   margin: 0 auto;
   margin-top: 1.6vh;
+  cursor: pointer;
+}
+
+li:hover {
+  background-color: #fff;
 }
 
 .listImg {
@@ -375,8 +375,21 @@ footer {
     margin: 0 auto;
   }
 
+  .listImg img {
+    width: 40px;
+    height: 40px;
+  }
+
   li p {
     font-size: 1.4rem;
+  }
+
+  hr {
+    margin-top: 1.5%;
+  }
+
+  .effectQuantity {
+    margin-top: 1.5%;
   }
 
   .filter {
