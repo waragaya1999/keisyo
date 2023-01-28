@@ -1,3 +1,4 @@
+@charset "UTF-8";
 #root {
   width: 100%;
   display: flex;
@@ -11,20 +12,19 @@ body {
   width: 100%;
 }
 
-.bg {
-  max-width: 1000px;
-  min-height: 100vh;
+.wrap {
   width: 100%;
-  background-image: url("./images/bg.jpg");
+  background-image: url("./images/bg.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
 }
-
-.wrap {
+.wrap .bg {
+  max-width: 1000px;
+  min-height: 100vh;
   width: 100%;
-  background-image: url("./images/bg.png");
+  background-image: url("./images/bg.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -36,184 +36,37 @@ header {
   margin-bottom: 1vh;
   padding: 1vh;
 }
-
-.logo {
+header .logo {
   height: 6em;
-}
-
-.filterArea {
-  width: 28%;
-  max-height: 80dvh;
-  display: flex;
-  justify-content: space-between;
-  font-family: "FOT-ロダンわんぱく Pro DB", "Noto Sans JP";
-  margin-bottom: 5vh;
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-.category {
-  width: 26%;
-  height: fit-content;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.catIcon {
-  margin-bottom: 20%;
-}
-
-.catArea {
-  background-color: rgba(255, 255, 255, 1);
-  border-radius: 10px;
-  padding: 0 1%;
-}
-
-.categoryOneEach {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  color: #888;
-  cursor: pointer;
-  margin: 25% 0;
-}
-
-.category img {
-  width: 80%;
-  height: 70%;
-  margin: 0 auto;
-}
-
-.category p {
-  font-size: 1.5rem;
-  margin: 0;
-  margin-top: 1vh;
-}
-
-.mileage {
-  width: 26%;
-  height: fit-content;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.milArea {
-  background-color: rgba(255, 255, 255, 1);
-  border-radius: 10px;
-  padding: 0 1%;
-}
-
-.milIcon {
-  margin-bottom: 20%;
-}
-
-.mileageOneEach {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  color: #888;
-  cursor: pointer;
-  margin: 25% 0;
-}
-
-.mileage img {
-  width: 80%;
-  height: 70%;
-  margin: 0 auto;
-}
-
-.mileage p {
-  font-size: 1.5rem;
-  margin: 0;
-  margin-top: 1vh;
-}
-
-.location {
-  width: 26%;
-  height: fit-content;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.locArea {
-  background-color: rgba(255, 255, 255, 1);
-  border-radius: 10px;
-  padding: 0 1%;
-}
-
-.locIcon {
-  margin-bottom: 20%;
-}
-
-.locationOneEach {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  color: #888;
-  cursor: pointer;
-  margin: 25% 0;
-}
-
-.location img {
-  width: 80%;
-  height: 70%;
-  margin: 0 auto;
-}
-
-.location p {
-  font-size: 1.5rem;
-  margin: 0;
-  margin-top: 1vh;
-}
-
-h1 {
-  color: #888;
-}
-
-ul h1 {
-  padding-top: 5vh;
 }
 
 .filteredList {
   width: 70%;
 }
-
-ul {
+.filteredList ul {
   width: 98.5%;
   list-style: none;
   padding: 0;
   overflow-y: scroll;
   padding-bottom: 2vh;
 }
-
-ul::-webkit-scrollbar {
+.filteredList ul::-webkit-scrollbar {
   width: 10px;
   padding-right: 10px;
 }
-
-ul::-webkit-scrollbar-track {
+.filteredList ul::-webkit-scrollbar-track {
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 100px;
 }
-
-ul::-webkit-scrollbar-thumb {
+.filteredList ul::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.4);
   border-radius: 100px;
 }
-
-li {
+.filteredList ul h1 {
+  color: #888;
+  padding-top: 5vh;
+}
+.filteredList ul li {
   font-size: 1.6rem;
   width: 90%;
   height: 13vw;
@@ -227,29 +80,22 @@ li {
   margin-top: 1.6vh;
   cursor: pointer;
 }
-
-li:hover {
+.filteredList ul li:hover {
   background-color: #fff;
 }
-
-.listImg {
+.filteredList ul li p {
+  white-space: nowrap;
+}
+.filteredList ul li .listImg {
   align-self: center;
   margin: 0 3%;
 }
-
-.listImg img {
+.filteredList ul li .listImg img {
   height: 12vw;
   max-width: 70px;
   max-height: 70px;
 }
-
-hr {
-  width: 100%;
-  margin: 0;
-  margin-top: 2.5%;
-}
-
-.listText {
+.filteredList ul li .listText {
   width: 70%;
   font-size: min(4vw, 20px);
   display: flex;
@@ -257,12 +103,12 @@ hr {
   align-self: flex-start;
   margin-top: 2%;
 }
-
-li p {
-  white-space: nowrap;
+.filteredList ul li .listText hr {
+  width: 100%;
+  margin: 0;
+  margin-top: 2.5%;
 }
-
-.effectQuantity {
+.filteredList ul li .listText .effectQuantity {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -270,8 +116,121 @@ li p {
   margin-top: 2.5%;
 }
 
-.detailImg {
-  width: 200px;
+.filterArea {
+  width: 28%;
+  max-height: 80dvh;
+  display: flex;
+  justify-content: space-between;
+  font-family: "FOT-ロダンわんぱく Pro DB", "Noto Sans JP";
+  margin-bottom: 5vh;
+}
+.filterArea .category {
+  width: 26%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+.filterArea .category img {
+  width: 80%;
+  height: 70%;
+  margin: 0 auto;
+}
+.filterArea .category p {
+  font-size: 1.5rem;
+  margin: 0;
+  margin-top: 1vh;
+}
+.filterArea .category .catIcon {
+  margin-bottom: 20%;
+}
+.filterArea .category .catArea {
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  padding: 0 1%;
+}
+.filterArea .category .catArea .categoryOneEach {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: #888;
+  cursor: pointer;
+  margin: 25% 0;
+}
+.filterArea .mileage {
+  width: 26%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+.filterArea .mileage img {
+  width: 80%;
+  height: 70%;
+  margin: 0 auto;
+}
+.filterArea .mileage p {
+  font-size: 1.5rem;
+  margin: 0;
+  margin-top: 1vh;
+}
+.filterArea .mileage .milIcon {
+  margin-bottom: 20%;
+}
+.filterArea .mileage .milArea {
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  padding: 0 1%;
+}
+.filterArea .mileage .milArea .mileageOneEach {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: #888;
+  cursor: pointer;
+  margin: 25% 0;
+}
+.filterArea .location {
+  width: 26%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+.filterArea .location img {
+  width: 80%;
+  height: 70%;
+  margin: 0 auto;
+}
+.filterArea .location p {
+  font-size: 1.5rem;
+  margin: 0;
+  margin-top: 1vh;
+}
+.filterArea .location .locIcon {
+  margin-bottom: 20%;
+}
+.filterArea .location .locArea {
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  padding: 0 1%;
+}
+.filterArea .location .locArea .locationOneEach {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: #888;
+  cursor: pointer;
+  margin: 25% 0;
 }
 
 footer {
@@ -281,151 +240,36 @@ footer {
   padding: 1vh;
 }
 
+.detailImg {
+  width: 200px;
+}
+
 .hide {
   display: none;
 }
 
 @media screen and (max-width: 600px) {
-  .filterArea {
-    width: 100%;
-    max-height: 80dvh;
-    flex-direction: column;
-    justify-content: space-around;
-  }
-
-  .category {
-    width: 80%;
-    height: 30%;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  .catIcon {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-bottom: 0;
-  }
-  .catIcon img {
-    height: fit-content;
-  }
-
-  .categoryOneEach {
-    margin: 10% 0;
-  }
-
-  .catArea {
-    display: flex;
-  }
-
-  .mileage {
-    width: 80%;
-    height: 30%;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  .milIcon {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-bottom: 0;
-  }
-  .milIcon img {
-    height: fit-content;
-  }
-
-  .mileageOneEach {
-    margin: 10% 0;
-  }
-
-  .milArea {
-    display: flex;
-  }
-
-  .location {
-    width: 80%;
-    height: 30%;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  .locIcon {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-bottom: 0;
-  }
-  .locIcon img {
-    height: fit-content;
-  }
-
-  .locationOneEach {
-    margin: 10% 0;
-  }
-
-  .locArea {
-    display: flex;
-  }
-
   .filteredList {
     width: 100%;
   }
-
-  ul {
+  .filteredList ul {
     width: 100%;
     overflow: hidden;
     margin: 0 auto;
   }
-
-  .listImg img {
+  .filteredList ul li p {
+    font-size: 1.4rem;
+  }
+  .filteredList ul li .listImg img {
     width: 40px;
     height: 40px;
   }
-
-  li p {
-    font-size: 1.4rem;
-  }
-
-  hr {
+  .filteredList ul li .listText hr {
     margin-top: 1.5%;
   }
-
-  .effectQuantity {
+  .filteredList ul li .listText .effectQuantity {
     margin-top: 1.5%;
   }
-
-  .filter {
-    position: fixed;
-    background-color: #fff;
-    border: rgb(121, 63, 24, 0.5) 1px solid;
-    border-radius: 100px;
-    box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.4);
-    cursor: pointer;
-    user-drag: none;
-    -webkit-user-drag: none;
-    -moz-user-select: none;
-    user-select: none;
-    margin: 0 auto;
-    right: 8%;
-    bottom: 3%;
-    padding: 1%;
-  }
-
-  .closeModalButton {
-    width: fit-content;
-    font-size: 1.5rem;
-    color: #666;
-    background-color: #fff;
-    border: rgb(121, 63, 24, 0.5) 1px solid;
-    border-radius: 8px;
-    box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.4);
-    cursor: pointer;
-    user-drag: none;
-    -webkit-user-drag: none;
-    -moz-user-select: none;
-    user-select: none;
-    padding: 1.5% 12%;
-    margin: 0 auto;
-  }
-
   .modalBg {
     width: 100%;
     height: 100%;
@@ -434,9 +278,10 @@ footer {
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
   }
-
-  .filterModal {
+  .modalBg .filterModal {
     width: 90%;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
     height: fit-content;
     position: fixed;
     background-color: #fff;
@@ -447,13 +292,143 @@ footer {
     transform: translateY(-50%) translateX(-50%);
     padding: 10% 0 15% 0;
   }
-}
-
-@media screen and (min-width: 601px) {
-  ul {
-    height: 80dvh;
+  .modalBg .filterModal .filterArea {
+    width: 100%;
+    max-height: 80dvh;
+    flex-direction: column;
+    justify-content: space-around;
   }
-
+  .modalBg .filterModal .filterArea .category {
+    width: 26%;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: 80dvh;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .modalBg .filterModal .filterArea .category .catIcon {
+    margin-bottom: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 0;
+  }
+  .modalBg .filterModal .filterArea .category .catIcon img {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  .modalBg .filterModal .filterArea .category .catArea {
+    display: flex;
+  }
+  .modalBg .filterModal .filterArea .category .catArea .categoryOneEach {
+    margin: 10% 0;
+  }
+  .modalBg .filterModal .filterArea .mileage {
+    width: 26%;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: 80dvh;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .modalBg .filterModal .filterArea .mileage .milIcon {
+    margin-bottom: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 0;
+  }
+  .modalBg .filterModal .filterArea .mileage .milIcon img {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  .modalBg .filterModal .filterArea .mileage .milArea {
+    display: flex;
+  }
+  .modalBg .filterModal .filterArea .mileage .milArea .mileageOneEach {
+    margin: 10% 0;
+  }
+  .modalBg .filterModal .filterArea .location {
+    width: 26%;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: 80dvh;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .modalBg .filterModal .filterArea .location .locIcon {
+    margin-bottom: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 0;
+  }
+  .modalBg .filterModal .filterArea .location img {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  .modalBg .filterModal .filterArea .location .locArea {
+    display: flex;
+  }
+  .modalBg .filterModal .filterArea .location .locArea .locationOneEach {
+    margin: 10% 0;
+  }
+  .modalBg .filterModal .closeModalButton {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    font-size: 1.5rem;
+    color: #666;
+    background-color: #fff;
+    border: rgba(121, 63, 24, 0.5) 1px solid;
+    border-radius: 8px;
+    box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    user-drag: none;
+    -webkit-user-drag: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+            user-select: none;
+    padding: 1.5% 12%;
+    margin: 0 auto;
+  }
+  .filter {
+    position: fixed;
+    background-color: #fff;
+    border: rgba(121, 63, 24, 0.5) 1px solid;
+    border-radius: 100px;
+    box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    user-drag: none;
+    -webkit-user-drag: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+            user-select: none;
+    margin: 0 auto;
+    right: 8%;
+    bottom: 3%;
+    padding: 1%;
+  }
+}
+@media screen and (min-width: 601px) {
   .filteredList {
     -webkit-backdrop-filter: blur(100px);
     backdrop-filter: blur(100px);
@@ -462,4 +437,8 @@ footer {
     margin: 0 1%;
     margin-bottom: 4vh;
   }
+  .filteredList ul {
+    height: 80dvh;
+  }
 }
+/*# sourceMappingURL=App.css.map */

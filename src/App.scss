@@ -1,0 +1,392 @@
+@mixin filterType($sp: false) {
+  width: 26%;
+  height: fit-content;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  @if ($sp) {
+    width: 100%;
+    max-height: 80dvh;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+@mixin filterTypeIcon($sp: false) {
+  margin-bottom: 20%;
+  @if ($sp) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 0;
+  }
+}
+@mixin filterTypeImg {
+  width: 80%;
+  height: 70%;
+  margin: 0 auto;
+}
+@mixin filterTypeP {
+  font-size: 1.5rem;
+  margin: 0;
+  margin-top: 1vh;
+}
+@mixin filterTypeArea {
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 10px;
+  padding: 0 1%;
+}
+@mixin filterTypeOneEach {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: #888;
+  cursor: pointer;
+  margin: 25% 0;
+}
+
+#root {
+  width: 100%;
+  display: flex;
+  text-align: center;
+  font-family: "FOT-ロダンわんぱく Pro", "Noto Sans JP";
+  font-weight: bold;
+  color: #793f18;
+}
+
+body {
+  width: 100%;
+}
+
+.wrap {
+  width: 100%;
+  background-image: url("./images/bg.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  .bg {
+    max-width: 1000px;
+    min-height: 100vh;
+    width: 100%;
+    background-image: url("./images/bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+}
+
+header {
+  text-align: left;
+  margin-bottom: 1vh;
+  padding: 1vh;
+  .logo {
+    height: 6em;
+  }
+}
+
+.filteredList {
+  width: 70%;
+  ul {
+    width: 98.5%;
+    list-style: none;
+    padding: 0;
+    overflow-y: scroll;
+    padding-bottom: 2vh;
+    &::-webkit-scrollbar {
+      width: 10px;
+      padding-right: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: rgba(0, 0, 0, 0.1);
+      border-radius: 100px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.4);
+      border-radius: 100px;
+    }
+    h1 {
+      color: #888;
+      padding-top: 5vh;
+    }
+    li {
+      font-size: 1.6rem;
+      width: 90%;
+      height: 13vw;
+      max-height: 130px;
+      text-align: left;
+      display: flex;
+      background-color: #f8f8f8;
+      border-radius: 1rem;
+      box-shadow: 3px 5px 15px 0px rgba(0, 0, 0, 0.2);
+      margin: 0 auto;
+      margin-top: 1.6vh;
+      cursor: pointer;
+      &:hover {
+        background-color: #fff;
+      }
+      p {
+        white-space: nowrap;
+      }
+      .listImg {
+        align-self: center;
+        margin: 0 3%;
+        img {
+          height: 12vw;
+          max-width: 70px;
+          max-height: 70px;
+        }
+      }
+      .listText {
+        width: 70%;
+        font-size: min(4vw, 20px);
+        display: flex;
+        flex-direction: column;
+        align-self: flex-start;
+        margin-top: 2%;
+        hr {
+          width: 100%;
+          margin: 0;
+          margin-top: 2.5%;
+        }
+        .effectQuantity {
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          font-size: min(4vw, 18px);
+          margin-top: 2.5%;
+        }
+      }
+    }
+  }
+}
+
+.filterArea {
+  width: 28%;
+  max-height: 80dvh;
+  display: flex;
+  justify-content: space-between;
+  font-family: "FOT-ロダンわんぱく Pro DB", "Noto Sans JP";
+  margin-bottom: 5vh;
+  .category {
+    @include filterType();
+    img {
+      @include filterTypeImg();
+    }
+    p {
+      @include filterTypeP();
+    }
+    .catIcon {
+      @include filterTypeIcon();
+    }
+    .catArea {
+      @include filterTypeArea();
+      .categoryOneEach {
+        @include filterTypeOneEach();
+      }
+    }
+  }
+  .mileage {
+    @include filterType();
+    img {
+      @include filterTypeImg();
+    }
+    p {
+      @include filterTypeP();
+    }
+    .milIcon {
+      margin-bottom: 20%;
+    }
+    .milArea {
+      @include filterTypeArea();
+      .mileageOneEach {
+        @include filterTypeOneEach();
+      }
+    }
+  }
+  .location {
+    @include filterType();
+    img {
+      @include filterTypeImg();
+    }
+    p {
+      @include filterTypeP();
+    }
+    .locIcon {
+      margin-bottom: 20%;
+    }
+    .locArea {
+      @include filterTypeArea();
+      .locationOneEach {
+        @include filterTypeOneEach();
+      }
+    }
+  }
+}
+
+footer {
+  color: #000;
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 1vh;
+}
+
+.detailImg {
+  width: 200px;
+}
+
+.hide {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .filteredList {
+    width: 100%;
+    ul {
+      width: 100%;
+      overflow: hidden;
+      margin: 0 auto;
+      li {
+        p {
+          font-size: 1.4rem;
+        }
+        .listImg {
+          img {
+            width: 40px;
+            height: 40px;
+          }
+        }
+        .listText {
+          hr {
+            margin-top: 1.5%;
+          }
+          .effectQuantity {
+            margin-top: 1.5%;
+          }
+        }
+      }
+    }
+  }
+
+  .modalBg {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(255, 255, 255, 0.2);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    .filterModal {
+      width: 90%;
+      height: fit-content;
+      position: fixed;
+      background-color: #fff;
+      box-shadow: 0px 0px 27px 2px rgba(10, 10, 10, 0.5);
+      border-radius: 10px;
+      top: 50%;
+      left: 50%;
+      transform: translateY(-50%) translateX(-50%);
+      padding: 10% 0 15% 0;
+      .filterArea {
+        width: 100%;
+        max-height: 80dvh;
+        flex-direction: column;
+        justify-content: space-around;
+        .category {
+          @include filterType(sp);
+          .catIcon {
+            @include filterTypeIcon(sp);
+            img {
+              height: fit-content;
+            }
+          }
+          .catArea {
+            display: flex;
+            .categoryOneEach {
+              margin: 10% 0;
+            }
+          }
+        }
+        .mileage {
+          @include filterType(sp);
+          .milIcon {
+            @include filterTypeIcon(sp);
+            img {
+              height: fit-content;
+            }
+          }
+          .milArea {
+            display: flex;
+            .mileageOneEach {
+              margin: 10% 0;
+            }
+          }
+        }
+        .location {
+          @include filterType(sp);
+          .locIcon {
+            @include filterTypeIcon(sp);
+          }
+          img {
+            height: fit-content;
+          }
+          .locArea {
+            display: flex;
+            .locationOneEach {
+              margin: 10% 0;
+            }
+          }
+        }
+      }
+      .closeModalButton {
+        width: fit-content;
+        font-size: 1.5rem;
+        color: #666;
+        background-color: #fff;
+        border: rgb(121, 63, 24, 0.5) 1px solid;
+        border-radius: 8px;
+        box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.4);
+        cursor: pointer;
+        user-drag: none;
+        -webkit-user-drag: none;
+        -moz-user-select: none;
+        user-select: none;
+        padding: 1.5% 12%;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  .filter {
+    position: fixed;
+    background-color: #fff;
+    border: rgb(121, 63, 24, 0.5) 1px solid;
+    border-radius: 100px;
+    box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    user-drag: none;
+    -webkit-user-drag: none;
+    -moz-user-select: none;
+    user-select: none;
+    margin: 0 auto;
+    right: 8%;
+    bottom: 3%;
+    padding: 1%;
+  }
+}
+
+@media screen and (min-width: 601px) {
+  .filteredList {
+    -webkit-backdrop-filter: blur(100px);
+    backdrop-filter: blur(100px);
+    border-radius: 10px;
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.2) inset;
+    margin: 0 1%;
+    margin-bottom: 4vh;
+    ul {
+      height: 80dvh;
+    }
+  }
+}
