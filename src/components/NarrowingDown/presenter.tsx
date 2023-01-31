@@ -20,7 +20,7 @@ export const NarrowingDownPresenter: React.FC<Props> = (props) => {
     <div className="filterArea">
       <div className="category">
         <div className="catIcon">
-          <img src="./src/images/categoryAcceleration.svg" />
+          <img src="./src/images/category.svg" />
           <p>カテゴリ</p>
         </div>
         <div className="catArea">
@@ -32,7 +32,7 @@ export const NarrowingDownPresenter: React.FC<Props> = (props) => {
       </div>
       <div className="mileage">
         <div className="milIcon">
-          <img src="./src/images/mileageFinal.svg" />
+          <img src="./src/images/mileage.svg" />
           <p>発動距離</p>
         </div>
         <div className="milArea">
@@ -44,7 +44,7 @@ export const NarrowingDownPresenter: React.FC<Props> = (props) => {
       </div>
       <div className="location">
         <div className="locIcon">
-          <img src="./src/images/locationCorner.svg" />
+          <img src="./src/images/location.svg" />
           <p>発動区画</p>
         </div>
         <div className="locArea">
