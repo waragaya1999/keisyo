@@ -128,7 +128,10 @@ export const useKeisyo = () => {
   }
 
   const closeModal = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    if ((e.target as Element).className == "filter") {
+    if (
+      (e.target as Element).className == "filter" ||
+      (e.target as Element).className == "buttonFilter"
+    ) {
       setModalFlag(true)
     } else if (
       (e.target as Element).className != "filterModal" &&

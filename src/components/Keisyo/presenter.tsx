@@ -76,7 +76,7 @@ export const KeisyoPresenter: React.FC<Props> = (props) => {
             </>
           )}
         </div>
-        <footer>©ケイショウコユウ All Rights Reserved.</footer>
+        <footer>©ケイショウチェッカー All Rights Reserved.</footer>
       </div>
     </div>
   )

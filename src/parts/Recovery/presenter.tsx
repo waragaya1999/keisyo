@@ -14,7 +14,7 @@ export const RecoveryPresenter: React.FC<Props> = (props) => {
       {!categories.includes("recovery") ? (
         <>
           <img
-            src="./src/images/categoryRecoveryGray.svg"
+            src="https://uma-keisyo.com/images/categoryRecoveryGray.svg"
             className="escCloseModal"
           />
           <p className="escCloseModal">回復</p>
@@ -22,7 +22,7 @@ export const RecoveryPresenter: React.FC<Props> = (props) => {
       ) : (
         <>
           <img
-            src="./src/images/categoryRecovery.svg"
+            src="https://uma-keisyo.com/images/categoryRecovery.svg"
             className="escCloseModal"
           />
           <p className="escCloseModal" style={{ color: "#F4A02F" }}>

@@ -14,7 +14,7 @@ export const SecondHalfPresenter: React.FC<Props> = (props) => {
       {!mileages.includes("secondHalf") ? (
         <>
           <img
-            src="./src/images/mileageSecondHalfGray.svg"
+            src="https://uma-keisyo.com/images/mileageSecondHalfGray.svg"
             className="escCloseModal"
           />
           <p className="escCloseModal">後半</p>
@@ -22,7 +22,7 @@ export const SecondHalfPresenter: React.FC<Props> = (props) => {
       ) : (
         <>
           <img
-            src="./src/images/mileageSecondHalf.svg"
+            src="https://uma-keisyo.com/images/mileageSecondHalf.svg"
             className="escCloseModal"
           />
           <p className="escCloseModal" style={{ color: "#F4A02F" }}>

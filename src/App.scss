@@ -44,6 +44,25 @@
   cursor: pointer;
   margin: 25% 0;
 }
+@mixin detailBody($sp: false) {
+  background-color: #fff;
+  -webkit-backdrop-filter: blur(100px);
+  backdrop-filter: blur(100px);
+  border-radius: 10px;
+  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.2) inset;
+  margin-bottom: 5%;
+  padding: 2vh 0 3vh 0;
+  @if ($sp) {
+    padding: 1vh 0 2vh 0;
+  }
+}
+@mixin button() {
+  cursor: pointer;
+  user-drag: none;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
+  user-select: none;
+}
 
 #root {
   width: 100%;
@@ -115,7 +134,7 @@ header {
     li {
       font-size: 1.6rem;
       width: 90%;
-      height: 13vw;
+      height: 15vw;
       max-height: 130px;
       text-align: left;
       display: flex;
@@ -228,6 +247,8 @@ header {
 }
 
 footer {
+  position: sticky;
+  top: 100vh;
   color: #000;
   text-align: center;
   font-size: 1.2rem;
@@ -259,18 +280,85 @@ footer {
       flex-direction: column;
       align-self: flex-start;
       font-size: 2rem;
-      margin-left: 3%;
-      margin-top: 1.5rem;
+      margin: 1.5rem 0 1rem 3%;
       p {
         text-align: left;
       }
       .detailCardBody {
         font-size: 1.6rem;
+        line-height: 1.4;
       }
       hr {
         margin: 1rem 0;
       }
     }
+  }
+  .detailBody {
+    font-size: 1.6rem;
+    min-height: 0vw;
+    margin-top: 10%;
+    h3 {
+      color: #a04c15;
+      margin: 1rem 0 0 2%;
+    }
+    hr {
+      width: 90%;
+      margin: 1rem 0 1.5rem 2%;
+    }
+    .detailBodyFlex {
+      display: flex;
+      justify-content: center;
+    }
+    .detailBodyLabel {
+      width: 25%;
+      white-space: nowrap;
+    }
+    .detailBodyText {
+      width: 70%;
+    }
+    .detailBodyBasic {
+      @include detailBody();
+      width: 70%;
+      .detailBodyLabel {
+        width: 15%;
+      }
+      .detailBodyText {
+        width: 80%;
+      }
+      .detailBodyName {
+        margin-bottom: 1vh;
+      }
+      .detailBodyDescription {
+        line-height: 1.5;
+      }
+    }
+    .detailBodyTerms {
+      @include detailBody();
+      width: 48%;
+      .detailBodyMileage {
+        margin-bottom: 1vh;
+      }
+      .detailBodyLocation {
+        margin-bottom: 1vh;
+      }
+      .detailBodyTrigger {
+        margin-bottom: 1vh;
+      }
+    }
+    .detailBodyEffects {
+      @include detailBody();
+      width: 48%;
+      .detailBodyAmountOfVelocity {
+        margin-bottom: 1vh;
+      }
+      .detailBodyAmountOfAcceleration {
+        margin-bottom: 1vh;
+      }
+    }
+  }
+  .buttonBack {
+    @include button();
+    width: 70px;
   }
 }
 
@@ -377,6 +465,7 @@ footer {
         }
       }
       .closeModalButton {
+        @include button();
         width: fit-content;
         font-size: 1.5rem;
         color: #666;
@@ -384,11 +473,6 @@ footer {
         border: rgb(121, 63, 24, 0.5) 1px solid;
         border-radius: 8px;
         box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.4);
-        cursor: pointer;
-        user-drag: none;
-        -webkit-user-drag: none;
-        -moz-user-select: none;
-        user-select: none;
         padding: 1.5% 12%;
         margin: 0 auto;
       }
@@ -397,19 +481,97 @@ footer {
 
   .filter {
     position: fixed;
-    background-color: #fff;
-    border: rgb(121, 63, 24, 0.5) 1px solid;
     border-radius: 100px;
-    box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.4);
-    cursor: pointer;
-    user-drag: none;
-    -webkit-user-drag: none;
-    -moz-user-select: none;
-    user-select: none;
     margin: 0 auto;
     right: 8%;
     bottom: 3%;
     padding: 1%;
+    .buttonFilter {
+      @include button();
+      width: 90px;
+      border-radius: 100px;
+      box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  .detail {
+    .detailCard {
+      width: 100%;
+      .detailCardImg {
+        width: 20%;
+      }
+      .detailCardText {
+        font-size: clamp(
+          1.7rem,
+          calc(1.7rem + ((1vw - 0.32rem) * 0.4412)),
+          2rem
+        );
+        min-height: 0vw;
+        margin-left: 3%;
+        margin-top: 1.5rem;
+        .detailCardBody {
+          font-size: clamp(
+            1.4rem,
+            calc(1.4rem + ((1vw - 0.32rem) * 0.2941)),
+            1.6rem
+          );
+          font-size: 1.4rem;
+          min-height: 0vw;
+        }
+        hr {
+          margin: 0.6rem 0;
+        }
+      }
+    }
+    .detailBody {
+      font-size: clamp(
+        1.4rem,
+        calc(1.4rem + ((1vw - 0.32rem) * 0.2941)),
+        1.6rem
+      );
+      min-height: 0vw;
+      .detailBodyBasic {
+        @include detailBody(sp);
+        width: 100%;
+        .detailBodyLabel {
+          width: 25%;
+        }
+        .detailBodyText {
+          width: 70%;
+        }
+        .detailBodyName {
+          margin-bottom: 1vh;
+        }
+        .detailBodyDescription {
+          line-height: 1.5;
+        }
+      }
+      .detailBodyLowerRow {
+        .detailBodyTerms {
+          @include detailBody(sp);
+          width: 100%;
+          .detailBodyMileage {
+            margin-bottom: 1vh;
+          }
+          .detailBodyLocation {
+            margin-bottom: 1vh;
+          }
+          .detailBodyTrigger {
+            margin-bottom: 1vh;
+          }
+        }
+        .detailBodyEffects {
+          @include detailBody(sp);
+          width: 100%;
+          .detailBodyAmountOfVelocity {
+            margin-bottom: 1vh;
+          }
+          .detailBodyAmountOfAcceleration {
+            margin-bottom: 1vh;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -423,6 +585,14 @@ footer {
     margin-bottom: 4vh;
     ul {
       height: 80dvh;
+    }
+  }
+  .detail {
+    .detailBody {
+      .detailBodyLowerRow {
+        display: flex;
+        justify-content: space-between;
+      }
     }
   }
 }

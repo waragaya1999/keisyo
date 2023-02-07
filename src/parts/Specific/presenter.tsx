@@ -14,7 +14,7 @@ export const SpecificPresenter: React.FC<Props> = (props) => {
       {!locations.includes("specific") ? (
         <>
           <img
-            src="./src/images/locationSpecificGray.svg"
+            src="https://uma-keisyo.com/images/locationSpecificGray.svg"
             className="escCloseModal"
           />
           <p className="escCloseModal">距離</p>
@@ -22,7 +22,7 @@ export const SpecificPresenter: React.FC<Props> = (props) => {
       ) : (
         <>
           <img
-            src="./src/images/locationSpecific.svg"
+            src="https://uma-keisyo.com/images/locationSpecific.svg"
             className="escCloseModal"
           />
           <p className="escCloseModal" style={{ color: "#F4A02F" }}>

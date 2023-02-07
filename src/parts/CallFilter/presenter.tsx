@@ -15,10 +15,33 @@ export const CallFilterPresenter: React.FC<Props> = (props) => {
     switchList,
     modalFlag,
   } = props
+  const isfiltered = () => {
+    if (
+      categories.length != 0 ||
+      mileages.length != 0 ||
+      locations.length != 0
+    ) {
+      return true
+    } else {
+      return false
+    }
+  }
 
   return (
     <>
-      <div className="filter">絞り込み:OFF</div>
+      <div className="filter">
+        {isfiltered() ? (
+          <img
+            src="https://uma-keisyo.com/images/filter_on.svg"
+            className="buttonFilter"
+          />
+        ) : (
+          <img
+            src="https://uma-keisyo.com/images/filter_off.svg"
+            className="buttonFilter"
+          />
+        )}
+      </div>
       <div className={modalFlag ? "modalBg" : "hide"}>
         <div className={modalFlag ? "filterModal" : "hide"}>
           <NarrowingDown

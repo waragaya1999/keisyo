@@ -14,7 +14,7 @@ export const CornerPresenter: React.FC<Props> = (props) => {
       {!locations.includes("corner") ? (
         <>
           <img
-            src="./src/images/locationCornerGray.svg"
+            src="https://uma-keisyo.com/images/locationCornerGray.svg"
             className="escCloseModal"
           />
           <p className="escCloseModal">コーナー</p>
@@ -22,7 +22,7 @@ export const CornerPresenter: React.FC<Props> = (props) => {
       ) : (
         <>
           <img
-            src="./src/images/locationCorner.svg"
+            src="https://uma-keisyo.com/images/locationCorner.svg"
             className="escCloseModal"
           />
           <p className="escCloseModal" style={{ color: "#F4A02F" }}>

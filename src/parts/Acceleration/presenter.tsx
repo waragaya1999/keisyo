@@ -14,7 +14,7 @@ export const AccelerationPresenter: React.FC<Props> = (props) => {
       {!categories.includes("acceleration") ? (
         <>
           <img
-            src="./src/images/categoryAccelerationGray.svg"
+            src="https://uma-keisyo.com/images/categoryAccelerationGray.svg"
             className="escCloseModal"
           />
           <p className="escCloseModal">加速</p>
@@ -22,7 +22,7 @@ export const AccelerationPresenter: React.FC<Props> = (props) => {
       ) : (
         <>
           <img
-            src="./src/images/categoryAcceleration.svg"
+            src="https://uma-keisyo.com/images/categoryAcceleration.svg"
             className="escCloseModal"
           />
           <p className="escCloseModal" style={{ color: "#F4A02F" }}>
