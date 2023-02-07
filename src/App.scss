@@ -252,7 +252,7 @@ footer {
   color: #000;
   text-align: center;
   font-size: 1.2rem;
-  padding: 1vh;
+  padding: 2vh;
 }
 
 .detail {
@@ -429,7 +429,7 @@ footer {
           .catArea {
             display: flex;
             .categoryOneEach {
-              margin: 10% 0;
+              margin: 7% 0;
             }
           }
         }
@@ -444,7 +444,7 @@ footer {
           .milArea {
             display: flex;
             .mileageOneEach {
-              margin: 10% 0;
+              margin: 7% 0;
             }
           }
         }
@@ -459,7 +459,7 @@ footer {
           .locArea {
             display: flex;
             .locationOneEach {
-              margin: 10% 0;
+              margin: 7% 0 10% 0;
             }
           }
         }
@@ -486,6 +486,7 @@ footer {
     right: 8%;
     bottom: 3%;
     padding: 1%;
+    z-index: 100;
     .buttonFilter {
       @include button();
       width: 90px;

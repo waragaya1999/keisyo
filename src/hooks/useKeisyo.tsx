@@ -134,25 +134,11 @@ export const useKeisyo = () => {
     ) {
       setModalFlag(true)
     } else if (
-      (e.target as Element).className != "filterModal" &&
-      (e.target as Element).className != "filterArea" &&
-      (e.target as Element).className != "category" &&
-      (e.target as Element).className != "catIcon" &&
-      (e.target as Element).className != "catArea" &&
-      (e.target as Element).className != "categoryOneEach" &&
-      (e.target as Element).className != "mileage" &&
-      (e.target as Element).className != "milIcon" &&
-      (e.target as Element).className != "milArea" &&
-      (e.target as Element).className != "mileageOneEach" &&
-      (e.target as Element).className != "location" &&
-      (e.target as Element).className != "locIcon" &&
-      (e.target as Element).className != "locArea" &&
-      (e.target as Element).className != "locationOneEach" &&
-      (e.target as Element).className != "escCloseModal"
+      (e.target as Element).className == "modalBg" ||
+      (e.target as Element).className == "closeModalButton"
     ) {
       setModalFlag(false)
     }
-    console.log((e.target as Element).className)
   }
 
   return {

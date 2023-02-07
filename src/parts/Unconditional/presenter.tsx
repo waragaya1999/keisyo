@@ -13,21 +13,13 @@ export const UnconditionalPresenter: React.FC<Props> = (props) => {
     >
       {!locations.includes("unconditional") ? (
         <>
-          <img
-            src="https://uma-keisyo.com/images/locationUnconditionalGray.svg"
-            className="escCloseModal"
-          />
-          <p className="escCloseModal">無条件</p>
+          <img src="https://uma-keisyo.com/images/locationUnconditionalGray.svg" />
+          <p>無条件</p>
         </>
       ) : (
         <>
-          <img
-            src="https://uma-keisyo.com/images/locationUnconditional.svg"
-            className="escCloseModal"
-          />
-          <p className="escCloseModal" style={{ color: "#F4A02F" }}>
-            無条件
-          </p>
+          <img src="https://uma-keisyo.com/images/locationUnconditional.svg" />
+          <p style={{ color: "#F4A02F" }}>無条件</p>
         </>
       )}
     </div>

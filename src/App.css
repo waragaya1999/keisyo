@@ -240,7 +240,7 @@ footer {
   color: #000;
   text-align: center;
   font-size: 1.2rem;
-  padding: 1vh;
+  padding: 2vh;
 }
 
 .detail {
@@ -458,7 +458,7 @@ footer {
     display: flex;
   }
   .modalBg .filterModal .filterArea .category .catArea .categoryOneEach {
-    margin: 10% 0;
+    margin: 7% 0;
   }
   .modalBg .filterModal .filterArea .mileage {
     width: 26%;
@@ -489,7 +489,7 @@ footer {
     display: flex;
   }
   .modalBg .filterModal .filterArea .mileage .milArea .mileageOneEach {
-    margin: 10% 0;
+    margin: 7% 0;
   }
   .modalBg .filterModal .filterArea .location {
     width: 26%;
@@ -520,7 +520,7 @@ footer {
     display: flex;
   }
   .modalBg .filterModal .filterArea .location .locArea .locationOneEach {
-    margin: 10% 0;
+    margin: 7% 0 10% 0;
   }
   .modalBg .filterModal .closeModalButton {
     cursor: pointer;
@@ -548,6 +548,7 @@ footer {
     right: 8%;
     bottom: 3%;
     padding: 1%;
+    z-index: 100;
   }
   .filter .buttonFilter {
     cursor: pointer;

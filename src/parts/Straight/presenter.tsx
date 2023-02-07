@@ -13,21 +13,13 @@ export const StraightPresenter: React.FC<Props> = (props) => {
     >
       {!locations.includes("straight") ? (
         <>
-          <img
-            src="https://uma-keisyo.com/images/locationStraightGray.svg"
-            className="escCloseModal"
-          />
-          <p className="escCloseModal">直線</p>
+          <img src="https://uma-keisyo.com/images/locationStraightGray.svg" />
+          <p>直線</p>
         </>
       ) : (
         <>
-          <img
-            src="https://uma-keisyo.com/images/locationStraight.svg"
-            className="escCloseModal"
-          />
-          <p className="escCloseModal" style={{ color: "#F4A02F" }}>
-            直線
-          </p>
+          <img src="https://uma-keisyo.com/images/locationStraight.svg" />
+          <p style={{ color: "#F4A02F" }}>直線</p>
         </>
       )}
     </div>

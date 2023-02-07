@@ -13,21 +13,13 @@ export const SpecificPresenter: React.FC<Props> = (props) => {
     >
       {!locations.includes("specific") ? (
         <>
-          <img
-            src="https://uma-keisyo.com/images/locationSpecificGray.svg"
-            className="escCloseModal"
-          />
-          <p className="escCloseModal">距離</p>
+          <img src="https://uma-keisyo.com/images/locationSpecificGray.svg" />
+          <p>距離</p>
         </>
       ) : (
         <>
-          <img
-            src="https://uma-keisyo.com/images/locationSpecific.svg"
-            className="escCloseModal"
-          />
-          <p className="escCloseModal" style={{ color: "#F4A02F" }}>
-            距離
-          </p>
+          <img src="https://uma-keisyo.com/images/locationSpecific.svg" />
+          <p style={{ color: "#F4A02F" }}>距離</p>
         </>
       )}
     </div>

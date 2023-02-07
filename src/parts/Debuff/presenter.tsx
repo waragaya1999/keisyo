@@ -13,21 +13,13 @@ export const DebuffPresenter: React.FC<Props> = (props) => {
     >
       {!categories.includes("debuff") ? (
         <>
-          <img
-            src="https://uma-keisyo.com/images/categoryDebuffGray.svg"
-            className="escCloseModal"
-          />
-          <p className="escCloseModal">デバフ</p>
+          <img src="https://uma-keisyo.com/images/categoryDebuffGray.svg" />
+          <p>デバフ</p>
         </>
       ) : (
         <>
-          <img
-            src="https://uma-keisyo.com/images/categoryDebuff.svg"
-            className="escCloseModal"
-          />
-          <p className="escCloseModal" style={{ color: "#F4A02F" }}>
-            デバフ
-          </p>
+          <img src="https://uma-keisyo.com/images/categoryDebuff.svg" />
+          <p style={{ color: "#F4A02F" }}>デバフ</p>
         </>
       )}
     </div>
