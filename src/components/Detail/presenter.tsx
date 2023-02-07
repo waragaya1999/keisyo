@@ -37,7 +37,11 @@ export const DetailPresenter: React.FC<Props> = (props) => {
             }}
           >
             <header className="header">
-              <img src="../src/images/logo.svg" className="logo" />
+              <img
+                src="https://uma-keisyo.com/images/logo.svg"
+                className="logo"
+                onClick={() => navigate("/")}
+              />
             </header>
             <div className="detail">
               <div className="detailCard">
@@ -143,11 +147,7 @@ export const DetailPresenter: React.FC<Props> = (props) => {
                   </div>
                 </div>
               </div>
-              <div
-                onClick={() => {
-                  navigate("/")
-                }}
-              >
+              <div onClick={() => navigate("/")}>
                 <img
                   src="https://uma-keisyo.com/images/back.svg"
                   className="buttonBack"

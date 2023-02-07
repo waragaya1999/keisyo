@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom"
 import { CallFilter } from "../../parts/CallFilter/container"
 import { ResponseDto } from "../../types/ResponseDto"
 import { FilterList } from "../FilterList/container"
@@ -27,6 +28,7 @@ export const KeisyoPresenter: React.FC<Props> = (props) => {
     modalFlag,
     closeModal,
   } = props
+  const navigate = useNavigate()
 
   return (
     <div className="wrap" onClick={closeModal}>
@@ -38,7 +40,11 @@ export const KeisyoPresenter: React.FC<Props> = (props) => {
           }}
         >
           <header className="header">
-            <img src="./src/images/logo.svg" className="logo" />
+            <img
+              src="https://uma-keisyo.com/images/logo.svg"
+              className="logo"
+              onClick={() => navigate("/")}
+            />
           </header>
           {innerWidth > 600 ? (
             <>
