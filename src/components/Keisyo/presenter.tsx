@@ -10,6 +10,11 @@ type Props = {
   categories: string[]
   mileages: string[]
   locations: string[]
+  updateFilterList: (
+    cats: string[],
+    mils: string[],
+    locs: string[],
+  ) => Promise<void>
   switchList: (cat: string, mil: string, loc: string) => Promise<void>
   isLoaded: boolean
   modalFlag: boolean
@@ -24,6 +29,7 @@ export const KeisyoPresenter: React.FC<Props> = (props) => {
     categories,
     mileages,
     locations,
+    updateFilterList,
     switchList,
     modalFlag,
     closeModal,
@@ -53,6 +59,7 @@ export const KeisyoPresenter: React.FC<Props> = (props) => {
                   filterList={filterList}
                   isLoaded={isLoaded}
                   getList={getList}
+                  updateFilterList={updateFilterList}
                 />
                 <NarrowingDown
                   categories={categories}
@@ -68,6 +75,7 @@ export const KeisyoPresenter: React.FC<Props> = (props) => {
                 filterList={filterList}
                 isLoaded={isLoaded}
                 getList={getList}
+                updateFilterList={updateFilterList}
               />
               <CallFilter
                 getList={getList}

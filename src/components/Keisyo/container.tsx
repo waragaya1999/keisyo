@@ -8,11 +8,13 @@ export const Keisyo: React.FC = () => {
     categories,
     mileages,
     locations,
+    updateFilterList,
     switchList,
     isLoaded,
     modalFlag,
     closeModal,
   } = useKeisyo()
+
   return (
     <>
       <KeisyoPresenter
@@ -22,6 +24,7 @@ export const Keisyo: React.FC = () => {
         categories={categories}
         mileages={mileages}
         locations={locations}
+        updateFilterList={updateFilterList}
         switchList={switchList}
         modalFlag={modalFlag}
         closeModal={closeModal}

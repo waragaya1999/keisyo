@@ -1,7 +1,10 @@
 import { KeisyoPresenter } from "../../components/Keisyo/presenter"
 import { CallFilterPresenter } from "./presenter"
 
-type Props = Omit<React.ComponentProps<typeof KeisyoPresenter>, "closeModal">
+type Props = Omit<
+  React.ComponentProps<typeof KeisyoPresenter>,
+  "storedCats" | "updateFilterList" | "closeModal"
+>
 
 export const CallFilter: React.FC<Props> = (props) => {
   const {

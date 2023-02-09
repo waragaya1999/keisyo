@@ -27,7 +27,6 @@ export const DetailPresenter: React.FC<Props> = (props) => {
   const navigate = useNavigate()
   return (
     <>
-      {console.log(detail)}
       <div className="wrap">
         <div className="bg">
           <div
@@ -121,7 +120,7 @@ export const DetailPresenter: React.FC<Props> = (props) => {
                     <h3>効果量</h3>
                     <hr />
                     <div className="detailBodyAmountOfVelocity detailBodyFlex">
-                      <p className="detailBodyLabel">加速効果量</p>
+                      <p className="detailBodyLabel">速度効果量</p>
                       {detail.amountOfVelocity ? (
                         <p className="detailBodyText">
                           {detail.amountOfVelocity}m/s
@@ -131,7 +130,7 @@ export const DetailPresenter: React.FC<Props> = (props) => {
                       )}
                     </div>
                     <div className="detailBodyAmountOfAcceleration detailBodyFlex">
-                      <p className="detailBodyLabel">速度効果量</p>
+                      <p className="detailBodyLabel">加速効果量</p>
                       {detail.amountOfAcceleration ? (
                         <p className="detailBodyText">
                           {detail.amountOfAcceleration}m/s^2

@@ -1,8 +1,10 @@
 import { useState } from "react"
 import axios from "axios"
 import { ResponseDto } from "../types/ResponseDto"
+import useStore from "./useStore"
 
 export const useKeisyo = () => {
+  const { updateCats, updateMils, updateLocs } = useStore()
   const [list, setList] = useState<ResponseDto[]>([])
   const [filterList, setFilterList] = useState<ResponseDto[]>([])
   const [categories, setCategories] = useState<string[]>([])
@@ -79,6 +81,7 @@ export const useKeisyo = () => {
     mils: string[],
     locs: string[],
   ) => {
+    console.log(cats, mils, locs)
     let tempList: ResponseDto[] = list
     if (cats.length != 0 || mils.length != 0 || locs.length != 0) {
       if (cats.length != 0) {
@@ -91,6 +94,7 @@ export const useKeisyo = () => {
             return item.category.length != 0 && isIncludes
           })
           .flat()
+        updateCats(cats)
       }
       if (mils.length != 0) {
         tempList = tempList
@@ -102,6 +106,7 @@ export const useKeisyo = () => {
             return item.mileage.length != 0 && isIncludes
           })
           .flat()
+        updateMils(mils)
       }
       if (locs.length != 0) {
         tempList = tempList
@@ -113,8 +118,10 @@ export const useKeisyo = () => {
             return item.location.length != 0 && isIncludes
           })
           .flat()
+        updateLocs(locs)
       }
     } else {
+      getList()
       tempList = list
     }
     setFilterList(tempList)
@@ -147,6 +154,7 @@ export const useKeisyo = () => {
     categories,
     mileages,
     locations,
+    updateFilterList,
     switchList,
     isLoaded,
     modalFlag,
