@@ -3,7 +3,7 @@ import { Velocity } from "./container"
 type Props = React.ComponentProps<typeof Velocity>
 
 export const VelocityPresenter: React.FC<Props> = (props) => {
-  const { categories, switchList } = props
+  const { storedCats, switchList } = props
   return (
     <div
       className="categoryOneEach"
@@ -11,7 +11,7 @@ export const VelocityPresenter: React.FC<Props> = (props) => {
         switchList("velocity", "", "")
       }}
     >
-      {!categories.includes("velocity") ? (
+      {!storedCats.includes("velocity") ? (
         <>
           <img src="https://uma-keisyo.com/images/categoryVelocityGray.svg" />
           <p>速度</p>

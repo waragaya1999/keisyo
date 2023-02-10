@@ -9,17 +9,17 @@ export const CallFilterPresenter: React.FC<Props> = (props) => {
     getList,
     filterList,
     isLoaded,
-    categories,
-    mileages,
-    locations,
+    storedCats,
+    storedMils,
+    storedLocs,
     switchList,
     modalFlag,
   } = props
   const isfiltered = () => {
     if (
-      categories.length != 0 ||
-      mileages.length != 0 ||
-      locations.length != 0
+      storedCats.length != 0 ||
+      storedMils.length != 0 ||
+      storedLocs.length != 0
     ) {
       return true
     } else {
@@ -45,9 +45,9 @@ export const CallFilterPresenter: React.FC<Props> = (props) => {
       <div className={modalFlag ? "modalBg" : "hide"}>
         <div className={modalFlag ? "filterModal" : "hide"}>
           <NarrowingDown
-            categories={categories}
-            mileages={mileages}
-            locations={locations}
+            storedCats={storedCats}
+            storedMils={storedMils}
+            storedLocs={storedLocs}
             switchList={switchList}
           />
           <div className="closeModalButton">OK</div>

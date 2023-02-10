@@ -7,9 +7,9 @@ import { NarrowingDown } from "../NarrowingDown/container"
 type Props = {
   getList: () => void
   filterList: ResponseDto[]
-  categories: string[]
-  mileages: string[]
-  locations: string[]
+  storedCats: string[]
+  storedMils: string[]
+  storedLocs: string[]
   updateFilterList: (
     cats: string[],
     mils: string[],
@@ -26,9 +26,9 @@ export const KeisyoPresenter: React.FC<Props> = (props) => {
     getList,
     filterList,
     isLoaded,
-    categories,
-    mileages,
-    locations,
+    storedCats,
+    storedMils,
+    storedLocs,
     updateFilterList,
     switchList,
     modalFlag,
@@ -57,14 +57,16 @@ export const KeisyoPresenter: React.FC<Props> = (props) => {
               <div style={{ display: "flex" }}>
                 <FilterList
                   filterList={filterList}
-                  isLoaded={isLoaded}
-                  getList={getList}
+                  storedCats={storedCats}
+                  storedMils={storedMils}
+                  storedLocs={storedLocs}
                   updateFilterList={updateFilterList}
+                  isLoaded={isLoaded}
                 />
                 <NarrowingDown
-                  categories={categories}
-                  mileages={mileages}
-                  locations={locations}
+                  storedCats={storedCats}
+                  storedMils={storedMils}
+                  storedLocs={storedLocs}
                   switchList={switchList}
                 />
               </div>
@@ -73,17 +75,19 @@ export const KeisyoPresenter: React.FC<Props> = (props) => {
             <>
               <FilterList
                 filterList={filterList}
-                isLoaded={isLoaded}
-                getList={getList}
+                storedCats={storedCats}
+                storedMils={storedMils}
+                storedLocs={storedLocs}
                 updateFilterList={updateFilterList}
+                isLoaded={isLoaded}
               />
               <CallFilter
                 getList={getList}
                 filterList={filterList}
                 isLoaded={isLoaded}
-                categories={categories}
-                mileages={mileages}
-                locations={locations}
+                storedCats={storedCats}
+                storedMils={storedMils}
+                storedLocs={storedLocs}
                 switchList={switchList}
                 modalFlag={modalFlag}
               />

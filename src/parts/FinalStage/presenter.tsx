@@ -3,7 +3,7 @@ import { FinalStage } from "./container"
 type Props = React.ComponentProps<typeof FinalStage>
 
 export const FinalStagePresenter: React.FC<Props> = (props) => {
-  const { mileages, switchList } = props
+  const { storedMils, switchList } = props
   return (
     <div
       className="mileageOneEach"
@@ -11,7 +11,7 @@ export const FinalStagePresenter: React.FC<Props> = (props) => {
         switchList("", "finalStage", "")
       }}
     >
-      {!mileages.includes("finalStage") ? (
+      {!storedMils.includes("finalStage") ? (
         <>
           <img src="https://uma-keisyo.com/images/mileageFinalStageGray.svg" />
           <p>終盤</p>

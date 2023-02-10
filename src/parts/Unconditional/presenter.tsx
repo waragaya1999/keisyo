@@ -3,7 +3,7 @@ import { Unconditional } from "./container"
 type Props = React.ComponentProps<typeof Unconditional>
 
 export const UnconditionalPresenter: React.FC<Props> = (props) => {
-  const { locations, switchList } = props
+  const { storedLocs, switchList } = props
   return (
     <div
       className="locationOneEach"
@@ -11,7 +11,7 @@ export const UnconditionalPresenter: React.FC<Props> = (props) => {
         switchList("", "", "unconditional")
       }}
     >
-      {!locations.includes("unconditional") ? (
+      {!storedLocs.includes("unconditional") ? (
         <>
           <img src="https://uma-keisyo.com/images/locationUnconditionalGray.svg" />
           <p>無条件</p>

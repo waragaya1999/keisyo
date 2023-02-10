@@ -3,7 +3,7 @@ import { Straight } from "./container"
 type Props = React.ComponentProps<typeof Straight>
 
 export const StraightPresenter: React.FC<Props> = (props) => {
-  const { locations, switchList } = props
+  const { storedLocs, switchList } = props
   return (
     <div
       className="locationOneEach"
@@ -11,7 +11,7 @@ export const StraightPresenter: React.FC<Props> = (props) => {
         switchList("", "", "straight")
       }}
     >
-      {!locations.includes("straight") ? (
+      {!storedLocs.includes("straight") ? (
         <>
           <img src="https://uma-keisyo.com/images/locationStraightGray.svg" />
           <p>直線</p>

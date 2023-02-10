@@ -3,10 +3,10 @@ import { StraightPresenter } from "./presenter"
 
 type Props = Pick<
   React.ComponentProps<typeof KeisyoPresenter>,
-  "locations" | "switchList"
+  "storedLocs" | "switchList"
 >
 
 export const Straight: React.FC<Props> = (props) => {
-  const { locations, switchList } = props
-  return <StraightPresenter locations={locations} switchList={switchList} />
+  const { storedLocs, switchList } = props
+  return <StraightPresenter storedLocs={storedLocs} switchList={switchList} />
 }

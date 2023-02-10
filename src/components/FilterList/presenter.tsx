@@ -2,7 +2,10 @@ import React from "react"
 import { useNavigate } from "react-router-dom"
 import { FilterList } from "./container"
 
-type Props = Omit<React.ComponentProps<typeof FilterList>, "getList">
+type Props = Omit<
+  React.ComponentProps<typeof FilterList>,
+  "storedCats" | "storedMils" | "storedLocs"
+>
 
 export const FilterListPresenter: React.FC<Props> = (props) => {
   const { filterList, isLoaded } = props

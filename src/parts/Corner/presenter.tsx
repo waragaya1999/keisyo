@@ -3,7 +3,7 @@ import { Corner } from "./container"
 type Props = React.ComponentProps<typeof Corner>
 
 export const CornerPresenter: React.FC<Props> = (props) => {
-  const { locations, switchList } = props
+  const { storedLocs, switchList } = props
   return (
     <div
       className="locationOneEach"
@@ -11,7 +11,7 @@ export const CornerPresenter: React.FC<Props> = (props) => {
         switchList("", "", "corner")
       }}
     >
-      {!locations.includes("corner") ? (
+      {!storedLocs.includes("corner") ? (
         <>
           <img src="https://uma-keisyo.com/images/locationCornerGray.svg" />
           <p>コーナー</p>

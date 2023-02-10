@@ -3,10 +3,10 @@ import { SpecificPresenter } from "./presenter"
 
 type Props = Pick<
   React.ComponentProps<typeof KeisyoPresenter>,
-  "locations" | "switchList"
+  "storedLocs" | "switchList"
 >
 
 export const Specific: React.FC<Props> = (props) => {
-  const { locations, switchList } = props
-  return <SpecificPresenter locations={locations} switchList={switchList} />
+  const { storedLocs, switchList } = props
+  return <SpecificPresenter storedLocs={storedLocs} switchList={switchList} />
 }

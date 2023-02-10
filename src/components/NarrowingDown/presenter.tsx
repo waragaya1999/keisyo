@@ -15,7 +15,7 @@ import { NarrowingDown } from "./container"
 type Props = React.ComponentProps<typeof NarrowingDown>
 
 export const NarrowingDownPresenter: React.FC<Props> = (props) => {
-  const { categories, mileages, locations, switchList } = props
+  const { storedCats, storedMils, storedLocs, switchList } = props
   return (
     <div className="filterArea">
       <div className="category">
@@ -24,10 +24,10 @@ export const NarrowingDownPresenter: React.FC<Props> = (props) => {
           <p>カテゴリ</p>
         </div>
         <div className="catArea">
-          <Acceleration categories={categories} switchList={switchList} />
-          <Velocity categories={categories} switchList={switchList} />
-          <Recovery categories={categories} switchList={switchList} />
-          <Debuff categories={categories} switchList={switchList} />
+          <Acceleration storedCats={storedCats} switchList={switchList} />
+          <Velocity storedCats={storedCats} switchList={switchList} />
+          <Recovery storedCats={storedCats} switchList={switchList} />
+          <Debuff storedCats={storedCats} switchList={switchList} />
         </div>
       </div>
       <div className="mileage">
@@ -36,10 +36,10 @@ export const NarrowingDownPresenter: React.FC<Props> = (props) => {
           <p>発動距離</p>
         </div>
         <div className="milArea">
-          <FinalStage mileages={mileages} switchList={switchList} />
-          <Final mileages={mileages} switchList={switchList} />
-          <SecondHalf mileages={mileages} switchList={switchList} />
-          <Middle mileages={mileages} switchList={switchList} />
+          <FinalStage storedMils={storedMils} switchList={switchList} />
+          <Final storedMils={storedMils} switchList={switchList} />
+          <SecondHalf storedMils={storedMils} switchList={switchList} />
+          <Middle storedMils={storedMils} switchList={switchList} />
         </div>
       </div>
       <div className="location">
@@ -48,10 +48,10 @@ export const NarrowingDownPresenter: React.FC<Props> = (props) => {
           <p>発動区画</p>
         </div>
         <div className="locArea">
-          <Straight locations={locations} switchList={switchList} />
-          <Corner locations={locations} switchList={switchList} />
-          <Specific locations={locations} switchList={switchList} />
-          <Unconditional locations={locations} switchList={switchList} />
+          <Straight storedLocs={storedLocs} switchList={switchList} />
+          <Corner storedLocs={storedLocs} switchList={switchList} />
+          <Specific storedLocs={storedLocs} switchList={switchList} />
+          <Unconditional storedLocs={storedLocs} switchList={switchList} />
         </div>
       </div>
     </div>

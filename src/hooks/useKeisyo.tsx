@@ -4,12 +4,17 @@ import { ResponseDto } from "../types/ResponseDto"
 import useStore from "./useStore"
 
 export const useKeisyo = () => {
-  const { updateCats, updateMils, updateLocs } = useStore()
-  const [list, setList] = useState<ResponseDto[]>([])
+  const {
+    list,
+    storedCats,
+    storedMils,
+    storedLocs,
+    updateList,
+    updateCats,
+    updateMils,
+    updateLocs,
+  } = useStore()
   const [filterList, setFilterList] = useState<ResponseDto[]>([])
-  const [categories, setCategories] = useState<string[]>([])
-  const [mileages, setMileages] = useState<string[]>([])
-  const [locations, setLocations] = useState<string[]>([])
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
   const [modalFlag, setModalFlag] = useState(false)
 
@@ -24,7 +29,7 @@ export const useKeisyo = () => {
         },
       })
       .then((res) => {
-        setList(
+        updateList(
           res.data.contents.reduceRight(
             (p: string[], c: string[]) => [...p, c],
             [],
@@ -41,38 +46,38 @@ export const useKeisyo = () => {
   }
 
   const updateCategories = async (cat: string) => {
-    let tempArray = categories.slice()
-    if (!categories.includes(cat)) {
+    let tempArray = storedCats.slice()
+    if (!storedCats.includes(cat)) {
       tempArray.push(cat)
     } else {
       delete tempArray[tempArray.indexOf(cat)]
     }
     tempArray = tempArray.filter((v) => v)
-    setCategories(tempArray)
+    updateCats(tempArray)
     return tempArray
   }
 
   const updateMileages = async (mil: string) => {
-    let tempArray = mileages.slice()
-    if (!mileages.includes(mil)) {
+    let tempArray = storedMils.slice()
+    if (!storedMils.includes(mil)) {
       tempArray.push(mil)
     } else {
       delete tempArray[tempArray.indexOf(mil)]
     }
     tempArray = tempArray.filter((v) => v)
-    setMileages(tempArray)
+    updateMils(tempArray)
     return tempArray
   }
 
   const updateLocations = async (loc: string) => {
-    let tempArray = locations.slice()
-    if (!locations.includes(loc)) {
+    let tempArray = storedLocs.slice()
+    if (!storedLocs.includes(loc)) {
       tempArray.push(loc)
     } else {
       delete tempArray[tempArray.indexOf(loc)]
     }
     tempArray = tempArray.filter((v) => v)
-    setLocations(tempArray)
+    updateLocs(tempArray)
     return tempArray
   }
 
@@ -81,7 +86,6 @@ export const useKeisyo = () => {
     mils: string[],
     locs: string[],
   ) => {
-    console.log(cats, mils, locs)
     let tempList: ResponseDto[] = list
     if (cats.length != 0 || mils.length != 0 || locs.length != 0) {
       if (cats.length != 0) {
@@ -120,6 +124,7 @@ export const useKeisyo = () => {
           .flat()
         updateLocs(locs)
       }
+      setIsLoaded(true)
     } else {
       getList()
       tempList = list
@@ -151,9 +156,6 @@ export const useKeisyo = () => {
   return {
     getList,
     filterList,
-    categories,
-    mileages,
-    locations,
     updateFilterList,
     switchList,
     isLoaded,

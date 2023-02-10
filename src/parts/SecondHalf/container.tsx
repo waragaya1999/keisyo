@@ -3,10 +3,10 @@ import { SecondHalfPresenter } from "./presenter"
 
 type Props = Pick<
   React.ComponentProps<typeof KeisyoPresenter>,
-  "mileages" | "switchList"
+  "storedMils" | "switchList"
 >
 
 export const SecondHalf: React.FC<Props> = (props) => {
-  const { mileages, switchList } = props
-  return <SecondHalfPresenter mileages={mileages} switchList={switchList} />
+  const { storedMils, switchList } = props
+  return <SecondHalfPresenter storedMils={storedMils} switchList={switchList} />
 }

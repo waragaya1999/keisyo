@@ -3,7 +3,7 @@ import { Debuff } from "./container"
 type Props = React.ComponentProps<typeof Debuff>
 
 export const DebuffPresenter: React.FC<Props> = (props) => {
-  const { categories, switchList } = props
+  const { storedCats, switchList } = props
   return (
     <div
       className="categoryOneEach"
@@ -11,7 +11,7 @@ export const DebuffPresenter: React.FC<Props> = (props) => {
         switchList("debuff", "", "")
       }}
     >
-      {!categories.includes("debuff") ? (
+      {!storedCats.includes("debuff") ? (
         <>
           <img src="https://uma-keisyo.com/images/categoryDebuffGray.svg" />
           <p>デバフ</p>
