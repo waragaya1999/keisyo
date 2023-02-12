@@ -189,7 +189,7 @@ header {
   display: flex;
   justify-content: space-between;
   font-family: "FOT-ロダンわんぱく Pro DB", "Noto Sans JP";
-  margin-bottom: 5vh;
+  // margin-bottom: 5vh;
   .category {
     @include filterType();
     img {
@@ -583,7 +583,6 @@ footer {
     border-radius: 10px;
     box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.2) inset;
     margin: 0 1%;
-    margin-bottom: 4vh;
     ul {
       height: 80dvh;
     }
