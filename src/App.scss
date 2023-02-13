@@ -78,7 +78,7 @@ body {
 
 .wrap {
   width: 100%;
-  background-image: url("./images/bg.png");
+  background-image: url("https://uma-keisyo.com/images/bg.ed5622e8.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -87,7 +87,7 @@ body {
     max-width: 1080px;
     min-height: 100vh;
     width: 100%;
-    background-image: url("./images/bg.jpg");
+    background-image: url("https://uma-keisyo.com/images/bg.8d858e27.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -435,54 +435,58 @@ footer {
       top: 50%;
       left: 50%;
       transform: translateY(-50%) translateX(-50%);
-      padding: 10% 0 15% 0;
+      padding: 6% 0 13% 0;
+      z-index: 200;
       .filterArea {
         width: 100%;
         max-height: 80dvh;
         flex-direction: column;
         justify-content: space-around;
-        .category {
-          @include filterType(sp);
-          .catIcon {
-            @include filterTypeIcon(sp);
+        .filterAreaButtons {
+          margin-bottom: 12%;
+          .category {
+            @include filterType(sp);
+            .catIcon {
+              @include filterTypeIcon(sp);
+              img {
+                height: fit-content;
+              }
+            }
+            .catArea {
+              display: flex;
+              .categoryOneEach {
+                margin: 7% 0;
+              }
+            }
+          }
+          .mileage {
+            @include filterType(sp);
+            .milIcon {
+              @include filterTypeIcon(sp);
+              img {
+                height: fit-content;
+              }
+            }
+            .milArea {
+              display: flex;
+              .mileageOneEach {
+                margin: 7% 0;
+              }
+            }
+          }
+          .location {
+            @include filterType(sp);
+            .locIcon {
+              @include filterTypeIcon(sp);
+            }
             img {
               height: fit-content;
             }
-          }
-          .catArea {
-            display: flex;
-            .categoryOneEach {
-              margin: 7% 0;
-            }
-          }
-        }
-        .mileage {
-          @include filterType(sp);
-          .milIcon {
-            @include filterTypeIcon(sp);
-            img {
-              height: fit-content;
-            }
-          }
-          .milArea {
-            display: flex;
-            .mileageOneEach {
-              margin: 7% 0;
-            }
-          }
-        }
-        .location {
-          @include filterType(sp);
-          .locIcon {
-            @include filterTypeIcon(sp);
-          }
-          img {
-            height: fit-content;
-          }
-          .locArea {
-            display: flex;
-            .locationOneEach {
-              margin: 7% 0 10% 0;
+            .locArea {
+              display: flex;
+              .locationOneEach {
+                margin: 7% 0;
+              }
             }
           }
         }
@@ -494,11 +498,12 @@ footer {
         justify-content: flex-end;
         .closeModalButtonImg {
           width: 30%;
+          height: intrinsic;
         }
         .closeModalReset {
           width: 35%;
           .closeModalResetImg {
-            width: 60%;
+            width: 57%;
           }
         }
       }

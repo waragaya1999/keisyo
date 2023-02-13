@@ -14,7 +14,7 @@ body {
 
 .wrap {
   width: 100%;
-  background-image: url("./images/bg.png");
+  background-image: url("https://uma-keisyo.com/images/bg.ed5622e8.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -24,7 +24,7 @@ body {
   max-width: 1080px;
   min-height: 100vh;
   width: 100%;
-  background-image: url("./images/bg.jpg");
+  background-image: url("https://uma-keisyo.com/images/bg.8d858e27.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -437,7 +437,8 @@ footer {
     top: 50%;
     left: 50%;
     transform: translateY(-50%) translateX(-50%);
-    padding: 10% 0 15% 0;
+    padding: 6% 0 13% 0;
+    z-index: 200;
   }
   .modalBg .filterModal .filterArea {
     width: 100%;
@@ -445,7 +446,10 @@ footer {
     flex-direction: column;
     justify-content: space-around;
   }
-  .modalBg .filterModal .filterArea .category {
+  .modalBg .filterModal .filterArea .filterAreaButtons {
+    margin-bottom: 12%;
+  }
+  .modalBg .filterModal .filterArea .filterAreaButtons .category {
     width: 26%;
     height: -webkit-fit-content;
     height: -moz-fit-content;
@@ -458,25 +462,25 @@ footer {
     flex-direction: row;
     justify-content: space-around;
   }
-  .modalBg .filterModal .filterArea .category .catIcon {
+  .modalBg .filterModal .filterArea .filterAreaButtons .category .catIcon {
     margin-bottom: 20%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin-bottom: 0;
   }
-  .modalBg .filterModal .filterArea .category .catIcon img {
+  .modalBg .filterModal .filterArea .filterAreaButtons .category .catIcon img {
     height: -webkit-fit-content;
     height: -moz-fit-content;
     height: fit-content;
   }
-  .modalBg .filterModal .filterArea .category .catArea {
+  .modalBg .filterModal .filterArea .filterAreaButtons .category .catArea {
     display: flex;
   }
-  .modalBg .filterModal .filterArea .category .catArea .categoryOneEach {
+  .modalBg .filterModal .filterArea .filterAreaButtons .category .catArea .categoryOneEach {
     margin: 7% 0;
   }
-  .modalBg .filterModal .filterArea .mileage {
+  .modalBg .filterModal .filterArea .filterAreaButtons .mileage {
     width: 26%;
     height: -webkit-fit-content;
     height: -moz-fit-content;
@@ -489,25 +493,25 @@ footer {
     flex-direction: row;
     justify-content: space-around;
   }
-  .modalBg .filterModal .filterArea .mileage .milIcon {
+  .modalBg .filterModal .filterArea .filterAreaButtons .mileage .milIcon {
     margin-bottom: 20%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin-bottom: 0;
   }
-  .modalBg .filterModal .filterArea .mileage .milIcon img {
+  .modalBg .filterModal .filterArea .filterAreaButtons .mileage .milIcon img {
     height: -webkit-fit-content;
     height: -moz-fit-content;
     height: fit-content;
   }
-  .modalBg .filterModal .filterArea .mileage .milArea {
+  .modalBg .filterModal .filterArea .filterAreaButtons .mileage .milArea {
     display: flex;
   }
-  .modalBg .filterModal .filterArea .mileage .milArea .mileageOneEach {
+  .modalBg .filterModal .filterArea .filterAreaButtons .mileage .milArea .mileageOneEach {
     margin: 7% 0;
   }
-  .modalBg .filterModal .filterArea .location {
+  .modalBg .filterModal .filterArea .filterAreaButtons .location {
     width: 26%;
     height: -webkit-fit-content;
     height: -moz-fit-content;
@@ -520,23 +524,23 @@ footer {
     flex-direction: row;
     justify-content: space-around;
   }
-  .modalBg .filterModal .filterArea .location .locIcon {
+  .modalBg .filterModal .filterArea .filterAreaButtons .location .locIcon {
     margin-bottom: 20%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin-bottom: 0;
   }
-  .modalBg .filterModal .filterArea .location img {
+  .modalBg .filterModal .filterArea .filterAreaButtons .location img {
     height: -webkit-fit-content;
     height: -moz-fit-content;
     height: fit-content;
   }
-  .modalBg .filterModal .filterArea .location .locArea {
+  .modalBg .filterModal .filterArea .filterAreaButtons .location .locArea {
     display: flex;
   }
-  .modalBg .filterModal .filterArea .location .locArea .locationOneEach {
-    margin: 7% 0 10% 0;
+  .modalBg .filterModal .filterArea .filterAreaButtons .location .locArea .locationOneEach {
+    margin: 7% 0;
   }
   .modalBg .filterModal .closeModalButton {
     cursor: pointer;
@@ -551,12 +555,13 @@ footer {
   }
   .modalBg .filterModal .closeModalButton .closeModalButtonImg {
     width: 30%;
+    height: intrinsic;
   }
   .modalBg .filterModal .closeModalButton .closeModalReset {
     width: 35%;
   }
   .modalBg .filterModal .closeModalButton .closeModalReset .closeModalResetImg {
-    width: 60%;
+    width: 57%;
   }
   .filter {
     position: fixed;
