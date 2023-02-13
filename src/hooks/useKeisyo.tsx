@@ -147,7 +147,7 @@ export const useKeisyo = () => {
       setModalFlag(true)
     } else if (
       (e.target as Element).className == "modalBg" ||
-      (e.target as Element).className == "closeModalButton"
+      (e.target as Element).className == "closeModalButtonImg"
     ) {
       setModalFlag(false)
     }

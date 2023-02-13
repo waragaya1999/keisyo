@@ -140,7 +140,7 @@ header {
       display: flex;
       background-color: #f8f8f8;
       border-radius: 1rem;
-      box-shadow: 3px 5px 15px 0px rgba(0, 0, 0, 0.2);
+      border: rgba(0, 0, 0, 0.2) solid 1px;
       margin: 0 auto;
       margin-top: 1.6vh;
       cursor: pointer;
@@ -316,22 +316,22 @@ footer {
     .detailBodyText {
       width: 70%;
     }
-    .detailBodyBasic {
-      @include detailBody();
-      width: 70%;
-      .detailBodyLabel {
-        width: 15%;
-      }
-      .detailBodyText {
-        width: 80%;
-      }
-      .detailBodyName {
-        margin-bottom: 1vh;
-      }
-      .detailBodyDescription {
-        line-height: 1.5;
-      }
-    }
+    // .detailBodyBasic {
+    //   @include detailBody();
+    //   width: 70%;
+    //   .detailBodyLabel {
+    //     width: 15%;
+    //   }
+    //   .detailBodyText {
+    //     width: 80%;
+    //   }
+    //   .detailBodyName {
+    //     margin-bottom: 1vh;
+    //   }
+    //   .detailBodyDescription {
+    //     line-height: 1.5;
+    //   }
+    // }
     .detailBodyTerms {
       @include detailBody();
       width: 48%;
@@ -466,15 +466,13 @@ footer {
       }
       .closeModalButton {
         @include button();
-        width: fit-content;
-        font-size: 1.5rem;
-        color: #666;
-        background-color: #fff;
-        border: rgb(121, 63, 24, 0.5) 1px solid;
-        border-radius: 8px;
-        box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.4);
-        padding: 1.5% 12%;
+        width: 60%;
+        display: flex;
+        justify-content: space-between;
         margin: 0 auto;
+        .closeModalButtonImg {
+          width: 44%;
+        }
       }
     }
   }
@@ -587,6 +585,7 @@ footer {
       height: 80dvh;
     }
   }
+
   .detail {
     .detailBody {
       .detailBodyLowerRow {

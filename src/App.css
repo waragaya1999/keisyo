@@ -75,7 +75,7 @@ header .logo {
   display: flex;
   background-color: #f8f8f8;
   border-radius: 1rem;
-  box-shadow: 3px 5px 15px 0px rgba(0, 0, 0, 0.2);
+  border: rgba(0, 0, 0, 0.2) solid 1px;
   margin: 0 auto;
   margin-top: 1.6vh;
   cursor: pointer;
@@ -307,28 +307,6 @@ footer {
 .detail .detailBody .detailBodyText {
   width: 70%;
 }
-.detail .detailBody .detailBodyBasic {
-  background-color: #fff;
-  -webkit-backdrop-filter: blur(100px);
-  backdrop-filter: blur(100px);
-  border-radius: 10px;
-  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.2) inset;
-  margin-bottom: 5%;
-  padding: 2vh 0 3vh 0;
-  width: 70%;
-}
-.detail .detailBody .detailBodyBasic .detailBodyLabel {
-  width: 15%;
-}
-.detail .detailBody .detailBodyBasic .detailBodyText {
-  width: 80%;
-}
-.detail .detailBody .detailBodyBasic .detailBodyName {
-  margin-bottom: 1vh;
-}
-.detail .detailBody .detailBodyBasic .detailBodyDescription {
-  line-height: 1.5;
-}
 .detail .detailBody .detailBodyTerms {
   background-color: #fff;
   -webkit-backdrop-filter: blur(100px);
@@ -528,17 +506,13 @@ footer {
     -moz-user-select: none;
     -webkit-user-select: none;
             user-select: none;
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
-    width: fit-content;
-    font-size: 1.5rem;
-    color: #666;
-    background-color: #fff;
-    border: rgba(121, 63, 24, 0.5) 1px solid;
-    border-radius: 8px;
-    box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.4);
-    padding: 1.5% 12%;
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
     margin: 0 auto;
+  }
+  .modalBg .filterModal .closeModalButton .closeModalButtonImg {
+    width: 44%;
   }
   .filter {
     position: fixed;

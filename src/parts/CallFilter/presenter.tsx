@@ -50,7 +50,16 @@ export const CallFilterPresenter: React.FC<Props> = (props) => {
             storedLocs={storedLocs}
             switchList={switchList}
           />
-          <div className="closeModalButton">OK</div>
+          <div className="closeModalButton">
+            <img
+              src="https://uma-keisyo.com/images/ok.svg"
+              className="closeModalButtonImg"
+            />
+            <img
+              src="https://uma-keisyo.com/images/reset.svg"
+              className="closeModalButtonImg"
+            />
+          </div>
         </div>
       </div>
     </>

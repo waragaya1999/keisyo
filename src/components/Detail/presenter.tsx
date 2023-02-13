@@ -52,7 +52,7 @@ export const DetailPresenter: React.FC<Props> = (props) => {
                 </div>
               </div>
               <div className="detailBody">
-                <div className="detailBodyBasic">
+                {/* <div className="detailBodyBasic">
                   <h3>基本情報</h3>
                   <hr />
                   <div className="detailBodyName detailBodyFlex">
@@ -63,7 +63,7 @@ export const DetailPresenter: React.FC<Props> = (props) => {
                     <p className="detailBodyLabel">説明</p>
                     <p className="detailBodyText">{detail.body}</p>
                   </div>
-                </div>
+                </div> */}
                 <div className="detailBodyLowerRow">
                   <div className="detailBodyTerms">
                     <h3>発動条件</h3>
@@ -146,10 +146,11 @@ export const DetailPresenter: React.FC<Props> = (props) => {
                   </div>
                 </div>
               </div>
-              <div onClick={() => navigate("/")}>
+              <div>
                 <img
                   src="https://uma-keisyo.com/images/back.svg"
                   className="buttonBack"
+                  onClick={() => navigate("/")}
                 />
               </div>
             </div>
