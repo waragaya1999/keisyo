@@ -132,6 +132,13 @@ export const useKeisyo = () => {
     setFilterList(tempList)
   }
 
+  const resetFilterList = async () => {
+    updateCats([])
+    updateMils([])
+    updateLocs([])
+    updateFilterList([], [], [])
+  }
+
   const switchList = async (cat: string, mil: string, loc: string) => {
     const array1 = await updateCategories(cat)
     const array2 = await updateMileages(mil)
@@ -157,6 +164,7 @@ export const useKeisyo = () => {
     getList,
     filterList,
     updateFilterList,
+    resetFilterList,
     switchList,
     isLoaded,
     modalFlag,

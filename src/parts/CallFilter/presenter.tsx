@@ -12,6 +12,7 @@ export const CallFilterPresenter: React.FC<Props> = (props) => {
     storedCats,
     storedMils,
     storedLocs,
+    resetFilterList,
     switchList,
     modalFlag,
   } = props
@@ -55,10 +56,13 @@ export const CallFilterPresenter: React.FC<Props> = (props) => {
               src="https://uma-keisyo.com/images/ok.svg"
               className="closeModalButtonImg"
             />
-            <img
-              src="https://uma-keisyo.com/images/reset.svg"
-              className="closeModalButtonImg"
-            />
+            <div className="closeModalReset">
+              <img
+                src="https://uma-keisyo.com/images/reset.svg"
+                className="closeModalResetImg"
+                onClick={resetFilterList}
+              />
+            </div>
           </div>
         </div>
       </div>

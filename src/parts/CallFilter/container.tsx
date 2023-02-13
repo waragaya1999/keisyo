@@ -14,6 +14,7 @@ export const CallFilter: React.FC<Props> = (props) => {
     storedCats,
     storedMils,
     storedLocs,
+    resetFilterList,
     switchList,
     modalFlag,
   } = props
@@ -26,6 +27,7 @@ export const CallFilter: React.FC<Props> = (props) => {
       storedCats={storedCats}
       storedMils={storedMils}
       storedLocs={storedLocs}
+      resetFilterList={resetFilterList}
       switchList={switchList}
       modalFlag={modalFlag}
     />

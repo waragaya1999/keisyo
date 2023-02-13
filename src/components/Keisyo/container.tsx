@@ -7,6 +7,7 @@ export const Keisyo: React.FC = () => {
     getList,
     filterList,
     updateFilterList,
+    resetFilterList,
     switchList,
     isLoaded,
     modalFlag,
@@ -24,6 +25,7 @@ export const Keisyo: React.FC = () => {
         storedMils={storedMils}
         storedLocs={storedLocs}
         updateFilterList={updateFilterList}
+        resetFilterList={resetFilterList}
         switchList={switchList}
         modalFlag={modalFlag}
         closeModal={closeModal}

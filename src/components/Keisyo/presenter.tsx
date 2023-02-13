@@ -15,6 +15,7 @@ type Props = {
     mils: string[],
     locs: string[],
   ) => Promise<void>
+  resetFilterList: () => Promise<void>
   switchList: (cat: string, mil: string, loc: string) => Promise<void>
   isLoaded: boolean
   modalFlag: boolean
@@ -30,6 +31,7 @@ export const KeisyoPresenter: React.FC<Props> = (props) => {
     storedMils,
     storedLocs,
     updateFilterList,
+    resetFilterList,
     switchList,
     modalFlag,
     closeModal,
@@ -67,6 +69,7 @@ export const KeisyoPresenter: React.FC<Props> = (props) => {
                   storedCats={storedCats}
                   storedMils={storedMils}
                   storedLocs={storedLocs}
+                  resetFilterList={resetFilterList}
                   switchList={switchList}
                 />
               </div>
@@ -88,6 +91,7 @@ export const KeisyoPresenter: React.FC<Props> = (props) => {
                 storedCats={storedCats}
                 storedMils={storedMils}
                 storedLocs={storedLocs}
+                resetFilterList={resetFilterList}
                 switchList={switchList}
                 modalFlag={modalFlag}
               />

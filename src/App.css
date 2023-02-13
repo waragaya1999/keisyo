@@ -120,10 +120,12 @@ header .logo {
   width: 28%;
   max-height: 80dvh;
   display: flex;
-  justify-content: space-between;
-  font-family: "FOT-ロダンわんぱく Pro DB", "Noto Sans JP";
+  flex-direction: column;
 }
-.filterArea .category {
+.filterArea .filterAreaButtons {
+  display: flex;
+}
+.filterArea .filterAreaButtons .category {
   width: 26%;
   height: -webkit-fit-content;
   height: -moz-fit-content;
@@ -132,25 +134,25 @@ header .logo {
   display: flex;
   flex-direction: column;
 }
-.filterArea .category img {
+.filterArea .filterAreaButtons .category img {
   width: 80%;
   height: 70%;
   margin: 0 auto;
 }
-.filterArea .category p {
+.filterArea .filterAreaButtons .category p {
   font-size: 1.5rem;
   margin: 0;
   margin-top: 1vh;
 }
-.filterArea .category .catIcon {
+.filterArea .filterAreaButtons .category .catIcon {
   margin-bottom: 20%;
 }
-.filterArea .category .catArea {
+.filterArea .filterAreaButtons .category .catArea {
   background-color: rgb(255, 255, 255);
   border-radius: 10px;
   padding: 0 1%;
 }
-.filterArea .category .catArea .categoryOneEach {
+.filterArea .filterAreaButtons .category .catArea .categoryOneEach {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -159,7 +161,7 @@ header .logo {
   cursor: pointer;
   margin: 25% 0;
 }
-.filterArea .mileage {
+.filterArea .filterAreaButtons .mileage {
   width: 26%;
   height: -webkit-fit-content;
   height: -moz-fit-content;
@@ -168,25 +170,25 @@ header .logo {
   display: flex;
   flex-direction: column;
 }
-.filterArea .mileage img {
+.filterArea .filterAreaButtons .mileage img {
   width: 80%;
   height: 70%;
   margin: 0 auto;
 }
-.filterArea .mileage p {
+.filterArea .filterAreaButtons .mileage p {
   font-size: 1.5rem;
   margin: 0;
   margin-top: 1vh;
 }
-.filterArea .mileage .milIcon {
+.filterArea .filterAreaButtons .mileage .milIcon {
   margin-bottom: 20%;
 }
-.filterArea .mileage .milArea {
+.filterArea .filterAreaButtons .mileage .milArea {
   background-color: rgb(255, 255, 255);
   border-radius: 10px;
   padding: 0 1%;
 }
-.filterArea .mileage .milArea .mileageOneEach {
+.filterArea .filterAreaButtons .mileage .milArea .mileageOneEach {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -195,7 +197,7 @@ header .logo {
   cursor: pointer;
   margin: 25% 0;
 }
-.filterArea .location {
+.filterArea .filterAreaButtons .location {
   width: 26%;
   height: -webkit-fit-content;
   height: -moz-fit-content;
@@ -204,25 +206,25 @@ header .logo {
   display: flex;
   flex-direction: column;
 }
-.filterArea .location img {
+.filterArea .filterAreaButtons .location img {
   width: 80%;
   height: 70%;
   margin: 0 auto;
 }
-.filterArea .location p {
+.filterArea .filterAreaButtons .location p {
   font-size: 1.5rem;
   margin: 0;
   margin-top: 1vh;
 }
-.filterArea .location .locIcon {
+.filterArea .filterAreaButtons .location .locIcon {
   margin-bottom: 20%;
 }
-.filterArea .location .locArea {
+.filterArea .filterAreaButtons .location .locArea {
   background-color: rgb(255, 255, 255);
   border-radius: 10px;
   padding: 0 1%;
 }
-.filterArea .location .locArea .locationOneEach {
+.filterArea .filterAreaButtons .location .locArea .locationOneEach {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -230,6 +232,15 @@ header .logo {
   color: #888;
   cursor: pointer;
   margin: 25% 0;
+}
+.filterArea .resetFilter {
+  width: 95%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 4rem;
+}
+.filterArea .resetFilter img {
+  width: 30%;
 }
 
 footer {
@@ -378,6 +389,24 @@ footer {
   .filteredList ul li .listText .effectQuantity {
     margin-top: 1.5%;
   }
+  .filterArea {
+    width: 28%;
+    max-height: 80dvh;
+    display: flex;
+    flex-direction: column;
+  }
+  .filterArea .filterAreaButtons {
+    display: flex;
+    flex-direction: column;
+  }
+  .filterArea .resetFilter {
+    width: 100%;
+    margin-top: 2rem;
+    display: none;
+  }
+  .filterArea .resetFilter img {
+    width: 30%;
+  }
   .modalBg {
     width: 100%;
     height: 100%;
@@ -506,13 +535,18 @@ footer {
     -moz-user-select: none;
     -webkit-user-select: none;
             user-select: none;
-    width: 60%;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
+    justify-content: flex-end;
   }
   .modalBg .filterModal .closeModalButton .closeModalButtonImg {
-    width: 44%;
+    width: 30%;
+  }
+  .modalBg .filterModal .closeModalButton .closeModalReset {
+    width: 35%;
+  }
+  .modalBg .filterModal .closeModalButton .closeModalReset .closeModalResetImg {
+    width: 60%;
   }
   .filter {
     position: fixed;
