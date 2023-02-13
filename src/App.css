@@ -142,7 +142,7 @@ header .logo {
 .filterArea .filterAreaButtons .category p {
   font-size: 1.5rem;
   margin: 0;
-  margin-top: 1vh;
+  margin-top: 12%;
 }
 .filterArea .filterAreaButtons .category .catIcon {
   margin-bottom: 20%;
@@ -150,7 +150,6 @@ header .logo {
 .filterArea .filterAreaButtons .category .catArea {
   background-color: rgb(255, 255, 255);
   border-radius: 10px;
-  padding: 0 1%;
 }
 .filterArea .filterAreaButtons .category .catArea .categoryOneEach {
   width: 100%;
@@ -159,7 +158,7 @@ header .logo {
   text-align: center;
   color: #888;
   cursor: pointer;
-  margin: 25% 0;
+  margin: 10% 0 15% 0;
 }
 .filterArea .filterAreaButtons .mileage {
   width: 26%;
@@ -178,7 +177,7 @@ header .logo {
 .filterArea .filterAreaButtons .mileage p {
   font-size: 1.5rem;
   margin: 0;
-  margin-top: 1vh;
+  margin-top: 12%;
 }
 .filterArea .filterAreaButtons .mileage .milIcon {
   margin-bottom: 20%;
@@ -186,7 +185,6 @@ header .logo {
 .filterArea .filterAreaButtons .mileage .milArea {
   background-color: rgb(255, 255, 255);
   border-radius: 10px;
-  padding: 0 1%;
 }
 .filterArea .filterAreaButtons .mileage .milArea .mileageOneEach {
   width: 100%;
@@ -195,7 +193,7 @@ header .logo {
   text-align: center;
   color: #888;
   cursor: pointer;
-  margin: 25% 0;
+  margin: 10% 0 15% 0;
 }
 .filterArea .filterAreaButtons .location {
   width: 26%;
@@ -214,7 +212,7 @@ header .logo {
 .filterArea .filterAreaButtons .location p {
   font-size: 1.5rem;
   margin: 0;
-  margin-top: 1vh;
+  margin-top: 12%;
 }
 .filterArea .filterAreaButtons .location .locIcon {
   margin-bottom: 20%;
@@ -222,7 +220,6 @@ header .logo {
 .filterArea .filterAreaButtons .location .locArea {
   background-color: rgb(255, 255, 255);
   border-radius: 10px;
-  padding: 0 1%;
 }
 .filterArea .filterAreaButtons .location .locArea .locationOneEach {
   width: 100%;
@@ -231,16 +228,29 @@ header .logo {
   text-align: center;
   color: #888;
   cursor: pointer;
-  margin: 25% 0;
+  margin: 10% 0 15% 0;
 }
 .filterArea .resetFilter {
-  width: 95%;
+  width: 100%;
   display: flex;
   justify-content: flex-end;
-  margin-top: 4rem;
+  margin-top: 2rem;
 }
-.filterArea .resetFilter img {
-  width: 30%;
+.filterArea .resetFilter .adjustResetFilter {
+  width: 26%;
+  background-color: #fff;
+  border-radius: 1rem;
+  margin: 0 3.666%;
+}
+.filterArea .resetFilter .adjustResetFilter img {
+  width: 80%;
+  margin-top: 10%;
+}
+.filterArea .resetFilter .adjustResetFilter p {
+  font-size: 1.5rem;
+  margin: 0;
+  margin-top: 12%;
+  margin-bottom: 15%;
 }
 
 footer {

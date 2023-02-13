@@ -1,3 +1,4 @@
+import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { CallFilter } from "../../parts/CallFilter/container"
 import { ResponseDto } from "../../types/ResponseDto"
@@ -37,9 +38,24 @@ export const KeisyoPresenter: React.FC<Props> = (props) => {
     closeModal,
   } = props
   const navigate = useNavigate()
+  const [width, setWidth] = useState(0)
+  const ref = React.useRef<HTMLDivElement | null>(null)
+  React.useEffect(() => {
+    const observer = new ResizeObserver((entries) => {
+      entries.forEach((el) => {
+        setWidth(el.contentRect.width)
+      })
+    })
+    if (ref.current) {
+      observer.observe(ref.current)
+    }
+    return () => {
+      observer.disconnect()
+    }
+  }, [])
 
   return (
-    <div className="wrap" onClick={closeModal}>
+    <div className="wrap" onClick={closeModal} ref={ref}>
       <div className="bg">
         <div
           style={{

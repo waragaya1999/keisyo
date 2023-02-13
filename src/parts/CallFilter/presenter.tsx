@@ -49,6 +49,7 @@ export const CallFilterPresenter: React.FC<Props> = (props) => {
             storedCats={storedCats}
             storedMils={storedMils}
             storedLocs={storedLocs}
+            resetFilterList={resetFilterList}
             switchList={switchList}
           />
           <div className="closeModalButton">

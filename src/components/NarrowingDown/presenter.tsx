@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { Acceleration } from "../../parts/Acceleration/container"
 import { Corner } from "../../parts/Corner/container"
 import { Debuff } from "../../parts/Debuff/container"
@@ -17,6 +18,7 @@ type Props = React.ComponentProps<typeof NarrowingDown>
 export const NarrowingDownPresenter: React.FC<Props> = (props) => {
   const { storedCats, storedMils, storedLocs, resetFilterList, switchList } =
     props
+  const [resetActive, setResetActive] = useState<boolean>(false)
   return (
     <div className="filterArea">
       <div className="filterAreaButtons">
@@ -58,10 +60,28 @@ export const NarrowingDownPresenter: React.FC<Props> = (props) => {
         </div>
       </div>
       <div className="resetFilter">
-        <img
-          src="https://uma-keisyo.com/images/reset.svg"
-          onClick={resetFilterList}
-        />
+        <div
+          className="adjustResetFilter"
+          onMouseEnter={() => {
+            setResetActive(true)
+          }}
+          onMouseLeave={() => {
+            setResetActive(false)
+          }}
+        >
+          {resetActive ? (
+            <img
+              src="https://uma-keisyo.com/images/filterReset.svg"
+              onClick={resetFilterList}
+            />
+          ) : (
+            <img
+              src="https://uma-keisyo.com/images/filterResetNonActive.svg"
+              onClick={resetFilterList}
+            />
+          )}
+          <p>リセット</p>
+        </div>
       </div>
     </div>
   )
