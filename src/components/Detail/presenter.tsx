@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom"
+
 type Props = {
   detail: {
     id: string
@@ -22,9 +24,9 @@ type Props = {
 
 export const DetailPresenter: React.FC<Props> = (props) => {
   const { detail } = props
+  const navigate = useNavigate()
   return (
     <>
-      {console.log(detail)}
       <div className="wrap">
         <div className="bg">
           <div
@@ -34,13 +36,126 @@ export const DetailPresenter: React.FC<Props> = (props) => {
             }}
           >
             <header className="header">
-              <img src="../src/images/logo.svg" className="logo" />
+              <img
+                src="https://uma-keisyo.com/images/logo.svg"
+                className="logo"
+                onClick={() => navigate("/")}
+              />
             </header>
-            <img src={detail.image.url} className="detailImg" />
-            <div>{detail.name}</div>
-            <div>{detail.body}</div>
+            <div className="detail">
+              <div className="detailCard">
+                <img src={detail.image.url} className="detailCardImg" />
+                <div className="detailCardText">
+                  <p>{detail.name}</p>
+                  <hr />
+                  <p className="detailCardBody">{detail.body}</p>
+                </div>
+              </div>
+              <div className="detailBody">
+                {/* <div className="detailBodyBasic">
+                  <h3>基本情報</h3>
+                  <hr />
+                  <div className="detailBodyName detailBodyFlex">
+                    <p className="detailBodyLabel">スキル名</p>
+                    <p className="detailBodyText">{detail.name}</p>
+                  </div>
+                  <div className="detailBodyDescription detailBodyFlex">
+                    <p className="detailBodyLabel">説明</p>
+                    <p className="detailBodyText">{detail.body}</p>
+                  </div>
+                </div> */}
+                <div className="detailBodyLowerRow">
+                  <div className="detailBodyTerms">
+                    <h3>発動条件</h3>
+                    <hr />
+                    <div className="detailBodyMileage detailBodyFlex">
+                      <p className="detailBodyLabel">発動距離</p>
+                      {detail.mileage == "finalStage" ? (
+                        <p className="detailBodyText">終盤</p>
+                      ) : detail.mileage == "final" ? (
+                        <p className="detailBodyText">最終</p>
+                      ) : detail.mileage == "secondHalf" ? (
+                        <p className="detailBodyText">後半</p>
+                      ) : (
+                        <p className="detailBodyText">中盤</p>
+                      )}
+                    </div>
+                    <div className="detailBodyLocation detailBodyFlex">
+                      <p className="detailBodyLabel">発動区画</p>
+                      {detail.location == "straight" ? (
+                        <p className="detailBodyText">直線</p>
+                      ) : detail.location == "corner" ? (
+                        <p className="detailBodyText">コーナー</p>
+                      ) : detail.location == "unconditional" ? (
+                        <p className="detailBodyText">無条件</p>
+                      ) : (
+                        <p className="detailBodyText">特定距離</p>
+                      )}
+                    </div>
+                    <div className="detailBodyTrigger detailBodyFlex">
+                      <p className="detailBodyLabel">発動順位</p>
+                      {detail.trigger.length == 1 ? (
+                        <p className="detailBodyText">{detail.trigger}</p>
+                      ) : detail.trigger.length == 2 ? (
+                        <p className="detailBodyText">
+                          {detail.trigger[0]}、{detail.trigger[1]}
+                        </p>
+                      ) : (
+                        <p className="detailBodyText">
+                          {detail.trigger[0]}〜
+                          {detail.trigger[detail.trigger.length - 1]}
+                        </p>
+                      )}
+                    </div>
+                    <div className="detailBodyAdditional detailBodyFlex">
+                      <p className="detailBodyLabel">追加条件</p>
+                      {detail.additional ? (
+                        <p className="detailBodyText">{detail.additional}</p>
+                      ) : (
+                        <p className="detailBodyText">-</p>
+                      )}
+                    </div>
+                  </div>
+                  <div className="detailBodyEffects">
+                    <h3>効果量</h3>
+                    <hr />
+                    <div className="detailBodyAmountOfVelocity detailBodyFlex">
+                      <p className="detailBodyLabel">速度効果量</p>
+                      {detail.amountOfVelocity ? (
+                        <p className="detailBodyText">
+                          {detail.amountOfVelocity}m/s
+                        </p>
+                      ) : (
+                        <p className="detailBodyText">-</p>
+                      )}
+                    </div>
+                    <div className="detailBodyAmountOfAcceleration detailBodyFlex">
+                      <p className="detailBodyLabel">加速効果量</p>
+                      {detail.amountOfAcceleration ? (
+                        <p className="detailBodyText">
+                          {detail.amountOfAcceleration}m/s^2
+                        </p>
+                      ) : (
+                        <p className="detailBodyText">-</p>
+                      )}
+                    </div>
+                    <div className="detailBodyDuration detailBodyFlex">
+                      <p className="detailBodyLabel">効果時間</p>
+                      <p className="detailBodyText">{detail.duration}秒</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <img
+                  src="https://uma-keisyo.com/images/back.svg"
+                  className="buttonBack"
+                  onClick={() => navigate("/")}
+                />
+              </div>
+            </div>
           </div>
-          <footer>©ケイショウコユウ All Rights Reserved.</footer>
+          <footer>©ケイショウチェッカー All Rights Reserved.</footer>
         </div>
       </div>
     </>

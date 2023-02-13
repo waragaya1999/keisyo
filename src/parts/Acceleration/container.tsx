@@ -3,12 +3,12 @@ import { AccelerationPresenter } from "./presenter"
 
 type Props = Pick<
   React.ComponentProps<typeof KeisyoPresenter>,
-  "categories" | "switchList"
+  "storedCats" | "switchList"
 >
 
 export const Acceleration: React.FC<Props> = (props) => {
-  const { categories, switchList } = props
+  const { storedCats, switchList } = props
   return (
-    <AccelerationPresenter categories={categories} switchList={switchList} />
+    <AccelerationPresenter storedCats={storedCats} switchList={switchList} />
   )
 }

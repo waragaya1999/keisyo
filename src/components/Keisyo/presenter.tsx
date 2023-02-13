@@ -1,3 +1,5 @@
+import React, { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { CallFilter } from "../../parts/CallFilter/container"
 import { ResponseDto } from "../../types/ResponseDto"
 import { FilterList } from "../FilterList/container"
@@ -6,9 +8,15 @@ import { NarrowingDown } from "../NarrowingDown/container"
 type Props = {
   getList: () => void
   filterList: ResponseDto[]
-  categories: string[]
-  mileages: string[]
-  locations: string[]
+  storedCats: string[]
+  storedMils: string[]
+  storedLocs: string[]
+  updateFilterList: (
+    cats: string[],
+    mils: string[],
+    locs: string[],
+  ) => Promise<void>
+  resetFilterList: () => Promise<void>
   switchList: (cat: string, mil: string, loc: string) => Promise<void>
   isLoaded: boolean
   modalFlag: boolean
@@ -20,16 +28,34 @@ export const KeisyoPresenter: React.FC<Props> = (props) => {
     getList,
     filterList,
     isLoaded,
-    categories,
-    mileages,
-    locations,
+    storedCats,
+    storedMils,
+    storedLocs,
+    updateFilterList,
+    resetFilterList,
     switchList,
     modalFlag,
     closeModal,
   } = props
+  const navigate = useNavigate()
+  const [width, setWidth] = useState(0)
+  const ref = React.useRef<HTMLDivElement | null>(null)
+  React.useEffect(() => {
+    const observer = new ResizeObserver((entries) => {
+      entries.forEach((el) => {
+        setWidth(el.contentRect.width)
+      })
+    })
+    if (ref.current) {
+      observer.observe(ref.current)
+    }
+    return () => {
+      observer.disconnect()
+    }
+  }, [])
 
   return (
-    <div className="wrap" onClick={closeModal}>
+    <div className="wrap" onClick={closeModal} ref={ref}>
       <div className="bg">
         <div
           style={{
@@ -38,20 +64,28 @@ export const KeisyoPresenter: React.FC<Props> = (props) => {
           }}
         >
           <header className="header">
-            <img src="./src/images/logo.svg" className="logo" />
+            <img
+              src="https://uma-keisyo.com/images/logo.svg"
+              className="logo"
+              onClick={() => navigate("/")}
+            />
           </header>
           {innerWidth > 600 ? (
             <>
               <div style={{ display: "flex" }}>
                 <FilterList
                   filterList={filterList}
+                  storedCats={storedCats}
+                  storedMils={storedMils}
+                  storedLocs={storedLocs}
+                  updateFilterList={updateFilterList}
                   isLoaded={isLoaded}
-                  getList={getList}
                 />
                 <NarrowingDown
-                  categories={categories}
-                  mileages={mileages}
-                  locations={locations}
+                  storedCats={storedCats}
+                  storedMils={storedMils}
+                  storedLocs={storedLocs}
+                  resetFilterList={resetFilterList}
                   switchList={switchList}
                 />
               </div>
@@ -60,23 +94,27 @@ export const KeisyoPresenter: React.FC<Props> = (props) => {
             <>
               <FilterList
                 filterList={filterList}
+                storedCats={storedCats}
+                storedMils={storedMils}
+                storedLocs={storedLocs}
+                updateFilterList={updateFilterList}
                 isLoaded={isLoaded}
-                getList={getList}
               />
               <CallFilter
                 getList={getList}
                 filterList={filterList}
                 isLoaded={isLoaded}
-                categories={categories}
-                mileages={mileages}
-                locations={locations}
+                storedCats={storedCats}
+                storedMils={storedMils}
+                storedLocs={storedLocs}
+                resetFilterList={resetFilterList}
                 switchList={switchList}
                 modalFlag={modalFlag}
               />
             </>
           )}
         </div>
-        <footer>©ケイショウコユウ All Rights Reserved.</footer>
+        <footer>©ケイショウチェッカー All Rights Reserved.</footer>
       </div>
     </div>
   )

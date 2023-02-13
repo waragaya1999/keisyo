@@ -1,13 +1,20 @@
 import { useState } from "react"
 import axios from "axios"
 import { ResponseDto } from "../types/ResponseDto"
+import useStore from "./useStore"
 
 export const useKeisyo = () => {
-  const [list, setList] = useState<ResponseDto[]>([])
+  const {
+    list,
+    storedCats,
+    storedMils,
+    storedLocs,
+    updateList,
+    updateCats,
+    updateMils,
+    updateLocs,
+  } = useStore()
   const [filterList, setFilterList] = useState<ResponseDto[]>([])
-  const [categories, setCategories] = useState<string[]>([])
-  const [mileages, setMileages] = useState<string[]>([])
-  const [locations, setLocations] = useState<string[]>([])
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
   const [modalFlag, setModalFlag] = useState(false)
 
@@ -22,7 +29,7 @@ export const useKeisyo = () => {
         },
       })
       .then((res) => {
-        setList(
+        updateList(
           res.data.contents.reduceRight(
             (p: string[], c: string[]) => [...p, c],
             [],
@@ -39,38 +46,38 @@ export const useKeisyo = () => {
   }
 
   const updateCategories = async (cat: string) => {
-    let tempArray = categories.slice()
-    if (!categories.includes(cat)) {
+    let tempArray = storedCats.slice()
+    if (!storedCats.includes(cat)) {
       tempArray.push(cat)
     } else {
       delete tempArray[tempArray.indexOf(cat)]
     }
     tempArray = tempArray.filter((v) => v)
-    setCategories(tempArray)
+    updateCats(tempArray)
     return tempArray
   }
 
   const updateMileages = async (mil: string) => {
-    let tempArray = mileages.slice()
-    if (!mileages.includes(mil)) {
+    let tempArray = storedMils.slice()
+    if (!storedMils.includes(mil)) {
       tempArray.push(mil)
     } else {
       delete tempArray[tempArray.indexOf(mil)]
     }
     tempArray = tempArray.filter((v) => v)
-    setMileages(tempArray)
+    updateMils(tempArray)
     return tempArray
   }
 
   const updateLocations = async (loc: string) => {
-    let tempArray = locations.slice()
-    if (!locations.includes(loc)) {
+    let tempArray = storedLocs.slice()
+    if (!storedLocs.includes(loc)) {
       tempArray.push(loc)
     } else {
       delete tempArray[tempArray.indexOf(loc)]
     }
     tempArray = tempArray.filter((v) => v)
-    setLocations(tempArray)
+    updateLocs(tempArray)
     return tempArray
   }
 
@@ -91,6 +98,7 @@ export const useKeisyo = () => {
             return item.category.length != 0 && isIncludes
           })
           .flat()
+        updateCats(cats)
       }
       if (mils.length != 0) {
         tempList = tempList
@@ -102,6 +110,7 @@ export const useKeisyo = () => {
             return item.mileage.length != 0 && isIncludes
           })
           .flat()
+        updateMils(mils)
       }
       if (locs.length != 0) {
         tempList = tempList
@@ -113,11 +122,21 @@ export const useKeisyo = () => {
             return item.location.length != 0 && isIncludes
           })
           .flat()
+        updateLocs(locs)
       }
+      setIsLoaded(true)
     } else {
+      getList()
       tempList = list
     }
     setFilterList(tempList)
+  }
+
+  const resetFilterList = async () => {
+    updateCats([])
+    updateMils([])
+    updateLocs([])
+    updateFilterList([], [], [])
   }
 
   const switchList = async (cat: string, mil: string, loc: string) => {
@@ -128,36 +147,24 @@ export const useKeisyo = () => {
   }
 
   const closeModal = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    if ((e.target as Element).className == "filter") {
+    if (
+      (e.target as Element).className == "filter" ||
+      (e.target as Element).className == "buttonFilter"
+    ) {
       setModalFlag(true)
     } else if (
-      (e.target as Element).className != "filterModal" &&
-      (e.target as Element).className != "filterArea" &&
-      (e.target as Element).className != "category" &&
-      (e.target as Element).className != "catIcon" &&
-      (e.target as Element).className != "catArea" &&
-      (e.target as Element).className != "categoryOneEach" &&
-      (e.target as Element).className != "mileage" &&
-      (e.target as Element).className != "milIcon" &&
-      (e.target as Element).className != "milArea" &&
-      (e.target as Element).className != "mileageOneEach" &&
-      (e.target as Element).className != "location" &&
-      (e.target as Element).className != "locIcon" &&
-      (e.target as Element).className != "locArea" &&
-      (e.target as Element).className != "locationOneEach" &&
-      (e.target as Element).className != "escCloseModal"
+      (e.target as Element).className == "modalBg" ||
+      (e.target as Element).className == "closeModalButtonImg"
     ) {
       setModalFlag(false)
     }
-    console.log((e.target as Element).className)
   }
 
   return {
     getList,
     filterList,
-    categories,
-    mileages,
-    locations,
+    updateFilterList,
+    resetFilterList,
     switchList,
     isLoaded,
     modalFlag,

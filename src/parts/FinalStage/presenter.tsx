@@ -3,7 +3,7 @@ import { FinalStage } from "./container"
 type Props = React.ComponentProps<typeof FinalStage>
 
 export const FinalStagePresenter: React.FC<Props> = (props) => {
-  const { mileages, switchList } = props
+  const { storedMils, switchList } = props
   return (
     <div
       className="mileageOneEach"
@@ -11,23 +11,15 @@ export const FinalStagePresenter: React.FC<Props> = (props) => {
         switchList("", "finalStage", "")
       }}
     >
-      {!mileages.includes("finalStage") ? (
+      {!storedMils.includes("finalStage") ? (
         <>
-          <img
-            src="./src/images/mileageFinalStageGray.svg"
-            className="escCloseModal"
-          />
-          <p className="escCloseModal">終盤</p>
+          <img src="https://uma-keisyo.com/images/mileageFinalStageGray.svg" />
+          <p>終盤</p>
         </>
       ) : (
         <>
-          <img
-            src="./src/images/mileageFinalStage.svg"
-            className="escCloseModal"
-          />
-          <p className="escCloseModal" style={{ color: "#F4A02F" }}>
-            終盤
-          </p>
+          <img src="https://uma-keisyo.com/images/mileageFinalStage.svg" />
+          <p style={{ color: "#F4A02F" }}>終盤</p>
         </>
       )}
     </div>

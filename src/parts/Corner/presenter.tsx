@@ -3,7 +3,7 @@ import { Corner } from "./container"
 type Props = React.ComponentProps<typeof Corner>
 
 export const CornerPresenter: React.FC<Props> = (props) => {
-  const { locations, switchList } = props
+  const { storedLocs, switchList } = props
   return (
     <div
       className="locationOneEach"
@@ -11,23 +11,15 @@ export const CornerPresenter: React.FC<Props> = (props) => {
         switchList("", "", "corner")
       }}
     >
-      {!locations.includes("corner") ? (
+      {!storedLocs.includes("corner") ? (
         <>
-          <img
-            src="./src/images/locationCornerGray.svg"
-            className="escCloseModal"
-          />
-          <p className="escCloseModal">コーナー</p>
+          <img src="https://uma-keisyo.com/images/locationCornerGray.svg" />
+          <p>コーナー</p>
         </>
       ) : (
         <>
-          <img
-            src="./src/images/locationCorner.svg"
-            className="escCloseModal"
-          />
-          <p className="escCloseModal" style={{ color: "#F4A02F" }}>
-            コーナー
-          </p>
+          <img src="https://uma-keisyo.com/images/locationCorner.svg" />
+          <p style={{ color: "#F4A02F" }}>コーナー</p>
         </>
       )}
     </div>

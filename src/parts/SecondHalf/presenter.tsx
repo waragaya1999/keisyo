@@ -3,7 +3,7 @@ import { SecondHalf } from "./container"
 type Props = React.ComponentProps<typeof SecondHalf>
 
 export const SecondHalfPresenter: React.FC<Props> = (props) => {
-  const { mileages, switchList } = props
+  const { storedMils, switchList } = props
   return (
     <div
       className="mileageOneEach"
@@ -11,23 +11,15 @@ export const SecondHalfPresenter: React.FC<Props> = (props) => {
         switchList("", "secondHalf", "")
       }}
     >
-      {!mileages.includes("secondHalf") ? (
+      {!storedMils.includes("secondHalf") ? (
         <>
-          <img
-            src="./src/images/mileageSecondHalfGray.svg"
-            className="escCloseModal"
-          />
-          <p className="escCloseModal">後半</p>
+          <img src="https://uma-keisyo.com/images/mileageSecondHalfGray.svg" />
+          <p>後半</p>
         </>
       ) : (
         <>
-          <img
-            src="./src/images/mileageSecondHalf.svg"
-            className="escCloseModal"
-          />
-          <p className="escCloseModal" style={{ color: "#F4A02F" }}>
-            後半
-          </p>
+          <img src="https://uma-keisyo.com/images/mileageSecondHalf.svg" />
+          <p style={{ color: "#F4A02F" }}>後半</p>
         </>
       )}
     </div>

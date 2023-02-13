@@ -3,10 +3,10 @@ import { RecoveryPresenter } from "./presenter"
 
 type Props = Pick<
   React.ComponentProps<typeof KeisyoPresenter>,
-  "categories" | "switchList"
+  "storedCats" | "switchList"
 >
 
 export const Recovery: React.FC<Props> = (props) => {
-  const { categories, switchList } = props
-  return <RecoveryPresenter categories={categories} switchList={switchList} />
+  const { storedCats, switchList } = props
+  return <RecoveryPresenter storedCats={storedCats} switchList={switchList} />
 }

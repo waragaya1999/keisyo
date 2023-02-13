@@ -3,10 +3,10 @@ import { CornerPresenter } from "./presenter"
 
 type Props = Pick<
   React.ComponentProps<typeof KeisyoPresenter>,
-  "locations" | "switchList"
+  "storedLocs" | "switchList"
 >
 
 export const Corner: React.FC<Props> = (props) => {
-  const { locations, switchList } = props
-  return <CornerPresenter locations={locations} switchList={switchList} />
+  const { storedLocs, switchList } = props
+  return <CornerPresenter storedLocs={storedLocs} switchList={switchList} />
 }

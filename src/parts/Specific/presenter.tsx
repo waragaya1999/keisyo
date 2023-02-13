@@ -3,7 +3,7 @@ import { Specific } from "./container"
 type Props = React.ComponentProps<typeof Specific>
 
 export const SpecificPresenter: React.FC<Props> = (props) => {
-  const { locations, switchList } = props
+  const { storedLocs, switchList } = props
   return (
     <div
       className="locationOneEach"
@@ -11,23 +11,15 @@ export const SpecificPresenter: React.FC<Props> = (props) => {
         switchList("", "", "specific")
       }}
     >
-      {!locations.includes("specific") ? (
+      {!storedLocs.includes("specific") ? (
         <>
-          <img
-            src="./src/images/locationSpecificGray.svg"
-            className="escCloseModal"
-          />
-          <p className="escCloseModal">距離</p>
+          <img src="https://uma-keisyo.com/images/locationSpecificGray.svg" />
+          <p>距離</p>
         </>
       ) : (
         <>
-          <img
-            src="./src/images/locationSpecific.svg"
-            className="escCloseModal"
-          />
-          <p className="escCloseModal" style={{ color: "#F4A02F" }}>
-            距離
-          </p>
+          <img src="https://uma-keisyo.com/images/locationSpecific.svg" />
+          <p style={{ color: "#F4A02F" }}>距離</p>
         </>
       )}
     </div>

@@ -1,18 +1,36 @@
-import { useEffect } from "react"
+import { useLayoutEffect } from "react"
 import { KeisyoPresenter } from "../Keisyo/presenter"
 import { FilterListPresenter } from "./presenter"
 
 type Props = Pick<
   React.ComponentProps<typeof KeisyoPresenter>,
-  "filterList" | "isLoaded" | "getList"
+  | "filterList"
+  | "storedCats"
+  | "storedMils"
+  | "storedLocs"
+  | "updateFilterList"
+  | "isLoaded"
 >
 
 export const FilterList: React.FC<Props> = (props) => {
-  const { filterList, isLoaded, getList } = props
+  const {
+    filterList,
+    storedCats,
+    storedMils,
+    storedLocs,
+    updateFilterList,
+    isLoaded,
+  } = props
 
-  useEffect(() => {
-    getList()
+  useLayoutEffect(() => {
+    updateFilterList(storedCats, storedMils, storedLocs)
   }, [])
 
-  return <FilterListPresenter filterList={filterList} isLoaded={isLoaded} />
+  return (
+    <FilterListPresenter
+      updateFilterList={updateFilterList}
+      filterList={filterList}
+      isLoaded={isLoaded}
+    />
+  )
 }

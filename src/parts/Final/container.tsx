@@ -3,10 +3,10 @@ import { FinalPresenter } from "./presenter"
 
 type Props = Pick<
   React.ComponentProps<typeof KeisyoPresenter>,
-  "mileages" | "switchList"
+  "storedMils" | "switchList"
 >
 
 export const Final: React.FC<Props> = (props) => {
-  const { mileages, switchList } = props
-  return <FinalPresenter mileages={mileages} switchList={switchList} />
+  const { storedMils, switchList } = props
+  return <FinalPresenter storedMils={storedMils} switchList={switchList} />
 }

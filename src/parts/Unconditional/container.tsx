@@ -3,12 +3,12 @@ import { UnconditionalPresenter } from "./presenter"
 
 type Props = Pick<
   React.ComponentProps<typeof KeisyoPresenter>,
-  "locations" | "switchList"
+  "storedLocs" | "switchList"
 >
 
 export const Unconditional: React.FC<Props> = (props) => {
-  const { locations, switchList } = props
+  const { storedLocs, switchList } = props
   return (
-    <UnconditionalPresenter locations={locations} switchList={switchList} />
+    <UnconditionalPresenter storedLocs={storedLocs} switchList={switchList} />
   )
 }

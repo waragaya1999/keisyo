@@ -1,16 +1,20 @@
 import { KeisyoPresenter } from "../../components/Keisyo/presenter"
 import { CallFilterPresenter } from "./presenter"
 
-type Props = Omit<React.ComponentProps<typeof KeisyoPresenter>, "closeModal">
+type Props = Omit<
+  React.ComponentProps<typeof KeisyoPresenter>,
+  "categories" | "mileages" | "locations" | "updateFilterList" | "closeModal"
+>
 
 export const CallFilter: React.FC<Props> = (props) => {
   const {
     getList,
     filterList,
     isLoaded,
-    categories,
-    mileages,
-    locations,
+    storedCats,
+    storedMils,
+    storedLocs,
+    resetFilterList,
     switchList,
     modalFlag,
   } = props
@@ -20,9 +24,10 @@ export const CallFilter: React.FC<Props> = (props) => {
       getList={getList}
       filterList={filterList}
       isLoaded={isLoaded}
-      categories={categories}
-      mileages={mileages}
-      locations={locations}
+      storedCats={storedCats}
+      storedMils={storedMils}
+      storedLocs={storedLocs}
+      resetFilterList={resetFilterList}
       switchList={switchList}
       modalFlag={modalFlag}
     />

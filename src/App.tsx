@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import "./reset.css"
-import "./App.css"
+import "./App.min.css"
 import { Detail } from "./components/Detail/container"
 import { Keisyo } from "./components/Keisyo/container"
 

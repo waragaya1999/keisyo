@@ -3,10 +3,10 @@ import { DebuffPresenter } from "./presenter"
 
 type Props = Pick<
   React.ComponentProps<typeof KeisyoPresenter>,
-  "categories" | "switchList"
+  "storedCats" | "switchList"
 >
 
 export const Debuff: React.FC<Props> = (props) => {
-  const { categories, switchList } = props
-  return <DebuffPresenter categories={categories} switchList={switchList} />
+  const { storedCats, switchList } = props
+  return <DebuffPresenter storedCats={storedCats} switchList={switchList} />
 }

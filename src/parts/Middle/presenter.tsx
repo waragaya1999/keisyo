@@ -3,7 +3,7 @@ import { Middle } from "./container"
 type Props = React.ComponentProps<typeof Middle>
 
 export const MiddlePresenter: React.FC<Props> = (props) => {
-  const { mileages, switchList } = props
+  const { storedMils, switchList } = props
   return (
     <div
       className="mileageOneEach"
@@ -11,20 +11,15 @@ export const MiddlePresenter: React.FC<Props> = (props) => {
         switchList("", "middle", "")
       }}
     >
-      {!mileages.includes("middle") ? (
+      {!storedMils.includes("middle") ? (
         <>
-          <img
-            src="./src/images/mileageMiddleGray.svg"
-            className="escCloseModal"
-          />
-          <p className="escCloseModal">中盤</p>
+          <img src="https://uma-keisyo.com/images/mileageMiddleGray.svg" />
+          <p>中盤</p>
         </>
       ) : (
         <>
-          <img src="./src/images/mileageMiddle.svg" className="escCloseModal" />
-          <p className="escCloseModal" style={{ color: "#F4A02F" }}>
-            中盤
-          </p>
+          <img src="https://uma-keisyo.com/images/mileageMiddle.svg" />
+          <p style={{ color: "#F4A02F" }}>中盤</p>
         </>
       )}
     </div>
