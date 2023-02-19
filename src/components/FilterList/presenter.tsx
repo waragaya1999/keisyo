@@ -81,41 +81,14 @@ export const FilterListPresenter: React.FC<Props> = (props) => {
         </ul>
       </div>
       <div className="scrollBar">
-        {scrollBarActive ? (
-          <div
-            className="scrollBarThumb"
-            style={{
-              height: scrollBarHeight,
-              transform: `translateY(${scrollBarThumbY}px)`,
-              backgroundColor: "red",
-            }}
-            onMouseDown={mouseDownScrollBar}
-            onMouseUp={mouseUpScrollBar}
-            // onMouseMove={moveThumb}
-            // onSelect={() => {
-            //   if (scrollBarActive) {
-            //     return false
-            //   }
-            // }}
-          ></div>
-        ) : (
-          <div
-            className="scrollBarThumb"
-            style={{
-              height: scrollBarHeight,
-              maxHeight: document.querySelector(".scrollBar")?.clientHeight,
-              transform: `translateY(${offset}px)`,
-            }}
-            onMouseDown={mouseDownScrollBar}
-            onMouseUp={mouseUpScrollBar}
-            // onMouseMove={moveThumb}
-            // onSelect={() => {
-            //   if (scrollBarActive) {
-            //     return false
-            //   }
-            // }}
-          ></div>
-        )}
+        <div
+          className="scrollBarThumb"
+          style={{
+            height: scrollBarHeight,
+            maxHeight: document.querySelector(".scrollBar")?.clientHeight,
+            transform: `translateY(${offset}px)`,
+          }}
+        ></div>
       </div>
     </div>
   )

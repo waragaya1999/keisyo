@@ -76,7 +76,7 @@ export const KeisyoPresenter: React.FC<Props> = (props) => {
 
   return (
     <div className="wrap" onClick={closeModal} ref={ref}>
-      <div className="bg" style={{ height: window.innerHeight }}>
+      <div className="bg" style={{ minHeight: window.innerHeight }}>
         <div
           style={{
             display: "flex",

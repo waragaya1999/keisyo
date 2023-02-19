@@ -28,7 +28,7 @@ export const DetailPresenter: React.FC<Props> = (props) => {
   return (
     <>
       <div className="wrap">
-        <div className="bg">
+        <div className="bg" style={{ minHeight: window.innerHeight }}>
           <div
             style={{
               display: "flex",

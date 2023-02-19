@@ -201,7 +201,7 @@ export const useKeisyo = () => {
         (scrollTop * scrollBarTrack) / (filteredUlHeight - scrollableHeight),
       )
     }
-  }, 25)
+  }, 10)
 
   const mouseDownScrollBar = (e: React.DragEvent<HTMLDivElement>) => {
     setScrollBarActive(true)

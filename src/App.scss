@@ -26,7 +26,7 @@
   margin: 0 auto;
 }
 @mixin filterTypeP {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   margin: 0;
   margin-top: 12%;
 }
@@ -99,6 +99,7 @@ header {
   margin-bottom: 1vh;
   padding: 1vh;
   .logo {
+    @include button();
     height: 6em;
   }
 }
@@ -114,14 +115,6 @@ header {
     &::-webkit-scrollbar {
       width: 6px;
       display: none;
-    }
-    &::-webkit-scrollbar-track {
-      background-color: rgba(0, 0, 0, 0.1);
-      border-radius: 100px;
-    }
-    &::-webkit-scrollbar-thumb {
-      background-color: rgba(0, 0, 0, 0.4);
-      border-radius: 100px;
     }
     .filteredUl {
       list-style: none;
@@ -154,6 +147,7 @@ header {
           align-self: center;
           margin: 0 3%;
           img {
+            @include button();
             height: 12vw;
             max-width: 70px;
             max-height: 70px;
@@ -192,7 +186,7 @@ header {
     top: 50%;
     right: 0;
     bottom: 0;
-    margin-right: 1.6%;
+    margin-right: 2%;
     .scrollBarThumb {
       min-height: 50px;
       background-color: rgb(122, 120, 138);
@@ -212,6 +206,8 @@ header {
       @include filterType();
       img {
         @include filterTypeImg();
+        @include button();
+        cursor: default;
       }
       p {
         @include filterTypeP();
@@ -223,6 +219,9 @@ header {
         @include filterTypeArea();
         .categoryOneEach {
           @include filterTypeOneEach();
+          img {
+            @include button();
+          }
         }
       }
     }
@@ -230,6 +229,8 @@ header {
       @include filterType();
       img {
         @include filterTypeImg();
+        @include button();
+        cursor: default;
       }
       p {
         @include filterTypeP();
@@ -241,6 +242,9 @@ header {
         @include filterTypeArea();
         .mileageOneEach {
           @include filterTypeOneEach();
+          img {
+            @include button();
+          }
         }
       }
     }
@@ -248,6 +252,8 @@ header {
       @include filterType();
       img {
         @include filterTypeImg();
+        @include button();
+        cursor: default;
       }
       p {
         @include filterTypeP();
@@ -259,6 +265,9 @@ header {
         @include filterTypeArea();
         .locationOneEach {
           @include filterTypeOneEach();
+          img {
+            @include button();
+          }
         }
       }
     }
@@ -274,6 +283,7 @@ header {
       border-radius: 1rem;
       margin: 0 3.666%;
       img {
+        @include button();
         width: 80%;
         margin-top: 10%;
       }
@@ -308,8 +318,10 @@ footer {
     box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.2);
     margin-top: 3%;
     .detailCardImg {
+      @include button();
       width: 15%;
       align-self: center;
+      cursor: default;
       margin: 2rem 0;
       padding-left: 2%;
     }
@@ -387,6 +399,13 @@ footer {
 
 .hide {
   display: none;
+}
+
+.notFoundImg {
+  user-drag: none;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 
 @media screen and (max-width: 600px) {
@@ -516,17 +535,18 @@ footer {
         }
       }
       .closeModalButton {
-        @include button();
         width: 100%;
         display: flex;
         justify-content: flex-end;
         .closeModalButtonImg {
+          @include button();
           width: 30%;
           height: intrinsic;
         }
         .closeModalReset {
           width: 35%;
           .closeModalResetImg {
+            @include button();
             width: 57%;
           }
         }
@@ -554,7 +574,9 @@ footer {
     .detailCard {
       width: 100%;
       .detailCardImg {
+        @include button();
         width: 20%;
+        cursor: default;
       }
       .detailCardText {
         font-size: clamp(
