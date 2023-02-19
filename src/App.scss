@@ -85,7 +85,6 @@ body {
   background-attachment: fixed;
   .bg {
     max-width: 1080px;
-    min-height: 100vh;
     width: 100%;
     background-image: url("https://uma-keisyo.com/images/bg.8d858e27.jpg");
     background-position: center;
@@ -106,78 +105,98 @@ header {
 
 .filteredList {
   width: 70%;
-  ul {
-    width: 98.5%;
-    list-style: none;
-    padding: 0;
+  position: relative;
+  overflow: hidden;
+  .scrollable {
+    overflow: hidden;
     overflow-y: scroll;
-    padding-bottom: 2vh;
+    -webkit-overflow-scrolling: touch;
     &::-webkit-scrollbar {
-      width: 10px;
-      padding-right: 10px;
+      width: 6px;
+      display: none;
     }
-
     &::-webkit-scrollbar-track {
       background-color: rgba(0, 0, 0, 0.1);
       border-radius: 100px;
     }
-
     &::-webkit-scrollbar-thumb {
       background-color: rgba(0, 0, 0, 0.4);
       border-radius: 100px;
     }
-    h1 {
-      color: #888;
-      padding-top: 5vh;
-    }
-    li {
-      font-size: 1.6rem;
-      width: 90%;
-      height: 18vw;
-      max-height: 130px;
-      text-align: left;
-      display: flex;
-      background-color: #f8f8f8;
-      border-radius: 1rem;
-      border: rgba(0, 0, 0, 0.2) solid 1px;
-      margin: 0 auto;
-      margin-top: 1.6vh;
-      cursor: pointer;
-      &:hover {
-        background-color: #fff;
+    .filteredUl {
+      list-style: none;
+      padding: 0;
+      padding-bottom: 2vh;
+      h1 {
+        color: #888;
+        padding-top: 5vh;
       }
-      p {
-        white-space: nowrap;
-      }
-      .listImg {
-        align-self: center;
-        margin: 0 3%;
-        img {
-          height: 12vw;
-          max-width: 70px;
-          max-height: 70px;
-        }
-      }
-      .listText {
-        width: 70%;
-        font-size: min(4vw, 20px);
+      li {
+        font-size: 1.6rem;
+        width: 90%;
+        height: 18vw;
+        max-height: 130px;
+        text-align: left;
         display: flex;
-        flex-direction: column;
-        align-self: flex-start;
-        margin-top: 2%;
-        hr {
-          width: 100%;
-          margin: 0;
-          margin-top: 2.5%;
+        background-color: #f8f8f8;
+        border-radius: 1rem;
+        border: rgba(0, 0, 0, 0.2) solid 1px;
+        margin: 0 auto;
+        margin-top: 1.6vh;
+        cursor: pointer;
+        &:hover {
+          background-color: #fff;
         }
-        .effectQuantity {
-          width: 100%;
+        p {
+          white-space: nowrap;
+        }
+        .listImg {
+          align-self: center;
+          margin: 0 3%;
+          img {
+            height: 12vw;
+            max-width: 70px;
+            max-height: 70px;
+          }
+        }
+        .listText {
+          width: 70%;
+          font-size: min(4vw, 20px);
           display: flex;
-          flex-wrap: wrap;
-          font-size: min(4vw, 18px);
-          margin-top: 2.5%;
+          flex-direction: column;
+          align-self: flex-start;
+          margin-top: 2%;
+          hr {
+            width: 100%;
+            margin: 0;
+            margin-top: 2.5%;
+          }
+          .effectQuantity {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            font-size: min(4vw, 18px);
+            margin-top: 2.5%;
+          }
         }
       }
+    }
+  }
+  .scrollBar {
+    width: 6px;
+    height: 96%;
+    position: absolute;
+    background-color: rgb(208, 207, 215);
+    border-radius: 100px;
+    transform: translateY(-50%);
+    top: 50%;
+    right: 0;
+    bottom: 0;
+    margin-right: 1.6%;
+    .scrollBarThumb {
+      min-height: 50px;
+      background-color: rgb(122, 120, 138);
+      border-radius: 100px;
     }
   }
 }
@@ -373,29 +392,34 @@ footer {
 @media screen and (max-width: 600px) {
   .filteredList {
     width: 100%;
-    ul {
-      width: 100%;
-      overflow: hidden;
-      margin: 0 auto;
-      li {
-        p {
-          font-size: 1.4rem;
-        }
-        .listImg {
-          img {
-            width: 40px;
-            height: 40px;
+    .scrollable {
+      .filteredUl {
+        width: 100%;
+        overflow: hidden;
+        margin: 0 auto;
+        li {
+          p {
+            font-size: 1.4rem;
           }
-        }
-        .listText {
-          hr {
-            margin-top: 1.5%;
+          .listImg {
+            img {
+              max-width: 40px;
+              max-height: 40px;
+            }
           }
-          .effectQuantity {
-            margin-top: 1.5%;
+          .listText {
+            hr {
+              margin-top: 1.5%;
+            }
+            .effectQuantity {
+              margin-top: 1.5%;
+            }
           }
         }
       }
+    }
+    .scrollBar {
+      display: none;
     }
   }
 
@@ -614,7 +638,7 @@ footer {
     border-radius: 10px;
     box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.2) inset;
     margin: 0 1%;
-    ul {
+    .scrollable {
       height: 80dvh;
     }
   }

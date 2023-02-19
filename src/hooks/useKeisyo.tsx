@@ -2,6 +2,7 @@ import { useState } from "react"
 import axios from "axios"
 import { ResponseDto } from "../types/ResponseDto"
 import useStore from "./useStore"
+import { useThrottle } from "./useThrottle"
 
 export const useKeisyo = () => {
   const {
@@ -17,6 +18,14 @@ export const useKeisyo = () => {
   const [filterList, setFilterList] = useState<ResponseDto[]>([])
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
   const [modalFlag, setModalFlag] = useState(false)
+  const [scrollBarMargin, setScrollBarMargin] = useState<number>(0)
+  const [scrollBarHeight, setScrollBarHeight] = useState<number>(0)
+  const [scrollBarTrack, setScrollBarTrack] = useState<number>(0)
+  const [offset, setOffset] = useState<number>(0)
+  const [filteredUlHeight, setFilteredUlHeight] = useState<number>(0)
+  const [scrollableHeight, setScrollableHeight] = useState<number>(0)
+  const [scrollBarActive, setScrollBarActive] = useState<boolean>(false)
+  const [scrollBarThumbY, setScrollBarThumbY] = useState<number>(0)
 
   const getList = async () => {
     await axios
@@ -160,6 +169,68 @@ export const useKeisyo = () => {
     }
   }
 
+  const determineScrollBar = () => {
+    const filteredListWidth =
+      document.querySelector(".filteredList")?.clientWidth
+    const scrollableWidth = document.querySelector(".scrollable")?.clientWidth
+    const tempScrollableHeight =
+      document.querySelector(".scrollable")?.clientHeight
+    const tempFilteredUlHeight =
+      document.querySelector(".filteredUl")?.clientHeight
+    if (filteredListWidth && scrollableWidth) {
+      setScrollBarMargin(filteredListWidth - scrollableWidth)
+    }
+    if (tempScrollableHeight && tempFilteredUlHeight) {
+      setScrollBarHeight(
+        (tempScrollableHeight * tempScrollableHeight) / tempFilteredUlHeight,
+      )
+      setScrollBarTrack(
+        tempScrollableHeight * 0.96 -
+          (tempScrollableHeight * tempScrollableHeight) / tempFilteredUlHeight,
+      )
+      setScrollableHeight(tempScrollableHeight)
+      setFilteredUlHeight(tempFilteredUlHeight)
+    }
+  }
+
+  const scrollHandler = useThrottle(() => {
+    const target = document.querySelector(".scrollable")
+    if (target) {
+      const scrollTop = target.scrollTop
+      setOffset(
+        (scrollTop * scrollBarTrack) / (filteredUlHeight - scrollableHeight),
+      )
+    }
+  }, 25)
+
+  const mouseDownScrollBar = (e: React.DragEvent<HTMLDivElement>) => {
+    setScrollBarActive(true)
+    setScrollBarThumbY(e.clientY - e.currentTarget.offsetTop)
+  }
+
+  const mouseUpScrollBar = (e: React.DragEvent<HTMLDivElement>) => {
+    setScrollBarActive(false)
+  }
+
+  const moveThumb = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if (!scrollBarActive) {
+      return
+    }
+    const target = document.querySelector<HTMLElement>(".scrollBar")
+    if (target) {
+      const tempScrollBarThumbY =
+        ((e.clientY - target.offsetTop) / scrollBarTrack) * scrollBarTrack -
+        scrollBarThumbY
+      console.log(tempScrollBarThumbY)
+      setScrollBarThumbY(tempScrollBarThumbY)
+      // if (tempScrollBarThumbY < 0) {
+      //   setScrollBarThumbY(0)
+      // } else if (tempScrollBarThumbY > scrollBarTrack) {
+      //   setScrollBarThumbY(scrollBarTrack)
+      // }
+    }
+  }
+
   return {
     getList,
     filterList,
@@ -170,5 +241,15 @@ export const useKeisyo = () => {
     modalFlag,
     setModalFlag,
     closeModal,
+    scrollBarMargin,
+    scrollBarHeight,
+    determineScrollBar,
+    scrollHandler,
+    offset,
+    scrollBarActive,
+    mouseDownScrollBar,
+    mouseUpScrollBar,
+    moveThumb,
+    scrollBarThumbY,
   } as const
 }

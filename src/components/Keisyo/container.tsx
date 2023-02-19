@@ -12,6 +12,16 @@ export const Keisyo: React.FC = () => {
     isLoaded,
     modalFlag,
     closeModal,
+    scrollBarMargin,
+    scrollBarHeight,
+    determineScrollBar,
+    scrollHandler,
+    offset,
+    scrollBarActive,
+    mouseDownScrollBar,
+    mouseUpScrollBar,
+    moveThumb,
+    scrollBarThumbY,
   } = useKeisyo()
   const { storedCats, storedMils, storedLocs } = useStore()
 
@@ -29,6 +39,16 @@ export const Keisyo: React.FC = () => {
         switchList={switchList}
         modalFlag={modalFlag}
         closeModal={closeModal}
+        scrollBarMargin={scrollBarMargin}
+        scrollBarHeight={scrollBarHeight}
+        determineScrollBar={determineScrollBar}
+        scrollHandler={scrollHandler}
+        offset={offset}
+        scrollBarActive={scrollBarActive}
+        mouseDownScrollBar={mouseDownScrollBar}
+        mouseUpScrollBar={mouseUpScrollBar}
+        moveThumb={moveThumb}
+        scrollBarThumbY={scrollBarThumbY}
       />
     </>
   )

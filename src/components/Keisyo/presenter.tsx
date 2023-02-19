@@ -21,6 +21,16 @@ type Props = {
   isLoaded: boolean
   modalFlag: boolean
   closeModal: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
+  scrollBarMargin: number
+  scrollBarHeight: number
+  determineScrollBar: () => void
+  scrollHandler: () => void
+  offset: number
+  scrollBarActive: boolean
+  mouseDownScrollBar: (e: React.DragEvent<HTMLDivElement>) => void
+  mouseUpScrollBar: (e: React.DragEvent<HTMLDivElement>) => void
+  moveThumb: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
+  scrollBarThumbY: number
 }
 
 export const KeisyoPresenter: React.FC<Props> = (props) => {
@@ -36,6 +46,16 @@ export const KeisyoPresenter: React.FC<Props> = (props) => {
     switchList,
     modalFlag,
     closeModal,
+    scrollBarMargin,
+    scrollBarHeight,
+    determineScrollBar,
+    scrollHandler,
+    offset,
+    scrollBarActive,
+    mouseDownScrollBar,
+    mouseUpScrollBar,
+    moveThumb,
+    scrollBarThumbY,
   } = props
   const navigate = useNavigate()
   const [width, setWidth] = useState(0)
@@ -56,7 +76,7 @@ export const KeisyoPresenter: React.FC<Props> = (props) => {
 
   return (
     <div className="wrap" onClick={closeModal} ref={ref}>
-      <div className="bg">
+      <div className="bg" style={{ height: window.innerHeight }}>
         <div
           style={{
             display: "flex",
@@ -80,6 +100,16 @@ export const KeisyoPresenter: React.FC<Props> = (props) => {
                   storedLocs={storedLocs}
                   updateFilterList={updateFilterList}
                   isLoaded={isLoaded}
+                  scrollBarMargin={scrollBarMargin}
+                  scrollBarHeight={scrollBarHeight}
+                  determineScrollBar={determineScrollBar}
+                  scrollHandler={scrollHandler}
+                  offset={offset}
+                  scrollBarActive={scrollBarActive}
+                  mouseDownScrollBar={mouseDownScrollBar}
+                  mouseUpScrollBar={mouseUpScrollBar}
+                  moveThumb={moveThumb}
+                  scrollBarThumbY={scrollBarThumbY}
                 />
                 <NarrowingDown
                   storedCats={storedCats}
@@ -99,6 +129,16 @@ export const KeisyoPresenter: React.FC<Props> = (props) => {
                 storedLocs={storedLocs}
                 updateFilterList={updateFilterList}
                 isLoaded={isLoaded}
+                scrollBarMargin={scrollBarMargin}
+                scrollBarHeight={scrollBarHeight}
+                determineScrollBar={determineScrollBar}
+                scrollHandler={scrollHandler}
+                offset={offset}
+                scrollBarActive={scrollBarActive}
+                mouseDownScrollBar={mouseDownScrollBar}
+                mouseUpScrollBar={mouseUpScrollBar}
+                moveThumb={moveThumb}
+                scrollBarThumbY={scrollBarThumbY}
               />
               <CallFilter
                 getList={getList}
@@ -114,7 +154,7 @@ export const KeisyoPresenter: React.FC<Props> = (props) => {
             </>
           )}
         </div>
-        <footer>©ケイショウチェッカー All Rights Reserved.</footer>
+        <footer>©2023 ケイショウチェッカー All Rights Reserved.</footer>
       </div>
     </div>
   )

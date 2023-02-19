@@ -10,6 +10,7 @@ export const App: React.FC = () => {
       <Routes>
         <Route path={"/"} element={<Keisyo />} />
         <Route path={"/detail/:id"} element={<Detail />} />
+        {/* <Route path={"/test"} element={<Test />} /> */}
       </Routes>
     </BrowserRouter>
   )

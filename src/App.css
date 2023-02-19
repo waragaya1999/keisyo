@@ -22,7 +22,6 @@ body {
 }
 .wrap .bg {
   max-width: 1080px;
-  min-height: 100vh;
   width: 100%;
   background-image: url("https://uma-keisyo.com/images/bg.8d858e27.jpg");
   background-position: center;
@@ -42,31 +41,36 @@ header .logo {
 
 .filteredList {
   width: 70%;
+  position: relative;
+  overflow: hidden;
 }
-.filteredList ul {
-  width: 98.5%;
-  list-style: none;
-  padding: 0;
+.filteredList .scrollable {
+  overflow: hidden;
   overflow-y: scroll;
-  padding-bottom: 2vh;
+  -webkit-overflow-scrolling: touch;
 }
-.filteredList ul::-webkit-scrollbar {
-  width: 10px;
-  padding-right: 10px;
+.filteredList .scrollable::-webkit-scrollbar {
+  width: 6px;
+  display: none;
 }
-.filteredList ul::-webkit-scrollbar-track {
+.filteredList .scrollable::-webkit-scrollbar-track {
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 100px;
 }
-.filteredList ul::-webkit-scrollbar-thumb {
+.filteredList .scrollable::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.4);
   border-radius: 100px;
 }
-.filteredList ul h1 {
+.filteredList .scrollable .filteredUl {
+  list-style: none;
+  padding: 0;
+  padding-bottom: 2vh;
+}
+.filteredList .scrollable .filteredUl h1 {
   color: #888;
   padding-top: 5vh;
 }
-.filteredList ul li {
+.filteredList .scrollable .filteredUl li {
   font-size: 1.6rem;
   width: 90%;
   height: 18vw;
@@ -80,22 +84,22 @@ header .logo {
   margin-top: 1.6vh;
   cursor: pointer;
 }
-.filteredList ul li:hover {
+.filteredList .scrollable .filteredUl li:hover {
   background-color: #fff;
 }
-.filteredList ul li p {
+.filteredList .scrollable .filteredUl li p {
   white-space: nowrap;
 }
-.filteredList ul li .listImg {
+.filteredList .scrollable .filteredUl li .listImg {
   align-self: center;
   margin: 0 3%;
 }
-.filteredList ul li .listImg img {
+.filteredList .scrollable .filteredUl li .listImg img {
   height: 12vw;
   max-width: 70px;
   max-height: 70px;
 }
-.filteredList ul li .listText {
+.filteredList .scrollable .filteredUl li .listText {
   width: 70%;
   font-size: min(4vw, 20px);
   display: flex;
@@ -103,17 +107,34 @@ header .logo {
   align-self: flex-start;
   margin-top: 2%;
 }
-.filteredList ul li .listText hr {
+.filteredList .scrollable .filteredUl li .listText hr {
   width: 100%;
   margin: 0;
   margin-top: 2.5%;
 }
-.filteredList ul li .listText .effectQuantity {
+.filteredList .scrollable .filteredUl li .listText .effectQuantity {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   font-size: min(4vw, 18px);
   margin-top: 2.5%;
+}
+.filteredList .scrollBar {
+  width: 6px;
+  height: 96%;
+  position: absolute;
+  background-color: rgb(208, 207, 215);
+  border-radius: 100px;
+  transform: translateY(-50%);
+  top: 50%;
+  right: 0;
+  bottom: 0;
+  margin-right: 1.6%;
+}
+.filteredList .scrollBar .scrollBarThumb {
+  min-height: 50px;
+  background-color: rgb(122, 120, 138);
+  border-radius: 100px;
 }
 
 .filterArea {
@@ -381,23 +402,26 @@ footer {
   .filteredList {
     width: 100%;
   }
-  .filteredList ul {
+  .filteredList .scrollable .filteredUl {
     width: 100%;
     overflow: hidden;
     margin: 0 auto;
   }
-  .filteredList ul li p {
+  .filteredList .scrollable .filteredUl li p {
     font-size: 1.4rem;
   }
-  .filteredList ul li .listImg img {
-    width: 40px;
-    height: 40px;
+  .filteredList .scrollable .filteredUl li .listImg img {
+    max-width: 40px;
+    max-height: 40px;
   }
-  .filteredList ul li .listText hr {
+  .filteredList .scrollable .filteredUl li .listText hr {
     margin-top: 1.5%;
   }
-  .filteredList ul li .listText .effectQuantity {
+  .filteredList .scrollable .filteredUl li .listText .effectQuantity {
     margin-top: 1.5%;
+  }
+  .filteredList .scrollBar {
+    display: none;
   }
   .filterArea {
     width: 28%;
@@ -676,7 +700,7 @@ footer {
     box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.2) inset;
     margin: 0 1%;
   }
-  .filteredList ul {
+  .filteredList .scrollable {
     height: 80dvh;
   }
   .detail .detailBody .detailBodyLowerRow {
