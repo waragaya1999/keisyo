@@ -56,22 +56,45 @@ export const FilterListPresenter: React.FC<Props> = (props) => {
                     <hr />
                     <div className="effectQuantity">
                       {value.amountOfVelocity && (
-                        <p> 速度{value.amountOfVelocity}m/s</p>
+                        <p>速度&nbsp;{value.amountOfVelocity}m/s</p>
                       )}
-                      {value.amountOfAcceleration && (
-                        <p> 加速{value.amountOfAcceleration}m/s</p>
-                      )}
-                      {value.amountOfDeVelocity && (
-                        <p> 速度減衰{value.amountOfDeVelocity}m/s</p>
-                      )}
-                      {(value.amountOfVelocity || value.amountOfAcceleration) &&
-                        value.duration && <p> × {value.duration}s</p>}
-                      {value.amountOfStamina &&
-                        (value.amountOfStamina > 0 ? (
-                          <p> 持久力{value.amountOfStamina}m/s 回復</p>
+                      {value.amountOfAcceleration &&
+                        (value.amountOfVelocity ? (
+                          <p>&nbsp;加速&nbsp;{value.amountOfAcceleration}m/s</p>
                         ) : (
-                          <p> 持久力{value.amountOfStamina}m/s 減少</p>
+                          <p>加速&nbsp;{value.amountOfAcceleration}m/s</p>
                         ))}
+                      {value.amountOfDeVelocity &&
+                        (value.amountOfVelocity ||
+                        value.amountOfAcceleration ? (
+                          <p>
+                            &nbsp;速度減衰&nbsp;{value.amountOfDeVelocity}m/s
+                          </p>
+                        ) : (
+                          <p>速度減衰&nbsp;{value.amountOfDeVelocity}m/s</p>
+                        ))}
+                      {value.amountOfStamina &&
+                        (value.amountOfVelocity ||
+                        value.amountOfAcceleration ||
+                        value.amountOfDeVelocity ? (
+                          value.amountOfStamina > 0 ? (
+                            <p>
+                              &nbsp;持久力&nbsp;{value.amountOfStamina}
+                              %回復
+                            </p>
+                          ) : (
+                            <p>
+                              &nbsp;持久力&nbsp;{value.amountOfStamina}
+                              m/s減少
+                            </p>
+                          )
+                        ) : value.amountOfStamina > 0 ? (
+                          <p>持久力&nbsp;{value.amountOfStamina}%回復</p>
+                        ) : (
+                          <p>持久力&nbsp;{value.amountOfStamina}m/s減少</p>
+                        ))}
+                      {(value.amountOfVelocity || value.amountOfAcceleration) &&
+                        value.duration && <p>&nbsp;×&nbsp;{value.duration}s</p>}
                     </div>
                   </div>
                 </li>
