@@ -52,18 +52,6 @@ export const DetailPresenter: React.FC<Props> = (props) => {
                 </div>
               </div>
               <div className="detailBody">
-                {/* <div className="detailBodyBasic">
-                  <h3>基本情報</h3>
-                  <hr />
-                  <div className="detailBodyName detailBodyFlex">
-                    <p className="detailBodyLabel">スキル名</p>
-                    <p className="detailBodyText">{detail.name}</p>
-                  </div>
-                  <div className="detailBodyDescription detailBodyFlex">
-                    <p className="detailBodyLabel">説明</p>
-                    <p className="detailBodyText">{detail.body}</p>
-                  </div>
-                </div> */}
                 <div className="detailBodyLowerRow">
                   <div className="detailBodyTerms">
                     <h3>発動条件</h3>
@@ -139,6 +127,30 @@ export const DetailPresenter: React.FC<Props> = (props) => {
                         <p className="detailBodyText">-</p>
                       )}
                     </div>
+                    {detail.amountOfDeVelocity && (
+                      <div className="detailBodyAmountOfDeVelocity detailBodyFlex">
+                        <p className="detailBodyLabel">速度減衰</p>
+                        <p className="detailBodyText">
+                          {detail.amountOfDeVelocity}m/s
+                        </p>
+                      </div>
+                    )}
+                    {detail.amountOfStamina &&
+                      (detail.amountOfStamina > 0 ? (
+                        <div className="detailBodyAmountOfStamina detailBodyFlex">
+                          <p className="detailBodyLabel">持久力回復</p>
+                          <p className="detailBodyText">
+                            {detail.amountOfStamina}%
+                          </p>
+                        </div>
+                      ) : (
+                        <div className="detailBodyAmountOfStamina detailBodyFlex">
+                          <p className="detailBodyLabel">持久力減衰</p>
+                          <p className="detailBodyText">
+                            {detail.amountOfStamina}%
+                          </p>
+                        </div>
+                      ))}
                     <div className="detailBodyDuration detailBodyFlex">
                       <p className="detailBodyLabel">効果時間</p>
                       <p className="detailBodyText">{detail.duration}秒</p>

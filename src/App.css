@@ -446,6 +446,12 @@ footer {
 .detail .detailBody .detailBodyEffects .detailBodyAmountOfAcceleration {
   margin-bottom: 1vh;
 }
+.detail .detailBody .detailBodyEffects .detailBodyAmountOfDeVelocity {
+  margin-bottom: 1vh;
+}
+.detail .detailBody .detailBodyEffects .detailBodyAmountOfStamina {
+  margin-bottom: 1vh;
+}
 .detail .buttonBack {
   cursor: pointer;
   user-drag: none;
